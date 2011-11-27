@@ -1,0 +1,186 @@
+# amd-utils / number #
+
+Number utilities.
+
+## <a href="#toc" name="toc">Table of Contents</a>
+
+ - [`enforcePrecision()`](#enforcePrecision)
+ - [`MAX_INT`](#MAX_INT)
+ - [`MAX_UINT`](#MAX_UINT)
+ - [`MIN_INT`](#MIN_INT)
+ - [`pad()`](#pad)
+ - [`rol()`](#rol)
+ - [`ror()`](#ror)
+ - [`sign()`](#sign)
+ - [`toInt()`](#toInt)
+ - [`toUInt()`](#toUInt)
+ - [`toUInt31()`](#toUInt31)
+
+
+
+## <a href="#enforcePrecision" name="enforcePrecision">enforcePrecision(val, nDecimalDigits):Number</a>
+
+Enforce a specific amount of decimal digits and also fix floating point
+rounding issues.
+
+### Example:
+
+```js
+enforcePrecision(0.615, 2); // 0.62
+enforcePrecision(0.625, 2); // 0.63
+//floating point rounding "error" (rounds to odd number)
++(0.615).toFixed(2);        // 0.61
++(0.625).toFixed(2);        // 0.63
+```
+
+
+
+## <a href="#MAX_INT" name="MAX_INT">MAX_INT:Number</a>
+
+Maximum 32-bit signed integer value. `Math.pow(2, 31) - 1`
+
+### Example:
+
+```js
+console.log( MAX_INT ); // 2147483647
+```
+
+
+## <a href="#MAX_UINT" name="MAX_UINT">MAX_UINT:Number</a>
+
+Maximum 32-bit unsigned integer value. `Math.pow(2, 32) - 1`
+
+### Example:
+
+```js
+console.log( MAX_UINT ); // 4294967295
+```
+
+
+## <a href="#MIN_INT" name="MIN_INT">MIN_INT:Number</a>
+
+Minimum 32-bit signed integer value. `Math.pow(2, 31) * -1`.
+
+### Example:
+
+```js
+console.log( MIN_INT ); // -2147483648
+```
+
+
+## <a href="#pad" name="pad">pad(n, minLength):String</a>
+
+Add padding zeros if `n.length` < `minLength`.
+
+### Example:
+
+```js
+pad(1, 5);      // 00001
+pad(12, 5);     // 00012
+pad(123, 5);    // 00123
+pad(1234, 5);   // 01234
+pad(12345, 5);  // 12345
+pad(123456, 5); // 123456
+```
+
+
+
+## <a href="#rol" name="rol">rol(val, shift):Number</a>
+
+Bitwise circular shift left.
+
+More info at [Wikipedia#Circular_shift](http://en.wikipedia.org/wiki/Circular_shift)
+
+
+
+## <a href="#ror" name="ror">ror(val, shift):Number</a>
+
+Bitwise circular shift right.
+
+More info at [Wikipedia#Circular_shift](http://en.wikipedia.org/wiki/Circular_shift)
+
+
+
+## <a href="#sign" name="sign">sign(val):Number</a>
+
+Returns `-1` if value is negative and `1` if value is positive. Useful for
+multiplications.
+
+```js
+sign(-123); // -1
+sign(123);  // 1
+```
+
+
+
+## <a href="#toInt" name="toInt">toInt(val):Number</a>
+
+"Convert" value into an 32-bit integer.  Works like `Math.floor` if `val > 0` and
+`Math.ceil` if `val < 0`.
+
+**IMPORTANT:** val will wrap at [number/MIN_INT](#MIN_INT) and
+[number/MAX_INT](#MAX_INT).
+
+Created because most people don't know bitwise operations and also because this
+feature is commonly needed.
+
+[Perf tests](http://jsperf.com/vs-vs-parseint-bitwise-operators/7)
+
+### Example:
+
+```js
+toInt(1.25);   // 1
+toInt(0.75);   // 0
+toInt(-0.55);  // 0
+toInt(-5.0001) // -5
+```
+
+
+
+## <a href="#toUInt" name="toUInt">toUInt(val):Number</a>
+
+"Convert" value into an 32-bit unsigned integer.
+
+Works like AS3#uint().
+
+**IMPORTANT:** val will wrap at 2^32.
+
+### Example:
+
+```js
+toUInt(1.25);                 // 1
+toUInt(0.75);                 // 0
+toUInt(-0.55);                // 0
+toUInt(-5.0001);              // 4294967291
+toUInt(Math.pow(2,32) - 0.5); // 4294967295
+toUInt(Math.pow(2,32) + 0.5); // 0
+```
+
+
+## <a href="#toUInt31" name="toUInt31">toUInt31(val):Number</a>
+
+"Convert" value into an 31-bit unsigned integer (since 1 bit is used for sign).
+
+Useful since all bitwise operators besides `>>>` treat numbers as signed
+integers.
+
+**IMPORTANT:** val will wrap at 2^31 and negative numbers will be treated as
+`zero`.
+
+### Example:
+
+```js
+toUInt31(1.25);                 // 1
+toUInt31(0.75);                 // 0
+toUInt31(-0.55);                // 0
+toUInt31(-5.0001);              // 0
+toUInt31(Math.pow(2,31) - 0.5); // 21474836470
+toUInt31(Math.pow(2,31) + 0.5); // 0
+```
+
+
+-------------------------------------------------------------------------------
+
+For more usage examples check specs inside `/tests` folder. Unit tests are the
+best documentation you can get...
+

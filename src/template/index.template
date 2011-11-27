@@ -1,0 +1,9 @@
+{{> header}}
+{{{content}}}
+<h2>Table of Contents</h2>
+<ul class="mod-list">
+{{#modules}}
+    <li><a href="{{file}}">{{module}}</a></li>
+{{/modules}}
+</ul>
+{{> footer}}

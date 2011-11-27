@@ -1,0 +1,240 @@
+# amd-utils / array #
+
+Array utilities.
+
+
+
+## <a href="#toc" name="toc">Table of Contents</a>
+
+ - [`compact()`](#compact)
+ - [`contains()`](#contains)
+ - [`every()`](#every)
+ - [`filter()`](#filter)
+ - [`forEach()`](#forEach)
+ - [`indexOf()`](#indexOf)
+ - [`isSparse()`](#isSparse)
+ - [`lastIndexOf()`](#lastIndexOf)
+ - [`map()`](#map)
+ - [`range()`](#range)
+ - [`reduce()`](#reduce)
+ - [`reduceRight()`](#reduceRight)
+ - [`remove()`](#remove)
+ - [`removeAll()`](#removeAll)
+ - [`shuffle()`](#shuffle)
+ - [`some()`](#some)
+ - [`unique()`](#unique)
+
+
+
+## <a href="#compact" name="compact">compact(arr):Array</a>
+
+Returns a new Array without any `null` or `undefined` values. Note that it will
+keep empty strings and other falsy values (simillar to Ruby Array#compact).
+
+```js
+var arr = [0, 1, null, false, '', 'foo', undefined, 'bar'];
+compact(arr); // [0, 1, false, '', 'foo', 'bar'];
+```
+
+
+
+## <a href="#contains" name="contains">contains(arr, value):Boolean</a>
+
+Checks if Array contains value. Alias to `indexOf(arr, val) !== -1`.
+
+```js
+var arr = [1, 2, 3];
+contains(arr, 2);      // true
+contains(arr, 'foo');  // false
+```
+
+
+
+## <a href="#every" name="every">every(arr, callback, [thisObj]):Array</a>
+
+Crossbrowser ES5 `Array.every()`.
+
+Tests whether all elements in the array pass the test implemented by the provided function.
+
+more info at [MDN Array#every](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/every)
+
+
+
+## <a href="#filter" name="filter">filter(arr, callback, [thisObj]):Array</a>
+
+Crossbrowser ES5 `Array.filter()`.
+
+Creates a new array with all elements that pass the callback test.
+
+more info at [MDN Array#filter](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/filter)
+
+
+
+## <a href="#forEach" name="forEach">forEach(arr, callback, [thisObj]):void</a>
+
+Crossbrowser ES5 `Array.forEach()`.
+
+more info at [MDN Array#forEach](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach)
+
+
+
+## <a href="#indexOf" name="indexOf">indexOf(arr, item, [fromIndex]):Number</a>
+
+Crossbrowser ES5 `Array.indexOf()`.
+
+more info at [MDN Array#indexOf](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf)
+
+
+
+## <a href="#isSparse" name="isSparse">isSparse(arr):Boolean</a>
+
+Checks if it is a *sparse* array.
+
+### Example
+
+```js
+var arr = ['foo'];
+arr[6] = 'bar';
+isSparse(arr); // true
+
+var arr2 = ['lorem', 'ipsum'];
+isSparse(arr2); // false
+```
+
+
+
+## <a href="#lastIndexOf" name="lastIndexOf">lastIndexOf(arr, item, [fromIndex]):Number</a>
+
+Crossbrowser ES5 `Array.lastIndexOf()`.
+
+more info at [MDN Array#lastIndexOf](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+
+
+
+## <a href="#map" name="map">map(arr, callback):Array</a>
+
+Crossbrowser ES5 `Array.map()`.
+
+Creates a new array with the results of calling a provided function on every
+element in this array.
+
+more info at [MDN Array#map](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/map)
+
+
+
+## <a href="#range" name="range">range([start], stop[, step]):Array</a>
+
+Creates a new Array with all the values inside the range. Works similarly to
+Python#range or PHP#range.
+
+### Arguments
+
+ 1. `[start]` (Number) : Range start. Default is `0`.
+ 2. `stop` (Number) : Range limit.
+ 3. `[step]` (Number) : Step size. Default is `1`.
+
+### Example
+
+```js
+range(5);         // [0, 1, 2, 3, 4, 5]
+range(0, 5);      // [0, 1, 2, 3, 4, 5]
+range(0, 5, 2);   // [0, 2, 4]
+range(20, 40, 5); // [20, 25, 30, 35, 40]
+```
+
+
+
+## <a href="#reduce" name="reduce">reduce(arr, fn):*</a>
+
+Crossbrowser ES5 `Array.reduce()`.
+
+Apply a function against an accumulator and each value of the array (from
+left-to-right) as to reduce it to a single value.
+
+more info at [MDN Array#reduce](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce)
+
+
+
+## <a href="#reduceRight" name="reduceRight">reduceRight(arr, fn):*</a>
+
+Crossbrowser ES5 `Array.reduceRight()`.
+
+Apply a function simultaneously against two values of the array (from
+right-to-left) as to reduce it to a single value.
+
+more info at [MDN Array#reduceRight](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight)
+
+
+
+## <a href="#remove" name="remove">remove(arr, item):void</a>
+
+Remove a single item from the array.
+
+IMPORTANT: it won't remove duplicates, just a single item.
+
+### Example
+
+```js
+var foo = [1, 2, 3, 4];
+remove(foo, 2);
+console.log(foo); // [1, 3, 4]
+```
+
+
+
+## <a href="#removeAll" name="removeAll">removeAll(arr, item):void</a>
+
+Remove all instances of an item from the array.
+
+### Example
+
+```js
+var foo = [1, 2, 3, 4, 2, 2];
+removeAll(foo, 2);
+console.log(foo); // [1, 3, 4];
+```
+
+
+
+## <a href="#shuffle" name="shuffle">shuffle(arr):Array </a>
+
+Returns a new Array with items randomly sorted (shuffled). Similar to Ruby Array#shuffle.
+
+### Example
+
+```js
+var arr = ['a', 'b', 'c', 'd', 'e'];
+shuffle(arr); // ['b', 'd', 'e', 'c', 'a']
+```
+
+
+
+## <a href="#some" name="some">some(arr, callback, [thisObj]):Array </a>
+
+Crossbrowser ES5 `Array.some()`.
+
+Tests whether some element in the array passes the test implemented by the provided function.
+
+more info at [MDN Array#some](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/some)
+
+
+
+## <a href="#unique" name="unique">unique(arr):Array</a>
+
+Return a new Array of unique items.
+
+### Example
+
+```js
+var foo = [1, 2, 3, 4, 2, 2, 3, 4];
+var bar = unique(foo);
+console.log(foo); // [1, 2, 3, 4];
+```
+
+
+
+-------------------------------------------------------------------------------
+
+For more usage examples check specs inside `/tests` folder. Unit tests are the
+best documentation you can get...
+

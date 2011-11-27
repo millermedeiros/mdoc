@@ -1,0 +1,253 @@
+# amd-utils / lang #
+
+Language Utilities. Easier inheritance, scope handling, type checks.
+
+
+
+## <span id="toc">Table of Contents</span>
+
+ - [`bind()`](#bind)
+ - [`createObject()`](#createObject)
+ - [`ctorApply()`](#ctorApply)
+ - [`inheritPrototype()`](#inheritPrototype)
+ - [`isArguments()`](#isArguments)
+ - [`isArray()`](#isArray)
+ - [`isBoolean()`](#isBoolean)
+ - [`isDate()`](#isDate)
+ - [`isFunction()`](#isFunction)
+ - [`isKind()`](#isKind)
+ - [`isNull()`](#isNull)
+ - [`isNumber()`](#isNumber)
+ - [`isObject()`](#isObject)
+ - [`isRegExp()`](#isRegExp)
+ - [`isString()`](#isString)
+ - [`isUndefined()`](#isUndefined)
+ - [`kindOf()`](#kindOf)
+ - [`mixIn()`](#mixIn)
+ - [`toArray()`](#toArray)
+
+
+
+## <a href="#bind" name="bind">bind(fn, context, [...args]):Function</a>
+
+Return a function that will execute in the given context, optionally adding any additional supplied parameters to the beginning of the arguments collection.
+
+### Arguments
+
+ 1. `fn` (Function)    : Target Function
+ 2. `context` (Object) : Execution context (object used as `this`)
+ 3. `[...args]` (*)    : Arguments (0...n arguments)
+
+
+
+## <a href="#createObject" name="createObject">createObject(parent, [props]):Object</a>
+
+Create Object using prototypal inheritance and setting custom properties.
+
+Mix between [Douglas Crockford Prototypal Inheritance](http://javascript.crockford.com/prototypal.html) and the EcmaScript 5 `Object.create()` method.
+
+### Arguments
+
+ 1. `parent` (Object)  : Parent Object
+ 2. `[props]` (Object) : Object properties
+
+### Example
+
+```js
+var base = {
+    trace : function(){
+        console.log(this.name);
+    }
+};
+
+var myObj = createObject(base, {
+    name : 'Lorem Ipsum'
+});
+
+myObject.trace(); // "Lorem Ipsum"
+```
+
+
+
+## <a href="#ctorApply" name="ctorApply">ctorApply(constructor, args):Object</a>
+
+Do `Function.prototype.apply()` on a constructor while maintaining prototype
+chain.
+
+```js
+function Person(name, surname) {
+    this.name = name;
+    this.surname = surname;
+}
+
+Person.prototype.walk = function(){
+    console.log(this.name +' is walking');
+};
+
+var args = ['John', 'Doe'];
+
+// "similar" effect as calling `new Person("John", "Doe")`
+var john = ctorApply(Person, args);
+john.walk(); // "John is walking"
+```
+
+
+
+## <a href="#inheritPrototype" name="inheritPrototype">inheritPrototype(child, parent):void</a>
+
+Inherit prototype from another Object.
+
+```js
+function Foo(name){
+    this.name = name;
+}
+Foo.prototype = {
+    getName : function(){
+        return this.name;
+    }
+};
+
+function Bar(name){
+    this.name = name;
+}
+//should be called before calling constructor
+inheritPrototype(Bar, Foo);
+
+var myObj = new Bar('lorem ipsum');
+myObj.getName(); // "lorem ipsum"
+```
+
+
+
+## <a href="#isArguments" name="isArguments">isArguments(val):Boolean</a>
+
+If value is an "Arguments" object.
+
+
+
+## <a href="#isArray" name="isArray">isArray(val):Boolean</a>
+
+If value is an Array.
+
+
+
+## <a href="#isBoolean" name="isBoolean">isBoolean(val):Boolean</a>
+
+If value is a Boolean.
+
+
+
+## <a href="#isDate" name="isDate">isDate(val):Boolean</a>
+
+If value is a Date.
+
+
+
+## <a href="#isFunction" name="isFunction">isFunction(val):Boolean</a>
+
+If value is a Function.
+
+
+
+## <a href="#isKind" name="isKind">isKind(val, kind):Boolean</a>
+
+If value is of "kind". (used internally by most of the *isSomething* checks),
+favor the other methods since strings are commonly mistyped.
+
+
+
+## <a href="#isNull" name="isNull">isNull(val):Boolean</a>
+
+If value is `null`.
+
+
+
+## <a href="#isNumber" name="isNumber">isNumber(val):Boolean</a>
+
+If value is a Number.
+
+
+
+## <a href="#isObject" name="isObject">isObject(val):Boolean</a>
+
+If value is an Object.
+
+
+
+## <a href="#isRegExp" name="isRegExp">isRegExp(val):Boolean</a>
+
+If value is a RegExp.
+
+
+
+## <a href="#isString" name="isString">isString(val):Boolean</a>
+
+If value is a String.
+
+
+
+## <a href="#isUndefined" name="isUndefined">isUndefined(val):Boolean</a>
+
+If value is `undefined`.
+
+
+
+## <a href="#kindOf" name="kindOf">kindOf(val):String</a>
+
+Gets kind of value (e.g. "String", "Number", "RegExp", "Null", "Date").
+Used internally by `isKind()` and most of the other *isSomething* checks.
+
+
+
+## <a href="#mixIn" name="mixIn">mixIn(target, ...objects):Object</a>
+
+Combine properties from all the objects into first one.
+
+This method affects target object in place, if you want to create a new Object
+pass an empty object as first parameter.
+
+### Arguments
+
+ 1. `target` (Object)        : Target Object.
+ 2. `...objects` (...Object) : Objects to be combined (0...n objects).
+
+### Example
+
+```js
+var a = {foo: "bar"};
+var b = {lorem: 123};
+
+mixIn({}, a, b); // {foo: "bar", lorem: 123}
+console.log(a);  // {foo: "bar"}
+
+mixIn(a, b);     // {foo: "bar", lorem: 123}
+console.log(a);  // {foo: "bar", lorem: 123}
+```
+
+
+## <a href="#toArray" name="toArray">toArray(val):Array</a>
+
+Convert array-like object into Array or wrap value into Array.
+
+```js
+toArray({
+    "0" : "foo",
+    "1" : "bar",
+    "length" : 2
+});                              // ["foo", "bar"]
+
+function foo(){
+    return toArray(arguments);
+}
+foo("lorem", 123);               // ["lorem", 123]
+
+toArray("lorem ipsum");          // ["lorem ipsum"]
+toArray(window);                 // [window]
+toArray({foo:"bar", lorem:123}); // ["bar", 123]
+```
+
+
+-------------------------------------------------------------------------------
+
+For more usage examples check specs inside `/tests` folder. Unit tests are the
+best documentation you can get...

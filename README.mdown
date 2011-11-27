@@ -1,0 +1,47 @@
+# mdoc - a simple markdown documentation generator
+
+created mainly to document [amd-utils](http://millermedeiros.github.com/amd-utils).
+
+not sure how far this project will go.
+
+
+
+## TODO
+
+ - load pages using Ajax (if protocol isn't "file:") and use the HTML5 History
+   API if available.
+ - create 2 different modes for documentation generation:
+   1. treat each mdown file as a separate page.
+   2. aggregate all the files inside a folder into a single page with the same
+      name, appending the content to file if it already exists.
+ - generate TOC of each page automatically.
+ - add all heading levels to the TOC of the pages and add option to control
+   till which heading level should be displayed on the document TOC. (only show
+   H2 items on the sidebar tho)
+ - generate links to headers automatically.
+ - convert stylesheets to stylus to allow easy color scheme generation.
+ - create another example which uses advanced settings (file/module
+   mapping/filtering).
+ - document options.
+ - add support for custom templates without needing to edit the "src/template"
+   folder.
+
+
+## Example
+
+Clone repository and run:
+
+    npm link
+
+it will install dependencies and `link` mdoc. than:
+
+    cd examples/01
+    node build
+
+Check output inside "examples/01/doc".
+
+
+
+## License
+
+Released under the MIT license.
