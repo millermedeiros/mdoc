@@ -22,7 +22,7 @@
 
         function init() {
             $_sidebar = $('<div id="sidebar" />').prependTo('#wrapper');
-            $_sidebar.load('toc_.html', onTocLoad);
+            $_sidebar.load('sidebar_.html', onTocLoad);
         }
 
         function onTocLoad(data) {

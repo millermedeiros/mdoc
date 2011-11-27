@@ -5,16 +5,18 @@ var showdown = require('./lib/showdown');
 exports.parseDoc = function(mdown){
     mdown = convertCodeBlocks(mdown);
 
+    var toc = getTocData(mdown);
+
     return {
-        toc : getToc(mdown),
-        html :  showdown.parse(mdown),
+        toc : toc,
+        html :  parseContent(mdown, toc),
         title : getTitle(mdown)
     };
 };
 
 exports.parseMdown = function(mdown){
     return showdown.parse(mdown);
-}
+};
 
 
 function convertCodeBlocks(mdown){
@@ -43,31 +45,32 @@ function convertCodeBlocks(mdown){
 }
 
 
-function getToc(mdown){
+function getTocData(mdown){
 
-    var match,
-        rH2 = /##.+#(\w+).+>([^<\n\r]+)<[^\n\r]*/g, //h2
-        rName = /(\w+\(?)[^\)]+(\)?):.+/,
+    var matchTitle,
+        matchName,
+        rH2 = /^##\s*([^#\n\r]+)$/gm, //h2
+        rName = /(\w+)(\(?)[^\)]*(\)?):?.*/,
         toc = [];
 
-    while (match = rH2.exec(mdown)) {
-        if(match[1] !== 'toc') {
-            toc.push({
-               href : match[1],
-               title : match[2],
-               name : match[2].replace(rName, '$1$2'),
-               description : getDescription(mdown, rH2.lastIndex)
-            });
-        }
+    while (matchTitle = rH2.exec(mdown)) {
+        matchName = rName.exec(matchTitle[1]);
+        toc.push({
+           href : matchName[1],
+           title : matchTitle[1],
+           name : (matchName.slice(1,4).join('')),
+           description : getDescription(mdown, rH2.lastIndex)
+        });
     }
 
     return toc;
 }
 
+
 function getDescription(mdown, fromIndex) {
     var desc = mdown.substr(fromIndex)
-                .replace(/\r\n/g,"\n") // DOS to Unix
-                .replace(/\r/g,"\n") // Mac to Unix
+                .replace(/\r\n/g,'\n') // DOS to Unix
+                .replace(/\r/g,'\n') // Mac to Unix
                 .replace(/^\n+/g, '')
                 .split(/\n\n/)[0] //first paragraph
                 .replace(/\n+/, ' ');
@@ -76,6 +79,33 @@ function getDescription(mdown, fromIndex) {
                     .replace(/<\/?p>/g, '') //remove paragraphs
                     .replace(/<\/?a[^>]*>/g, ''); //remove links since it breaks layout
     return desc;
+}
+
+
+function parseContent(mdown, toc){
+    var rH2 = /^##[^#\n\r]+/gm;
+
+    // add deep-links
+
+    var i = 0, cur;
+
+    mdown = mdown.replace(rH2, function(str){
+        cur = toc[i++];
+        return str +' <a href="#'+ cur.href +'" id="'+ cur.href +'" class="deep-link">#</a>';
+    });
+
+    // generate TOC
+
+    var tocIndex = mdown.search( rH2 ), //first H2
+        pre = mdown.substring(0, tocIndex),
+        post = mdown.substring(tocIndex),
+        tocContent = '## Table of Contents <a href="#toc" name="toc" class="deep-link">#</a>\n\n';
+
+    toc.forEach(function(val, i){
+        tocContent += ' - ['+ val.name +'](#'+ val.href +')\n';
+    });
+
+    return showdown.parse( pre + tocContent + post );
 }
 
 

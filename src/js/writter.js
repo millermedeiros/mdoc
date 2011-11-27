@@ -30,7 +30,7 @@ handlebars.registerPartial('footer', compileTemplate('footer'));
 
 
 var _docTemplate = compileTemplate('doc'),
-    _tocTemplate = compileTemplate('toc'),
+    _sidebarTemplate = compileTemplate('sidebar'),
     _indexTemplate = compileTemplate('index');
 
 
@@ -40,8 +40,8 @@ exports.processFiles = function(config){
     var toc = processDoc(config),
         outputDir = config.outputDir;
 
-    console.log('  Generating TOC...');
-    fs.writeFileSync(path.join(outputDir, 'toc_.html'), _tocTemplate({
+    console.log('  Generating Sidebar...');
+    fs.writeFileSync(path.join(outputDir, 'sidebar_.html'), _sidebarTemplate({
         modules : toc
     }), 'utf-8');
 
