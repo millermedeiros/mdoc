@@ -1,8 +1,43 @@
 # mdoc - a simple markdown documentation generator
 
-created mainly to document [amd-utils](http://millermedeiros.github.com/amd-utils).
+This is a simple markdown based documentation generator, it will search all the
+markdown files inside the "input" directory and output an HTML file for each
+document, it will also generate a "TOC" (table of contents) for each file and
+links to all the pages on the index page, it also provides a basic search
+feature and quick browsing between classes/methods/properties.
 
-not sure how far this project will go.
+For a live example check [amd-utils documentation](http://millermedeiros.github.com/amd-utils).
+
+
+
+## Install
+
+You can install it through [NPM](http://npmjs.org):
+
+    npm install mdoc
+
+
+
+## Example
+
+Clone repository and run:
+
+    npm link
+
+This will install dependencies and `link` mdoc, than you can run:
+
+    cd examples/basic
+    node build
+
+Check output inside "examples/basic/doc".
+
+Check "examples/advanced" for all the available settings.
+
+
+
+## License
+
+Released under the MIT license.
 
 
 
@@ -18,28 +53,5 @@ not sure how far this project will go.
    till which heading level should be displayed on the document TOC. (only show
    H2 items on the sidebar tho)
  - convert stylesheets to stylus to allow easy color scheme generation.
- - create another example which uses advanced settings (file/module
-   mapping/filtering).
- - document options.
- - add support for custom templates without needing to edit the "src/template"
-   folder.
-
-
-## Example
-
-Clone repository and run:
-
-    npm link
-
-it will install dependencies and `link` mdoc. than:
-
-    cd examples/01
-    node build
-
-Check output inside "examples/01/doc".
-
-
-
-## License
-
-Released under the MIT license.
+ - create a CLI and `bin` file since most of the times user only need to supply
+   input/output directories.

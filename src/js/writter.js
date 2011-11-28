@@ -10,33 +10,43 @@ var handlebars = require('handlebars'),
 // ---
 
 
-var DEFAULT_INCLUDE = '*.mdown,*.md,*.markdown';
+var DEFAULT_INCLUDE = '*.mdown,*.md,*.markdown',
+    DEFAULT_PAGE_TITLE = 'Documentation';
 
 
 // ---
 
+var _baseTemplatePath,
+    _docTemplate,
+    _sidebarTemplate,
+    _indexTemplate;
 
 function compileTemplate(name){
-    var tmp = path.normalize(__dirname +'/../template/'+ name +'.template');
+    var tmp = path.normalize(_baseTemplatePath +'/'+ name +'.template');
     return handlebars.compile(fs.readFileSync(tmp, 'utf-8'));
 }
 
-handlebars.registerPartial('header', compileTemplate('header'));
-handlebars.registerPartial('footer', compileTemplate('footer'));
+
+function compileAllTemplates(config){
+    _baseTemplatePath = config.templatePath || __dirname +'/../template';
+
+    handlebars.registerPartial('header', compileTemplate('header'));
+    handlebars.registerPartial('footer', compileTemplate('footer'));
+
+    _docTemplate = compileTemplate('doc');
+    _sidebarTemplate = compileTemplate('sidebar');
+    _indexTemplate = compileTemplate('index');
+}
 
 
 // ---
-
-
-
-var _docTemplate = compileTemplate('doc'),
-    _sidebarTemplate = compileTemplate('sidebar'),
-    _indexTemplate = compileTemplate('index');
-
 
 
 exports.processFiles = function(config){
     console.log('  Converting files...');
+
+    compileAllTemplates(config);
+
     var toc = processDoc(config),
         outputDir = config.outputDir;
 
@@ -48,12 +58,12 @@ exports.processFiles = function(config){
     console.log('  Generating Index...');
     fs.writeFileSync(path.join(outputDir, 'index.html'), _indexTemplate({
         modules : toc,
-        page_title : config.baseTitle,
+        page_title : config.baseTitle || DEFAULT_PAGE_TITLE,
         content : getIndexContent(config)
     }), 'utf-8');
 
     console.log('  Copying Assets...');
-    wrench.copyDirSyncRecursive(path.normalize(__dirname + '/../template/assets_'), path.join(outputDir, 'assets_/') );
+    wrench.copyDirSyncRecursive(path.normalize(_baseTemplatePath +'/assets_'), path.join(outputDir, 'assets_/') );
 
     console.log('  Finished.');
 };
@@ -65,7 +75,6 @@ function processDoc(config){
 
     getFilesInfos(config).forEach(function(fileInfo){
 
-        //use the folder as filename
         if (config.mapOutName) {
             fileInfo.output = config.mapOutName(fileInfo.output);
         }
@@ -83,7 +92,7 @@ function processDoc(config){
 
             return _docTemplate({
                 content : parseResult.html,
-                page_title : parseResult.title +' : '+ config.baseTitle
+                page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE)
             });
         });
         console.log('  processed: '+ fileInfo.input +' > '+ fileInfo.output);

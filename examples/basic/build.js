@@ -2,8 +2,15 @@
 var mdoc = require('mdoc');
 
 mdoc.run({
-    baseTitle : 'AMD Utils',
+
+    // === required settings === //
+
     inputDir : 'content',
     outputDir : 'doc',
+
+    // === optional settings === //
+
+    baseTitle : 'mdoc example',
     indexContentPath : 'index.mdown'
+
 });
