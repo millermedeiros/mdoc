@@ -2,7 +2,7 @@
     "name" : "mdoc",
     "description" : "Markdown based documentation generator",
     "keywords" : ["markdown", "documentation"],
-    "homepage" : "http://millermedeiros.github.com/mdoc/",
+    "homepage" : "https://github.com/millermedeiros/mdoc.git",
     "version" : "0.2.0",
     "author" : {
         "name" : "Miller Medeiros",
@@ -14,7 +14,7 @@
     },
     "main" : "./src/js/main.js",
     "bugs" : {
-        "url" : "https://github.com/millermedeiros/mcoc/issues"
+        "url" : "https://github.com/millermedeiros/mdoc/issues"
     },
     "licenses" : [
         {

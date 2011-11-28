@@ -90,7 +90,10 @@ function processDoc(config){
                 'toc' : parseResult.toc
             });
 
+            var relativeRoot = path.relative( fileInfo.output.replace(/\/[^\/]+$/, '/'), config.outputDir );
+
             return _docTemplate({
+                root_path : relativeRoot? relativeRoot +'/' : '',
                 content : parseResult.html,
                 page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE)
             });
@@ -100,6 +103,7 @@ function processDoc(config){
 
     return toc;
 }
+
 
 
 function getFilesInfos(config){
@@ -131,5 +135,5 @@ function getIndexContent(config){
     if (config.indexContentPath && !config.indexContent) {
         config.indexContent = parser.parseMdown( fs.readFileSync(config.indexContentPath, 'utf-8') );
     }
-    return config.indexContent || ''
+    return config.indexContent || '';
 }

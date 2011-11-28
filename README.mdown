@@ -48,23 +48,6 @@ Released under the MIT license.
 
 
 
-## TODO
-
- - create gh issues for each TODO item.
- - add support for nested folders.
- - load pages using Ajax (if protocol isn't "file:") and use the HTML5 History
-   API if available.
- - create 2 different modes for documentation generation:
-   1. treat each mdown file as a separate page.
-   2. aggregate all the files inside a folder into a single page with the same
-      name, appending the content to file if it already exists.
- - add all heading levels to the TOC of the pages and add option to control
-   till which heading level should be displayed on the document TOC. (only show
-   H2 items on the sidebar tho)
- - convert stylesheets to stylus to allow easy color scheme generation.
-
-
-
 ## Changelog
 
 ### v0.2.0 (2011/11/27)
@@ -73,6 +56,7 @@ Released under the MIT license.
  - Add support for custom templates.
  - Generate TOC and deep-links automatically.
  - Switched most settings to optional.
+ - Fix links and paths to assets on nested folders.
 
 
 ### v0.1.0 (2011/11/27)

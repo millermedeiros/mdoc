@@ -2,13 +2,14 @@
 // mdoc default template
 // author: Miller Medeiros
 // license: MIT
-// version : 0.1.0 (2011/11/27)
+// version : 0.1.1 (2011/11/27)
 
 (function ($) {
 
 
     var _curPath = document.location.pathname.split('/'),
-        _curFile = _curPath[_curPath.length - 1];
+        _curFile = _curPath[_curPath.length - 1],
+        _rootPath;
 
 
     var sidebar = (function () {
@@ -22,7 +23,7 @@
 
         function init() {
             $_sidebar = $('<div id="sidebar" />').prependTo('#wrapper');
-            $_sidebar.load('sidebar_.html', onTocLoad);
+            $_sidebar.load(_rootPath +'sidebar_.html', onTocLoad);
         }
 
         function onTocLoad(data) {
@@ -30,6 +31,12 @@
             $_toc = $_sidebar.find('.toc');
             $_tocList = $_toc.find('.toc-list');
             $_tocItems = $_tocList.find('.toc-item');
+
+            //fix links if page is on a nested folder
+            $_sidebar.find('a').each(function(){
+                var $el = $(this), href = $el.attr('href');
+                $el.attr('href', _rootPath + href);
+            });
 
             $_tocList.slideUp(0);
             $_sidebar.on('click', 'h3', toggleNavOnClick);
@@ -91,35 +98,41 @@
 
         init : function(){
 
+            var brushesPath = _rootPath +'assets_/js/lib/syntax-highlighter';
+
+            var brushes = [
+                    'applescript            {{path}}shBrushAppleScript.js',
+                    'actionscript3 as3      {{path}}shBrushAS3.js',
+                    'bash shell             {{path}}shBrushBash.js',
+                    'coldfusion cf          {{path}}shBrushColdFusion.js',
+                    'cpp c                  {{path}}shBrushCpp.js',
+                    'c# c-sharp csharp      {{path}}shBrushCSharp.js',
+                    'css                    {{path}}shBrushCss.js',
+                    'delphi pascal          {{path}}shBrushDelphi.js',
+                    'diff patch pas         {{path}}shBrushDiff.js',
+                    'erl erlang             {{path}}shBrushErlang.js',
+                    'groovy                 {{path}}shBrushGroovy.js',
+                    'java                   {{path}}shBrushJava.js',
+                    'jfx javafx             {{path}}shBrushJavaFX.js',
+                    'js jscript javascript  {{path}}shBrushJScript.js',
+                    'perl pl                {{path}}shBrushPerl.js',
+                    'php                    {{path}}shBrushPhp.js',
+                    'text plain             {{path}}shBrushPlain.js',
+                    'py python              {{path}}shBrushPython.js',
+                    'ruby rails ror rb      {{path}}shBrushRuby.js',
+                    'sass scss              {{path}}shBrushSass.js',
+                    'scala                  {{path}}shBrushScala.js',
+                    'sql                    {{path}}shBrushSql.js',
+                    'vb vbnet               {{path}}shBrushVb.js',
+                    'xml xhtml xslt html    {{path}}shBrushXml.js'
+                ];
+
+            brushes = $.map(brushes, function(val){
+                return val.replace('{{path}}', brushesPath);
+            });
+
             SyntaxHighlighter.defaults['auto-links'] = false;
-
-            SyntaxHighlighter.autoloader(
-              'applescript            assets_/js/lib/syntax-highlighter/shBrushAppleScript.js',
-              'actionscript3 as3      assets_/js/lib/syntax-highlighter/shBrushAS3.js',
-              'bash shell             assets_/js/lib/syntax-highlighter/shBrushBash.js',
-              'coldfusion cf          assets_/js/lib/syntax-highlighter/shBrushColdFusion.js',
-              'cpp c                  assets_/js/lib/syntax-highlighter/shBrushCpp.js',
-              'c# c-sharp csharp      assets_/js/lib/syntax-highlighter/shBrushCSharp.js',
-              'css                    assets_/js/lib/syntax-highlighter/shBrushCss.js',
-              'delphi pascal          assets_/js/lib/syntax-highlighter/shBrushDelphi.js',
-              'diff patch pas         assets_/js/lib/syntax-highlighter/shBrushDiff.js',
-              'erl erlang             assets_/js/lib/syntax-highlighter/shBrushErlang.js',
-              'groovy                 assets_/js/lib/syntax-highlighter/shBrushGroovy.js',
-              'java                   assets_/js/lib/syntax-highlighter/shBrushJava.js',
-              'jfx javafx             assets_/js/lib/syntax-highlighter/shBrushJavaFX.js',
-              'js jscript javascript  assets_/js/lib/syntax-highlighter/shBrushJScript.js',
-              'perl pl                assets_/js/lib/syntax-highlighter/shBrushPerl.js',
-              'php                    assets_/js/lib/syntax-highlighter/shBrushPhp.js',
-              'text plain             assets_/js/lib/syntax-highlighter/shBrushPlain.js',
-              'py python              assets_/js/lib/syntax-highlighter/shBrushPython.js',
-              'ruby rails ror rb      assets_/js/lib/syntax-highlighter/shBrushRuby.js',
-              'sass scss              assets_/js/lib/syntax-highlighter/shBrushSass.js',
-              'scala                  assets_/js/lib/syntax-highlighter/shBrushScala.js',
-              'sql                    assets_/js/lib/syntax-highlighter/shBrushSql.js',
-              'vb vbnet               assets_/js/lib/syntax-highlighter/shBrushVb.js',
-              'xml xhtml xslt html    assets_/js/lib/syntax-highlighter/shBrushXml.js'
-            );
-
+            SyntaxHighlighter.autoloader.apply(SyntaxHighlighter.autoloader, brushes);
             SyntaxHighlighter.all();
 
         }
@@ -131,6 +144,7 @@
 
 
     function init(){
+        _rootPath = $('body').data('rootPath'); //fix relative links on nested paths
         sidebar.init();
         syntax.init();
     }
