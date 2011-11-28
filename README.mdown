@@ -1,4 +1,4 @@
-# mdoc - a simple markdown documentation generator
+# mdoc - a simple markdown based documentation generator
 
 This is a simple markdown based documentation generator, it will search all the
 markdown files inside the "input" directory and output an HTML file for each
@@ -7,6 +7,32 @@ links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
 For a live example check [amd-utils documentation](http://millermedeiros.github.com/amd-utils).
+
+
+
+## Markdown syntax
+
+mdoc uses the github "codeblock syntax" to highlight code. E.g.:
+
+
+    ```js
+      //code will be highlighted as JavaScript
+    ```
+
+    ```python
+      //code will be highlighted as Python
+    ```
+
+Currently the parser considers H2 as sections/methods/properties names and will add them
+to the TOC at the top of each file and automatically generate deep-links to them.
+It's important to notice that **mdoc only recognizes headers on the atx-style** as a 
+new section.
+
+The first paragraph after the H2 will be used as description on the sidebar. Currently
+the search feature only searches copy from the title and description.
+
+For a markdown syntax reference check: http://daringfireball.net/projects/markdown/dingus
+And also check the structure of the example files.
 
 
 
