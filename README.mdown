@@ -6,7 +6,9 @@ document, it will also generate a "TOC" (table of contents) for each file and
 links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
-For a live example check [amd-utils documentation](http://millermedeiros.github.com/amd-utils).
+For a live example check: http://millermedeiros.github.com/amd-utils
+
+Reasoning behind it: [inline documentation, why I'm ditching it](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
 
 
 
