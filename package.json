@@ -3,7 +3,7 @@
     "description" : "Markdown based documentation generator",
     "keywords" : ["markdown", "documentation"],
     "homepage" : "https://github.com/millermedeiros/mdoc.git",
-    "version" : "0.2.0",
+    "version" : "0.2.1",
     "author" : {
         "name" : "Miller Medeiros",
         "url" : "http://blog.millermedeiros.com/"

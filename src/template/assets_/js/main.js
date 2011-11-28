@@ -2,7 +2,7 @@
 // mdoc default template
 // author: Miller Medeiros
 // license: MIT
-// version : 0.1.1 (2011/11/27)
+// version : 0.1.2 (2011/11/28)
 
 (function ($) {
 
@@ -98,7 +98,7 @@
 
         init : function(){
 
-            var brushesPath = _rootPath +'assets_/js/lib/syntax-highlighter';
+            var brushesPath = _rootPath +'assets_/js/lib/syntax-highlighter/';
 
             var brushes = [
                     'applescript            {{path}}shBrushAppleScript.js',

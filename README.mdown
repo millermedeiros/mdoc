@@ -50,6 +50,11 @@ Released under the MIT license.
 
 ## Changelog
 
+### v0.2.1 (2011/11/28)
+
+ - fix syntax highlighter.
+
+
 ### v0.2.0 (2011/11/27)
 
  - Command line interface.
