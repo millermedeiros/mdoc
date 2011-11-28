@@ -15,7 +15,7 @@ mdoc.run({
     // === basic settings === //
 
     baseTitle : 'mdoc example advanced settings',
-    //indexContenPath : '../basic/index.mdown',
+    //indexContentPath : '../basic/index.mdown',
 
 
     // === advanced settings === //

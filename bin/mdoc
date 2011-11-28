@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+/**
+ * mdoc CLI
+ * @author Miller Medeiros
+ * @license MIT
+ */
+
+
+var program = require('commander'),
+    mdoc = require('../src/js/main');
+
+
+program
+    .version('0.2.0')
+    .description('Generate documentation based on MarkDown files.')
+    .option('-i, --input <dir>', 'Input directory.')
+    .option('-o, --output <dir>', 'Output directory.')
+    .option('--title [baseTitle]', 'Base Page title.')
+    .option('--index [indexContentPath]', 'Location of index content file.')
+    .option('-t, --template [templatePath]', 'Location of the template files.')
+    .option('--include [include]', 'Specify pattern of files that should be parsed.', '*.mdown,*.md,*.markdown')
+    .option('--exclude [exclude]', 'Specify pattern of files that should NOT be parsed.')
+    .parse(process.argv);
+
+
+//input and output are required
+if(! program.input || ! program.output){
+    console.log('\n Please provide input and output folders.\n');
+    program.parse([process.argv[0], process.argv[1], '-h']);
+    process.exit(1);
+}
+
+
+mdoc.run({
+    inputDir         : program.input,
+    outputDir        : program.output,
+    baseTitle        : program.title,
+    indexContentPath : program.index,
+    templatePath     : program.template,
+    include          : program.include,
+    exclude          : program.exclude
+});

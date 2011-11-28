@@ -14,20 +14,27 @@ For a live example check [amd-utils documentation](http://millermedeiros.github.
 
 You can install it through [NPM](http://npmjs.org):
 
-    npm install mdoc
+    npm install -g mdoc
 
 
 
-## Example
+## Examples
 
-Clone repository and run:
+### Command line interface
 
-    npm link
+    mdoc -i examples/basic/content -o examples/basic/out
 
-This will install dependencies and `link` mdoc, than you can run:
+For a list of available commands run:
+
+    mdoc -h
+
+
+### Node module
+
+Check files inside the "examples" folder. Run:
 
     cd examples/basic
-    node build
+    node build.js
 
 Check output inside "examples/basic/doc".
 
@@ -43,6 +50,8 @@ Released under the MIT license.
 
 ## TODO
 
+ - create gh issues for each TODO item.
+ - add support for nested folders.
  - load pages using Ajax (if protocol isn't "file:") and use the HTML5 History
    API if available.
  - create 2 different modes for documentation generation:
@@ -53,5 +62,19 @@ Released under the MIT license.
    till which heading level should be displayed on the document TOC. (only show
    H2 items on the sidebar tho)
  - convert stylesheets to stylus to allow easy color scheme generation.
- - create a CLI and `bin` file since most of the times user only need to supply
-   input/output directories.
+
+
+
+## Changelog
+
+### v0.2.0 (2011/11/27)
+
+ - Command line interface.
+ - Add support for custom templates.
+ - Generate TOC and deep-links automatically.
+ - Switched most settings to optional.
+
+
+### v0.1.0 (2011/11/27)
+
+ - initial release.
