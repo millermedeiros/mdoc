@@ -6,7 +6,9 @@ document, it will also generate a "TOC" (table of contents) for each file and
 links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
-For a live example check: http://millermedeiros.github.com/amd-utils
+For a live example check: [AMD-utis documentation](http://millermedeiros.github.com/amd-utils)
+or the [**non-**official NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
+(uses markdown files from [nodejs repository](https://github.com/joyent/node/tree/master/doc/api) as source)
 
 Reasoning behind it: [inline documentation, why I'm ditching it](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
 
@@ -27,7 +29,7 @@ mdoc uses the github "codeblock syntax" to highlight code. E.g.:
 
 Currently the parser considers H2 as sections/methods/properties names and will add them
 to the TOC at the top of each file and automatically generate deep-links to them.
-It's important to notice that **mdoc only recognizes headers on the atx-style as a 
+It's important to notice that **mdoc only recognizes headers on the atx-style as a
 new section**.
 
 The first paragraph after the H2 will be used as description on the sidebar. Currently
