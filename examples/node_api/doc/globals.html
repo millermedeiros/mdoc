@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>global : nodejs API</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets_/css/shCore.css">
+        <link rel="stylesheet" href="assets_/css/shThemeDefault.css">
+        <link rel="stylesheet" href="assets_/css/main.css">
+    </head>
+    <body data-root-path="">
+        <div id="wrapper">
+            <div id="content">
+
+<ul id="topnav">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="#toc">TOC</a></li>
+</ul>
+<h2>Global Objects</h2>
+
+<p>These objects are available in all modules. Some of these objects aren't
+actually in the global scope but in the module scope - this will be noted.</p>
+
+<h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
+
+<ul>
+<li><a href="#global">global</a></li>
+<li><a href="#process">process</a></li>
+<li><a href="#console">console</a></li>
+<li><a href="#Buffer">Buffer</a></li>
+<li><a href="#require">require()</a></li>
+<li><a href="#require.resolve">require.resolve()</a></li>
+<li><a href="#require.cache">require.cache</a></li>
+<li><a href="#__filename">__filename</a></li>
+<li><a href="#__dirname">__dirname</a></li>
+<li><a href="#module">module</a></li>
+<li><a href="#exports">exports</a></li>
+<li><a href="#setTimeout">setTimeout()</a></li>
+<li><a href="#clearTimeout">clearTimeout()</a></li>
+<li><a href="#setInterval">setInterval()</a></li>
+<li><a href="#clearInterval">clearInterval()</a></li>
+</ul>
+
+<h3>global <a href="#global" id="global" class="deep-link">#</a></h3>
+
+<p>The global namespace object.</p>
+
+<p>In browsers, the top-level scope is the global scope. That means that in
+browsers if you're in the global scope <code>var something</code> will define a global
+variable. In Node this is different. The top-level scope is not the global
+scope; <code>var something</code> inside a Node module will be local to that module.</p>
+
+<h3>process <a href="#process" id="process" class="deep-link">#</a></h3>
+
+<p>The process object. See the <a href="process.html#process">process object</a> section.</p>
+
+<h3>console <a href="#console" id="console" class="deep-link">#</a></h3>
+
+<p>Used to print to stdout and stderr. See the <a href="stdio.html">stdio</a> section.</p>
+
+<h3>Buffer <a href="#Buffer" id="Buffer" class="deep-link">#</a></h3>
+
+<p>Used to handle binary data. See the <a href="buffers.html">buffers</a> section.</p>
+
+<h3>require() <a href="#require" id="require" class="deep-link">#</a></h3>
+
+<p>To require modules. See the <a href="modules.html#modules">Modules</a> section.
+<code>require</code> isn't actually a global but rather local to each module.</p>
+
+<h3>require.resolve() <a href="#require.resolve" id="require.resolve" class="deep-link">#</a></h3>
+
+<p>Use the internal <code>require()</code> machinery to look up the location of a module,
+but rather than loading the module, just return the resolved filename.</p>
+
+<h3>require.cache <a href="#require.cache" id="require.cache" class="deep-link">#</a></h3>
+
+<p>Modules are cached in this object when they are required. By deleting a key
+value from this object, the next <code>require</code> will reload the module.</p>
+
+<h3>__filename <a href="#__filename" id="__filename" class="deep-link">#</a></h3>
+
+<p>The filename of the code being executed.  This is the resolved absolute path
+of this code file.  For a main program this is not necessarily the same
+filename used in the command line.  The value inside a module is the path
+to that module file.</p>
+
+<p>Example: running <code>node example.js</code> from <code>/Users/mjr</code></p>
+
+<pre><code>console.log(__filename);
+// /Users/mjr/example.js
+</code></pre>
+
+<p><code>__filename</code> isn't actually a global but rather local to each module.</p>
+
+<h3>__dirname <a href="#__dirname" id="__dirname" class="deep-link">#</a></h3>
+
+<p>The name of the directory that the currently executing script resides in.</p>
+
+<p>Example: running <code>node example.js</code> from <code>/Users/mjr</code></p>
+
+<pre><code>console.log(__dirname);
+// /Users/mjr
+</code></pre>
+
+<p><code>__dirname</code> isn't actually a global but rather local to each module.</p>
+
+<h3>module <a href="#module" id="module" class="deep-link">#</a></h3>
+
+<p>A reference to the current module. In particular
+<code>module.exports</code> is the same as the <code>exports</code> object. See <code>src/node.js</code>
+for more information.
+<code>module</code> isn't actually a global but rather local to each module.</p>
+
+<h3>exports <a href="#exports" id="exports" class="deep-link">#</a></h3>
+
+<p>An object which is shared between all instances of the current module and
+made accessible through <code>require()</code>.
+<code>exports</code> is the same as the <code>module.exports</code> object. See <code>src/node.js</code>
+for more information.
+<code>exports</code> isn't actually a global but rather local to each module.</p>
+
+<h3>setTimeout(cb, ms) <a href="#setTimeout" id="setTimeout" class="deep-link">#</a></h3>
+
+<h3>clearTimeout(t) <a href="#clearTimeout" id="clearTimeout" class="deep-link">#</a></h3>
+
+<h3>setInterval(cb, ms) <a href="#setInterval" id="setInterval" class="deep-link">#</a></h3>
+
+<h3>clearInterval(t) <a href="#clearInterval" id="clearInterval" class="deep-link">#</a></h3>
+
+<p>The timer functions are global variables. See the <a href="timers.html">timers</a> section.</p>
+                <hr />
+                <small>Documentation generated by <a href="https://github.com/millermedeiros/mdoc">mdoc</a>.</small>
+            </div>
+        </div>
+        <script src="assets_/js/lib/jquery.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shCore.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shAutoloader.js"></script>
+        <script src="assets_/js/main.js"></script>
+    </body>
+</html>
+

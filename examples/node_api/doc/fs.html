@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>fs.rename(path1, path2, [callback]) : nodejs API</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets_/css/shCore.css">
+        <link rel="stylesheet" href="assets_/css/shThemeDefault.css">
+        <link rel="stylesheet" href="assets_/css/main.css">
+    </head>
+    <body data-root-path="">
+        <div id="wrapper">
+            <div id="content">
+
+<ul id="topnav">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="#toc">TOC</a></li>
+</ul>
+<h2>File System</h2>
+
+<p>File I/O is provided by simple wrappers around standard POSIX functions.  To
+use this module do <code>require('fs')</code>. All the methods have asynchronous and
+synchronous forms.</p>
+
+<p>The asynchronous form always take a completion callback as its last argument.
+The arguments passed to the completion callback depend on the method, but the
+first argument is always reserved for an exception. If the operation was
+completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.</p>
+
+<p>When using the synchronous form any exceptions are immediately thrown.
+You can use try/catch to handle exceptions or allow them to bubble up.</p>
+
+<p>Here is an example of the asynchronous version:</p>
+
+<pre><code>var fs = require('fs');
+
+fs.unlink('/tmp/hello', function (err) {
+  if (err) throw err;
+  console.log('successfully deleted /tmp/hello');
+});
+</code></pre>
+
+<p>Here is the synchronous version:</p>
+
+<pre><code>var fs = require('fs');
+
+fs.unlinkSync('/tmp/hello')
+console.log('successfully deleted /tmp/hello');
+</code></pre>
+
+<p>With the asynchronous methods there is no guaranteed ordering. So the
+following is prone to error:</p>
+
+<pre><code>fs.rename('/tmp/hello', '/tmp/world', function (err) {
+  if (err) throw err;
+  console.log('renamed complete');
+});
+fs.stat('/tmp/world', function (err, stats) {
+  if (err) throw err;
+  console.log('stats: ' + JSON.stringify(stats));
+});
+</code></pre>
+
+<p>It could be that <code>fs.stat</code> is executed before <code>fs.rename</code>.
+The correct way to do this is to chain the callbacks.</p>
+
+<pre><code>fs.rename('/tmp/hello', '/tmp/world', function (err) {
+  if (err) throw err;
+  fs.stat('/tmp/world', function (err, stats) {
+    if (err) throw err;
+    console.log('stats: ' + JSON.stringify(stats));
+  });
+});
+</code></pre>
+
+<p>In busy processes, the programmer is <em>strongly encouraged</em> to use the
+asynchronous versions of these calls. The synchronous versions will block
+the entire process until they complete--halting all connections.</p>
+
+<p>Relative path to filename can be used, remember however that this path will be relative
+to <code>process.cwd()</code>.</p>
+
+<h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
+
+<ul>
+<li><a href="#fs.rename">fs.rename()</a></li>
+<li><a href="#fs.renameSync">fs.renameSync()</a></li>
+<li><a href="#fs.truncate">fs.truncate()</a></li>
+<li><a href="#fs.truncateSync">fs.truncateSync()</a></li>
+<li><a href="#fs.chown">fs.chown()</a></li>
+<li><a href="#fs.chownSync">fs.chownSync()</a></li>
+<li><a href="#fs.fchown">fs.fchown()</a></li>
+<li><a href="#fs.fchownSync">fs.fchownSync()</a></li>
+<li><a href="#fs.lchown">fs.lchown()</a></li>
+<li><a href="#fs.lchownSync">fs.lchownSync()</a></li>
+<li><a href="#fs.chmod">fs.chmod()</a></li>
+<li><a href="#fs.chmodSync">fs.chmodSync()</a></li>
+<li><a href="#fs.fchmod">fs.fchmod()</a></li>
+<li><a href="#fs.fchmodSync">fs.fchmodSync()</a></li>
+<li><a href="#fs.lchmod">fs.lchmod()</a></li>
+<li><a href="#fs.lchmodSync">fs.lchmodSync()</a></li>
+<li><a href="#fs.stat">fs.stat()</a></li>
+<li><a href="#fs.lstat">fs.lstat()</a></li>
+<li><a href="#fs.fstat">fs.fstat()</a></li>
+<li><a href="#fs.statSync">fs.statSync()</a></li>
+<li><a href="#fs.lstatSync">fs.lstatSync()</a></li>
+<li><a href="#fs.fstatSync">fs.fstatSync()</a></li>
+<li><a href="#fs.link">fs.link()</a></li>
+<li><a href="#fs.linkSync">fs.linkSync()</a></li>
+<li><a href="#fs.symlink">fs.symlink()</a></li>
+<li><a href="#fs.symlinkSync">fs.symlinkSync()</a></li>
+<li><a href="#fs.readlink">fs.readlink()</a></li>
+<li><a href="#fs.readlinkSync">fs.readlinkSync()</a></li>
+<li><a href="#fs.realpath">fs.realpath()</a></li>
+<li><a href="#fs.realpathSync">fs.realpathSync()</a></li>
+<li><a href="#fs.unlink">fs.unlink()</a></li>
+<li><a href="#fs.unlinkSync">fs.unlinkSync()</a></li>
+<li><a href="#fs.rmdir">fs.rmdir()</a></li>
+<li><a href="#fs.rmdirSync">fs.rmdirSync()</a></li>
+<li><a href="#fs.mkdir">fs.mkdir()</a></li>
+<li><a href="#fs.mkdirSync">fs.mkdirSync()</a></li>
+<li><a href="#fs.readdir">fs.readdir()</a></li>
+<li><a href="#fs.readdirSync">fs.readdirSync()</a></li>
+<li><a href="#fs.close">fs.close()</a></li>
+<li><a href="#fs.closeSync">fs.closeSync()</a></li>
+<li><a href="#fs.open">fs.open()</a></li>
+<li><a href="#fs.openSync">fs.openSync()</a></li>
+<li><a href="#fs.utimes">fs.utimes()</a></li>
+<li><a href="#fs.utimesSync">fs.utimesSync()</a></li>
+<li><a href="#fs.futimes">fs.futimes()</a></li>
+<li><a href="#fs.futimesSync">fs.futimesSync()</a></li>
+<li><a href="#fs.fsync">fs.fsync()</a></li>
+<li><a href="#fs.fsyncSync">fs.fsyncSync()</a></li>
+<li><a href="#fs.write">fs.write()</a></li>
+<li><a href="#fs.writeSync">fs.writeSync()</a></li>
+<li><a href="#fs.writeSync">fs.writeSync()</a></li>
+<li><a href="#fs.read">fs.read()</a></li>
+<li><a href="#fs.readSync">fs.readSync()</a></li>
+<li><a href="#fs.readSync">fs.readSync()</a></li>
+<li><a href="#fs.readFile">fs.readFile()</a></li>
+<li><a href="#fs.readFileSync">fs.readFileSync()</a></li>
+<li><a href="#fs.writeFile">fs.writeFile()</a></li>
+<li><a href="#fs.writeFileSync">fs.writeFileSync()</a></li>
+<li><a href="#fs.watchFile">fs.watchFile()</a></li>
+<li><a href="#fs.unwatchFile">fs.unwatchFile()</a></li>
+<li><a href="#fs.watch">fs.watch()</a></li>
+<li><a href="#Event">Event</a></li>
+<li><a href="#fs.createReadStream">fs.createReadStream()</a></li>
+<li><a href="#Event">Event</a></li>
+<li><a href="#file.bytesWritten">file.bytesWritten</a></li>
+<li><a href="#fs.createWriteStream">fs.createWriteStream()</a></li>
+</ul>
+
+<h3>fs.rename(path1, path2, [callback]) <a href="#fs.rename" id="fs.rename" class="deep-link">#</a></h3>
+
+<p>Asynchronous rename(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.renameSync(path1, path2) <a href="#fs.renameSync" id="fs.renameSync" class="deep-link">#</a></h3>
+
+<p>Synchronous rename(2).</p>
+
+<h3>fs.truncate(fd, len, [callback]) <a href="#fs.truncate" id="fs.truncate" class="deep-link">#</a></h3>
+
+<p>Asynchronous ftruncate(2). No arguments other than a possible exception are
+given to the completion callback.</p>
+
+<h3>fs.truncateSync(fd, len) <a href="#fs.truncateSync" id="fs.truncateSync" class="deep-link">#</a></h3>
+
+<p>Synchronous ftruncate(2).</p>
+
+<h3>fs.chown(path, uid, gid, [callback]) <a href="#fs.chown" id="fs.chown" class="deep-link">#</a></h3>
+
+<p>Asynchronous chown(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.chownSync(path, uid, gid) <a href="#fs.chownSync" id="fs.chownSync" class="deep-link">#</a></h3>
+
+<p>Synchronous chown(2).</p>
+
+<h3>fs.fchown(fd, uid, gid, [callback]) <a href="#fs.fchown" id="fs.fchown" class="deep-link">#</a></h3>
+
+<p>Asynchronous fchown(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.fchownSync(fd, uid, gid) <a href="#fs.fchownSync" id="fs.fchownSync" class="deep-link">#</a></h3>
+
+<p>Synchronous fchown(2).</p>
+
+<h3>fs.lchown(path, uid, gid, [callback]) <a href="#fs.lchown" id="fs.lchown" class="deep-link">#</a></h3>
+
+<p>Asynchronous lchown(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.lchownSync(path, uid, gid) <a href="#fs.lchownSync" id="fs.lchownSync" class="deep-link">#</a></h3>
+
+<p>Synchronous lchown(2).</p>
+
+<h3>fs.chmod(path, mode, [callback]) <a href="#fs.chmod" id="fs.chmod" class="deep-link">#</a></h3>
+
+<p>Asynchronous chmod(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.chmodSync(path, mode) <a href="#fs.chmodSync" id="fs.chmodSync" class="deep-link">#</a></h3>
+
+<p>Synchronous chmod(2).</p>
+
+<h3>fs.fchmod(fd, mode, [callback]) <a href="#fs.fchmod" id="fs.fchmod" class="deep-link">#</a></h3>
+
+<p>Asynchronous fchmod(2). No arguments other than a possible exception
+are given to the completion callback.</p>
+
+<h3>fs.fchmodSync(fd, mode) <a href="#fs.fchmodSync" id="fs.fchmodSync" class="deep-link">#</a></h3>
+
+<p>Synchronous fchmod(2).</p>
+
+<h3>fs.lchmod(path, mode, [callback]) <a href="#fs.lchmod" id="fs.lchmod" class="deep-link">#</a></h3>
+
+<p>Asynchronous lchmod(2). No arguments other than a possible exception
+are given to the completion callback.</p>
+
+<h3>fs.lchmodSync(path, mode) <a href="#fs.lchmodSync" id="fs.lchmodSync" class="deep-link">#</a></h3>
+
+<p>Synchronous lchmod(2).</p>
+
+<h3>fs.stat(path, [callback]) <a href="#fs.stat" id="fs.stat" class="deep-link">#</a></h3>
+
+<p>Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <a href="#fs.Stats">fs.Stats</a> object.  See the <a href="#fs.Stats">fs.Stats</a>
+section below for more information.</p>
+
+<h3>fs.lstat(path, [callback]) <a href="#fs.lstat" id="fs.lstat" class="deep-link">#</a></h3>
+
+<p>Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. <code>lstat()</code> is identical to <code>stat()</code>, except that if
+<code>path</code> is a symbolic link, then the link itself is stat-ed, not the file that it
+refers to.</p>
+
+<h3>fs.fstat(fd, [callback]) <a href="#fs.fstat" id="fs.fstat" class="deep-link">#</a></h3>
+
+<p>Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. <code>fstat()</code> is identical to <code>stat()</code>, except that
+the file to be stat-ed is specified by the file descriptor <code>fd</code>.</p>
+
+<h3>fs.statSync(path) <a href="#fs.statSync" id="fs.statSync" class="deep-link">#</a></h3>
+
+<p>Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.</p>
+
+<h3>fs.lstatSync(path) <a href="#fs.lstatSync" id="fs.lstatSync" class="deep-link">#</a></h3>
+
+<p>Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.</p>
+
+<h3>fs.fstatSync(fd) <a href="#fs.fstatSync" id="fs.fstatSync" class="deep-link">#</a></h3>
+
+<p>Synchronous fstat(2). Returns an instance of <code>fs.Stats</code>.</p>
+
+<h3>fs.link(srcpath, dstpath, [callback]) <a href="#fs.link" id="fs.link" class="deep-link">#</a></h3>
+
+<p>Asynchronous link(2). No arguments other than a possible exception are given to
+the completion callback.</p>
+
+<h3>fs.linkSync(srcpath, dstpath) <a href="#fs.linkSync" id="fs.linkSync" class="deep-link">#</a></h3>
+
+<p>Synchronous link(2).</p>
+
+<h3>fs.symlink(linkdata, path, [callback]) <a href="#fs.symlink" id="fs.symlink" class="deep-link">#</a></h3>
+
+<p>Asynchronous symlink(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.symlinkSync(linkdata, path) <a href="#fs.symlinkSync" id="fs.symlinkSync" class="deep-link">#</a></h3>
+
+<p>Synchronous symlink(2).</p>
+
+<h3>fs.readlink(path, [callback]) <a href="#fs.readlink" id="fs.readlink" class="deep-link">#</a></h3>
+
+<p>Asynchronous readlink(2). The callback gets two arguments <code>(err,
+linkString)</code>.</p>
+
+<h3>fs.readlinkSync(path) <a href="#fs.readlinkSync" id="fs.readlinkSync" class="deep-link">#</a></h3>
+
+<p>Synchronous readlink(2). Returns the symbolic link's string value.</p>
+
+<h3>fs.realpath(path, [callback]) <a href="#fs.realpath" id="fs.realpath" class="deep-link">#</a></h3>
+
+<p>Asynchronous realpath(2).  The callback gets two arguments <code>(err,
+resolvedPath)</code>.  May use <code>process.cwd</code> to resolve relative paths.</p>
+
+<h3>fs.realpathSync(path) <a href="#fs.realpathSync" id="fs.realpathSync" class="deep-link">#</a></h3>
+
+<p>Synchronous realpath(2). Returns the resolved path.</p>
+
+<h3>fs.unlink(path, [callback]) <a href="#fs.unlink" id="fs.unlink" class="deep-link">#</a></h3>
+
+<p>Asynchronous unlink(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.unlinkSync(path) <a href="#fs.unlinkSync" id="fs.unlinkSync" class="deep-link">#</a></h3>
+
+<p>Synchronous unlink(2).</p>
+
+<h3>fs.rmdir(path, [callback]) <a href="#fs.rmdir" id="fs.rmdir" class="deep-link">#</a></h3>
+
+<p>Asynchronous rmdir(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.rmdirSync(path) <a href="#fs.rmdirSync" id="fs.rmdirSync" class="deep-link">#</a></h3>
+
+<p>Synchronous rmdir(2).</p>
+
+<h3>fs.mkdir(path, [mode], [callback]) <a href="#fs.mkdir" id="fs.mkdir" class="deep-link">#</a></h3>
+
+<p>Asynchronous mkdir(2). No arguments other than a possible exception are given
+to the completion callback. <code>mode</code> defaults to <code>0777</code>.</p>
+
+<h3>fs.mkdirSync(path, [mode]) <a href="#fs.mkdirSync" id="fs.mkdirSync" class="deep-link">#</a></h3>
+
+<p>Synchronous mkdir(2).</p>
+
+<h3>fs.readdir(path, [callback]) <a href="#fs.readdir" id="fs.readdir" class="deep-link">#</a></h3>
+
+<p>Asynchronous readdir(3).  Reads the contents of a directory.
+The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
+the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.</p>
+
+<h3>fs.readdirSync(path) <a href="#fs.readdirSync" id="fs.readdirSync" class="deep-link">#</a></h3>
+
+<p>Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and
+<code>'..'</code>.</p>
+
+<h3>fs.close(fd, [callback]) <a href="#fs.close" id="fs.close" class="deep-link">#</a></h3>
+
+<p>Asynchronous close(2).  No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.closeSync(fd) <a href="#fs.closeSync" id="fs.closeSync" class="deep-link">#</a></h3>
+
+<p>Synchronous close(2).</p>
+
+<h3>fs.open(path, flags, [mode], [callback]) <a href="#fs.open" id="fs.open" class="deep-link">#</a></h3>
+
+<p>Asynchronous file open. See open(2). <code>flags</code> can be:</p>
+
+<ul>
+<li><p><code>'r'</code> - Open file for reading.
+An exception occurs if the file does not exist.</p></li>
+<li><p><code>'r+'</code> - Open file for reading and writing.
+An exception occurs if the file does not exist.</p></li>
+<li><p><code>'w'</code> - Open file for writing.
+The file is created (if it does not exist) or truncated (if it exists).</p></li>
+<li><p><code>'w+'</code> - Open file for reading and writing.
+The file is created (if it does not exist) or truncated (if it exists).</p></li>
+<li><p><code>'a'</code> - Open file for appending.
+The file is created if it does not exist.</p></li>
+<li><p><code>'a+'</code> - Open file for reading and appending.
+The file is created if it does not exist.</p></li>
+</ul>
+
+<p><code>mode</code> defaults to <code>0666</code>. The callback gets two arguments <code>(err, fd)</code>.</p>
+
+<h3>fs.openSync(path, flags, [mode]) <a href="#fs.openSync" id="fs.openSync" class="deep-link">#</a></h3>
+
+<p>Synchronous open(2).</p>
+
+<h3>fs.utimes(path, atime, mtime, [callback]) <a href="#fs.utimes" id="fs.utimes" class="deep-link">#</a></h3>
+
+<h3>fs.utimesSync(path, atime, mtime) <a href="#fs.utimesSync" id="fs.utimesSync" class="deep-link">#</a></h3>
+
+<p>Change file timestamps of the file referenced by the supplied path.</p>
+
+<h3>fs.futimes(fd, atime, mtime, [callback]) <a href="#fs.futimes" id="fs.futimes" class="deep-link">#</a></h3>
+
+<h3>fs.futimesSync(fd, atime, mtime) <a href="#fs.futimesSync" id="fs.futimesSync" class="deep-link">#</a></h3>
+
+<p>Change the file timestamps of a file referenced by the supplied file
+descriptor.</p>
+
+<h3>fs.fsync(fd, [callback]) <a href="#fs.fsync" id="fs.fsync" class="deep-link">#</a></h3>
+
+<p>Asynchronous fsync(2). No arguments other than a possible exception are given
+to the completion callback.</p>
+
+<h3>fs.fsyncSync(fd) <a href="#fs.fsyncSync" id="fs.fsyncSync" class="deep-link">#</a></h3>
+
+<p>Synchronous fsync(2).</p>
+
+<h3>fs.write(fd, buffer, offset, length, position, [callback]) <a href="#fs.write" id="fs.write" class="deep-link">#</a></h3>
+
+<p>Write <code>buffer</code> to the file specified by <code>fd</code>.</p>
+
+<p><code>offset</code> and <code>length</code> determine the part of the buffer to be written.</p>
+
+<p><code>position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code>position</code> is <code>null</code>, the data will be written at the
+current position.
+See pwrite(2).</p>
+
+<p>The callback will be given three arguments <code>(err, written, buffer)</code> where <code>written</code>
+specifies how many <em>bytes</em> were written from <code>buffer</code>.</p>
+
+<p>Note that it is unsafe to use <code>fs.write</code> multiple times on the same file
+without waiting for the callback. For this scenario,
+<code>fs.createWriteStream</code> is strongly recommended.</p>
+
+<h3>fs.writeSync(fd, buffer, offset, length, position) <a href="#fs.writeSync" id="fs.writeSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of buffer-based <code>fs.write()</code>. Returns the number of bytes
+written.</p>
+
+<h3>fs.writeSync(fd, str, position, encoding='utf8') <a href="#fs.writeSync" id="fs.writeSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of string-based <code>fs.write()</code>. Returns the number of <em>bytes</em>
+written.</p>
+
+<h3>fs.read(fd, buffer, offset, length, position, [callback]) <a href="#fs.read" id="fs.read" class="deep-link">#</a></h3>
+
+<p>Read data from the file specified by <code>fd</code>.</p>
+
+<p><code>buffer</code> is the buffer that the data will be written to.</p>
+
+<p><code>offset</code> is offset within the buffer where writing will start.</p>
+
+<p><code>length</code> is an integer specifying the number of bytes to read.</p>
+
+<p><code>position</code> is an integer specifying where to begin reading from in the file.
+If <code>position</code> is <code>null</code>, data will be read from the current file position.</p>
+
+<p>The callback is given the three arguments, <code>(err, bytesRead, buffer)</code>.</p>
+
+<h3>fs.readSync(fd, buffer, offset, length, position) <a href="#fs.readSync" id="fs.readSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of buffer-based <code>fs.read</code>. Returns the number of
+<code>bytesRead</code>.</p>
+
+<h3>fs.readSync(fd, length, position, encoding) <a href="#fs.readSync" id="fs.readSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of string-based <code>fs.read</code>. Returns the number of
+<code>bytesRead</code>.</p>
+
+<h3>fs.readFile(filename, [encoding], [callback]) <a href="#fs.readFile" id="fs.readFile" class="deep-link">#</a></h3>
+
+<p>Asynchronously reads the entire contents of a file. Example:</p>
+
+<pre><code>fs.readFile('/etc/passwd', function (err, data) {
+  if (err) throw err;
+  console.log(data);
+});
+</code></pre>
+
+<p>The callback is passed two arguments <code>(err, data)</code>, where <code>data</code> is the
+contents of the file.</p>
+
+<p>If no encoding is specified, then the raw buffer is returned.</p>
+
+<h3>fs.readFileSync(filename, [encoding]) <a href="#fs.readFileSync" id="fs.readFileSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of <code>fs.readFile</code>. Returns the contents of the <code>filename</code>.</p>
+
+<p>If <code>encoding</code> is specified then this function returns a string. Otherwise it
+returns a buffer.</p>
+
+<h3>fs.writeFile(filename, data, encoding='utf8', [callback]) <a href="#fs.writeFile" id="fs.writeFile" class="deep-link">#</a></h3>
+
+<p>Asynchronously writes data to a file, replacing the file if it already exists.
+<code>data</code> can be a string or a buffer. The <code>encoding</code> argument is ignored if
+<code>data</code> is a buffer.</p>
+
+<p>Example:</p>
+
+<pre><code>fs.writeFile('message.txt', 'Hello Node', function (err) {
+  if (err) throw err;
+  console.log('It\'s saved!');
+});
+</code></pre>
+
+<h3>fs.writeFileSync(filename, data, encoding='utf8') <a href="#fs.writeFileSync" id="fs.writeFileSync" class="deep-link">#</a></h3>
+
+<p>The synchronous version of <code>fs.writeFile</code>.</p>
+
+<h3>fs.watchFile(filename, [options], listener) <a href="#fs.watchFile" id="fs.watchFile" class="deep-link">#</a></h3>
+
+<p>Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
+time the file is accessed.</p>
+
+<p>The second argument is optional. The <code>options</code> if provided should be an object
+containing two members a boolean, <code>persistent</code>, and <code>interval</code>. <code>persistent</code>
+indicates whether the process should continue to run as long as files are
+being watched. <code>interval</code> indicates how often the target should be polled,
+in milliseconds. (On Linux systems with inotify, <code>interval</code> is ignored.) The
+default is <code>{ persistent: true, interval: 0 }</code>.</p>
+
+<p>The <code>listener</code> gets two arguments the current stat object and the previous
+stat object:</p>
+
+<pre><code>fs.watchFile('message.text', function (curr, prev) {
+  console.log('the current mtime is: ' + curr.mtime);
+  console.log('the previous mtime was: ' + prev.mtime);
+});
+</code></pre>
+
+<p>These stat objects are instances of <code>fs.Stat</code>.</p>
+
+<p>If you want to be notified when the file was modified, not just accessed
+you need to compare <code>curr.mtime</code> and <code>prev.mtime</code>.</p>
+
+<h3>fs.unwatchFile(filename) <a href="#fs.unwatchFile" id="fs.unwatchFile" class="deep-link">#</a></h3>
+
+<p>Stop watching for changes on <code>filename</code>.</p>
+
+<h3>fs.watch(filename, [options], listener) <a href="#fs.watch" id="fs.watch" class="deep-link">#</a></h3>
+
+<p>Watch for changes on <code>filename</code>, where <code>filename</code> is either a file or a
+directory.  The returned object is <a href="#fs.FSWatcher">fs.FSWatcher</a>.</p>
+
+<p>The second argument is optional. The <code>options</code> if provided should be an object
+containing a boolean member <code>persistent</code>, which indicates whether the process
+should continue to run as long as files are being watched. The default is
+<code>{ persistent: true }</code>.</p>
+
+<p>The listener callback gets two arguments <code>(event, filename)</code>.  <code>event</code> is either
+'rename' or 'change', and <code>filename</code> is the name of the file which triggered
+the event.</p>
+
+<p><strong><em>Warning:</em></strong>
+Providing <code>filename</code> argument in the callback is not supported
+on every platform (currently it's only supported on Linux and Windows).  Even
+on supported platforms <code>filename</code> is not always guaranteed to be provided.
+Therefore, don't assume that <code>filename</code> argument is always provided in the
+callback, and have some fallback logic if it is null.</p>
+
+<pre><code>fs.watch('somedir', function (event, filename) {
+  console.log('event is: ' + event);
+  if (filename) {
+    console.log('filename provided: ' + filename);
+  } else {
+    console.log('filename not provided');
+  }
+});
+</code></pre>
+
+<h2>fs.Stats</h2>
+
+<p>Objects returned from <code>fs.stat()</code>, <code>fs.lstat()</code> and <code>fs.fstat()</code> and their
+synchronous counterparts are of this type.</p>
+
+<ul>
+<li><code>stats.isFile()</code></li>
+<li><code>stats.isDirectory()</code></li>
+<li><code>stats.isBlockDevice()</code></li>
+<li><code>stats.isCharacterDevice()</code></li>
+<li><code>stats.isSymbolicLink()</code> (only valid with  <code>fs.lstat()</code>)</li>
+<li><code>stats.isFIFO()</code></li>
+<li><code>stats.isSocket()</code></li>
+</ul>
+
+<p>For a regular file <code>util.inspect(stats)</code> would return a string very
+similar to this:</p>
+
+<pre><code>{ dev: 2114,
+  ino: 48064969,
+  mode: 33188,
+  nlink: 1,
+  uid: 85,
+  gid: 100,
+  rdev: 0,
+  size: 527,
+  blksize: 4096,
+  blocks: 8,
+  atime: Mon, 10 Oct 2011 23:24:11 GMT,
+  mtime: Mon, 10 Oct 2011 23:24:11 GMT,
+  ctime: Mon, 10 Oct 2011 23:24:11 GMT }
+</code></pre>
+
+<p>Please note that <code>atime</code>, <code>mtime</code> and <code>ctime</code> are instances
+of <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">Date</a> object and to compare the values of
+these objects you should use appropriate methods. For most
+general uses <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getTime">getTime()</a> will return
+the number of milliseconds elapsed since <em>1 January 1970
+00:00:00 UTC</em> and this integer should be sufficient for
+any comparison, however there additional methods which can
+be used for displaying fuzzy information. More details can
+be found in the <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date">MDN JavaScript Reference</a> page.</p>
+
+<h2>fs.ReadStream</h2>
+
+<p><code>ReadStream</code> is a <a href="streams.html#readable_Stream">Readable Stream</a>.</p>
+
+<h3>Event: 'open' <a href="#Event" id="Event" class="deep-link">#</a></h3>
+
+<p><code>function (fd) { }</code></p>
+
+<p><code>fd</code> is the file descriptor used by the ReadStream.</p>
+
+<h3>fs.createReadStream(path, [options]) <a href="#fs.createReadStream" id="fs.createReadStream" class="deep-link">#</a></h3>
+
+<p>Returns a new ReadStream object (See <code>Readable Stream</code>).</p>
+
+<p><code>options</code> is an object with the following defaults:</p>
+
+<pre><code>{ flags: 'r',
+  encoding: null,
+  fd: null,
+  mode: 0666,
+  bufferSize: 64 * 1024
+}
+</code></pre>
+
+<p><code>options</code> can include <code>start</code> and <code>end</code> values to read a range of bytes from
+the file instead of the entire file.  Both <code>start</code> and <code>end</code> are inclusive and
+start at 0.</p>
+
+<p>An example to read the last 10 bytes of a file which is 100 bytes long:</p>
+
+<pre><code>fs.createReadStream('sample.txt', {start: 90, end: 99});
+</code></pre>
+
+<h2>fs.WriteStream</h2>
+
+<p><code>WriteStream</code> is a <a href="streams.html#writable_Stream">Writable Stream</a>.</p>
+
+<h3>Event: 'open' <a href="#Event" id="Event" class="deep-link">#</a></h3>
+
+<p><code>function (fd) { }</code></p>
+
+<p><code>fd</code> is the file descriptor used by the WriteStream.</p>
+
+<h3>file.bytesWritten <a href="#file.bytesWritten" id="file.bytesWritten" class="deep-link">#</a></h3>
+
+<p>The number of bytes written so far. Does not include data that is still queued
+for writing.</p>
+
+<h3>fs.createWriteStream(path, [options]) <a href="#fs.createWriteStream" id="fs.createWriteStream" class="deep-link">#</a></h3>
+
+<p>Returns a new WriteStream object (See <code>Writable Stream</code>).</p>
+
+<p><code>options</code> is an object with the following defaults:</p>
+
+<pre><code>{ flags: 'w',
+  encoding: null,
+  mode: 0666 }
+</code></pre>
+
+<p><code>options</code> may also include a <code>start</code> option to allow writing data at
+some position past the beginning of the file.  Modifying a file rather
+than replacing it may require a <code>flags</code> mode of <code>r+</code> rather than the
+default mode <code>w</code>.</p>
+
+<h2>fs.FSWatcher</h2>
+
+<p>Objects returned from <code>fs.watch()</code> are of this type.</p>
+
+<h4>watcher.close()</h4>
+
+<p>Stop watching for changes on the given <code>fs.FSWatcher</code>.</p>
+
+<h4>Event: 'change'</h4>
+
+<p><code>function (event, filename) {}</code></p>
+
+<p>Emitted when something changes in a watched directory or file.
+See more details in <a href="#fs.watch">fs.watch</a>.</p>
+
+<h4>Event: 'error'</h4>
+
+<p><code>function (exception) {}</code></p>
+
+<p>Emitted when an error occurs.</p>
+                <hr />
+                <small>Documentation generated by <a href="https://github.com/millermedeiros/mdoc">mdoc</a>.</small>
+            </div>
+        </div>
+        <script src="assets_/js/lib/jquery.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shCore.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shAutoloader.js"></script>
+        <script src="assets_/js/main.js"></script>
+    </body>
+</html>
+

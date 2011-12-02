@@ -1,0 +1,2499 @@
+<div class="hd">
+    <input id="search" type="search" placeholder="search" />
+    <label><input id="show-desc" type="checkbox" /> Show Description</label>
+</div>
+<div class="bd">
+    <div class="toc">
+        
+            <h3 class="toc-mod-title"><a href="_toc.html">_toc</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="addons.html">addons</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="all.html">all</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="appendix_1.html">appendix_1</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="appendix_2.html">appendix_2</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="assert.html">assert</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="assert.html#assert.fail">
+                    <h4>assert.fail(actual, expected, message, operator)</h4>
+                    <span class="desc">Throws an exception that displays the values for <code>actual</code> and <code>expected</code> separated by the provided operator.</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert">
+                    <h4>assert(value, message), assert.ok(value, [message])</h4>
+                    <span class="desc">Tests if value is a <code>true</code> value, it is equivalent to <code>assert.equal(true, value, message);</code></span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.equal">
+                    <h4>assert.equal(actual, expected, [message])</h4>
+                    <span class="desc">Tests shallow, coercive equality with the equal comparison operator ( <code>==</code> ).</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.notEqual">
+                    <h4>assert.notEqual(actual, expected, [message])</h4>
+                    <span class="desc">Tests shallow, coercive non-equality with the not equal comparison operator ( <code>!=</code> ).</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.deepEqual">
+                    <h4>assert.deepEqual(actual, expected, [message])</h4>
+                    <span class="desc">Tests for deep equality.</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.notDeepEqual">
+                    <h4>assert.notDeepEqual(actual, expected, [message])</h4>
+                    <span class="desc">Tests for any deep inequality.</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.strictEqual">
+                    <h4>assert.strictEqual(actual, expected, [message])</h4>
+                    <span class="desc">Tests strict equality, as determined by the strict equality operator ( <code>===</code> )</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.notStrictEqual">
+                    <h4>assert.notStrictEqual(actual, expected, [message])</h4>
+                    <span class="desc">Tests strict non-equality, as determined by the strict not equal operator ( <code>!==</code> )</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.throws">
+                    <h4>assert.throws(block, [error], [message])</h4>
+                    <span class="desc">Expects <code>block</code> to throw an error. <code>error</code> can be constructor, regexp or validation function.</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.doesNotThrow">
+                    <h4>assert.doesNotThrow(block, [error], [message])</h4>
+                    <span class="desc">Expects <code>block</code> not to throw an error, see assert.throws for details.</span>
+                </a>
+                
+                <a class="toc-item" href="assert.html#assert.ifError">
+                    <h4>assert.ifError(value)</h4>
+                    <span class="desc">Tests if value is not a false value, throws if it is a true value. Useful when testing the first argument, <code>error</code> in callbacks.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="buffers.html">buffers</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="buffers.html#new Buffer">
+                    <h4>new Buffer(size)</h4>
+                    <span class="desc">Allocates a new buffer of <code>size</code> octets.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#new Buffer">
+                    <h4>new Buffer(array)</h4>
+                    <span class="desc">Allocates a new buffer using an <code>array</code> of octets.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#new Buffer">
+                    <h4>new Buffer(str, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">Allocates a new buffer containing the given <code>str</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.write">
+                    <h4>buffer.write(string, offset=0, length=buffer.length-offset, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">Writes <code>string</code> to the buffer at <code>offset</code> using the given encoding. <code>length</code> is the number of bytes to write. Returns number of octets written. If <code>buffer</code> did
+not contain enough space to fit the entire string, it will write a partial
+amount of the string. The method will not write partial characters.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.toString">
+                    <h4>buffer.toString(encoding, start=0, end=buffer.length)</h4>
+                    <span class="desc">Decodes and returns a string from buffer data encoded with <code>encoding</code> beginning at <code>start</code> and ending at <code>end</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer[index]">
+                    <h4>buffer[index]</h4>
+                    <span class="desc">Get and set the octet at <code>index</code>. The values refer to individual bytes, so the legal range is between <code>0x00</code> and <code>0xFF</code> hex or <code>0</code> and <code>255</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#Buffer.isBuffer">
+                    <h4>Buffer.isBuffer(obj)</h4>
+                    <span class="desc">Tests if <code>obj</code> is a <code>Buffer</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#Buffer.byteLength">
+                    <h4>Buffer.byteLength(string, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">Gives the actual byte length of a string.  This is not the same as <code>String.prototype.length</code> since that returns the number of <em>characters</em> in a
+string.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.length">
+                    <h4>buffer.length</h4>
+                    <span class="desc">The size of the buffer in bytes.  Note that this is not necessarily the size of the contents. <code>length</code> refers to the amount of memory allocated for the
+buffer object.  It does not change when the contents of the buffer are changed.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.copy">
+                    <h4>buffer.copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)</h4>
+                    <span class="desc">Does copy between buffers. The source and target regions can be overlapped.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.slice">
+                    <h4>buffer.slice(start, end=buffer.length)</h4>
+                    <span class="desc">Returns a new buffer which references the same memory as the old, but offset and cropped by the <code>start</code> and <code>end</code>
+indexes.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readUInt8">
+                    <h4>buffer.readUInt8(offset, noAssert=false)</h4>
+                    <span class="desc">Reads an unsigned 8 bit integer from the buffer at the specified offset.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readUInt16LE">
+                    <h4>buffer.readUInt16LE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readUInt16BE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readUInt16BE">
+                    <h4>buffer.readUInt16BE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads an unsigned 16 bit integer from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readUInt32LE">
+                    <h4>buffer.readUInt32LE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readUInt32BE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readUInt32BE">
+                    <h4>buffer.readUInt32BE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads an unsigned 32 bit integer from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readInt8">
+                    <h4>buffer.readInt8(offset, noAssert=false)</h4>
+                    <span class="desc">Reads a signed 8 bit integer from the buffer at the specified offset.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readInt16LE">
+                    <h4>buffer.readInt16LE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readInt16BE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readInt16BE">
+                    <h4>buffer.readInt16BE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads a signed 16 bit integer from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readInt32LE">
+                    <h4>buffer.readInt32LE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readInt32BE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readInt32BE">
+                    <h4>buffer.readInt32BE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads a signed 32 bit integer from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readFloatLE">
+                    <h4>buffer.readFloatLE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readFloatBE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readFloatBE">
+                    <h4>buffer.readFloatBE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads a 32 bit float from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readDoubleLE">
+                    <h4>buffer.readDoubleLE(offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.readDoubleBE(offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.readDoubleBE">
+                    <h4>buffer.readDoubleBE(offset, noAssert=false)</h4>
+                    <span class="desc">Reads a 64 bit double from the buffer at the specified offset with specified endian format.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeUInt8">
+                    <h4>buffer.writeUInt8(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset. Note, <code>value</code> must be a valid unsigned 8 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeUInt16LE">
+                    <h4>buffer.writeUInt16LE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeUInt16BE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeUInt16BE">
+                    <h4>buffer.writeUInt16BE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid unsigned 16 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeUInt32LE">
+                    <h4>buffer.writeUInt32LE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeUInt32BE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeUInt32BE">
+                    <h4>buffer.writeUInt32BE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid unsigned 32 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeInt8">
+                    <h4>buffer.writeInt8(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset. Note, <code>value</code> must be a valid signed 8 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeInt16LE">
+                    <h4>buffer.writeInt16LE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeInt16BE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeInt16BE">
+                    <h4>buffer.writeInt16BE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid signed 16 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeInt32LE">
+                    <h4>buffer.writeInt32LE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeInt32BE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeInt32BE">
+                    <h4>buffer.writeInt32BE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid signed 32 bit integer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeFloatLE">
+                    <h4>buffer.writeFloatLE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeFloatBE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeFloatBE">
+                    <h4>buffer.writeFloatBE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid 32 bit float.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeDoubleLE">
+                    <h4>buffer.writeDoubleLE(value, offset, noAssert=false)</h4>
+                    <span class="desc"><h3>buffer.writeDoubleBE(value, offset, noAssert=false)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.writeDoubleBE">
+                    <h4>buffer.writeDoubleBE(value, offset, noAssert=false)</h4>
+                    <span class="desc">Writes <code>value</code> to the buffer at the specified offset with specified endian format. Note, <code>value</code> must be a valid 64 bit double.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#buffer.fill">
+                    <h4>buffer.fill(value, offset=0, end=buffer.length)</h4>
+                    <span class="desc">Fills the buffer with the specified value. If the offset and end are not given it will fill the entire buffer.</span>
+                </a>
+                
+                <a class="toc-item" href="buffers.html#INSPECT_MAX_BYTES">
+                    <h4>INSPECT_MAX_BYTES</h4>
+                    <span class="desc">How many bytes will be returned when <code>buffer.inspect()</code> is called. This can be overriden by user modules.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="child_processes.html">child_processes</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="child_processes.html#Event">
+                    <h4>Event:  &#x27;exit&#x27;</h4>
+                    <span class="desc"><code>function (code, signal) {}</code></span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child.stdin">
+                    <h4>child.stdin</h4>
+                    <span class="desc">A <code>Writable Stream</code> that represents the child process's <code>stdin</code>. Closing this stream via <code>end()</code> often causes the child process to terminate.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child.stdout">
+                    <h4>child.stdout</h4>
+                    <span class="desc">A <code>Readable Stream</code> that represents the child process's <code>stdout</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child.stderr">
+                    <h4>child.stderr</h4>
+                    <span class="desc">A <code>Readable Stream</code> that represents the child process's <code>stderr</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child.pid">
+                    <h4>child.pid</h4>
+                    <span class="desc">The PID of the child process.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child_process.spawn">
+                    <h4>child_process.spawn(command, args=[], [options])</h4>
+                    <span class="desc">Launches a new process with the given <code>command</code>, with  command line arguments in <code>args</code>. If omitted, <code>args</code> defaults to an empty Array.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child_process.exec">
+                    <h4>child_process.exec(command, [options], callback)</h4>
+                    <span class="desc">Runs a command in a shell and buffers the output.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child_process.execFile">
+                    <h4>child_process.execFile(file, args, options, callback)</h4>
+                    <span class="desc">This is similar to <code>child_process.exec()</code> except it does not execute a subshell but rather the specified file directly. This makes it slightly
+leaner than <code>child_process.exec</code>. It has the same options.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child_process.fork">
+                    <h4>child_process.fork(modulePath, arguments, options)</h4>
+                    <span class="desc">This is a special case of the <code>spawn()</code> functionality for spawning Node processes. In addition to having all the methods in a normal ChildProcess
+instance, the returned object has a communication channel built-in. The
+channel is written to with <code>child.send(message, [sendHandle])</code> and messages
+are recieved by a <code>'message'</code> event on the child.</span>
+                </a>
+                
+                <a class="toc-item" href="child_processes.html#child.kill">
+                    <h4>child.kill(signal=&#x27;SIGTERM&#x27;)</h4>
+                    <span class="desc">Send a signal to the child process. If no argument is given, the process will be sent <code>'SIGTERM'</code>. See <code>signal(7)</code> for a list of available signals.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="cluster.html">cluster</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="cluster.html#cluster.fork">
+                    <h4>cluster.fork()</h4>
+                    <span class="desc">Spawn a new worker process. This can only be called from the master process.</span>
+                </a>
+                
+                <a class="toc-item" href="cluster.html#cluster.isMaster">
+                    <h4>cluster.isMaster</h4>
+                    <span class="desc"><h3>cluster.isWorker</h3></span>
+                </a>
+                
+                <a class="toc-item" href="cluster.html#cluster.isWorker">
+                    <h4>cluster.isWorker</h4>
+                    <span class="desc">Boolean flags to determine if the current process is a master or a worker process in a cluster. A process <code>isMaster</code> if <code>process.env.NODE_WORKER_ID</code>
+is undefined.</span>
+                </a>
+                
+                <a class="toc-item" href="cluster.html#Event">
+                    <h4>Event: &#x27;death&#x27;</h4>
+                    <span class="desc">When any of the workers die the cluster module will emit the 'death' event. This can be used to restart the worker by calling <code>fork()</code> again.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="crypto.html">crypto</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="crypto.html#crypto.createCredentials">
+                    <h4>crypto.createCredentials(details)</h4>
+                    <span class="desc">Creates a credentials object, with the optional details being a dictionary with keys:</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createHash">
+                    <h4>crypto.createHash(algorithm)</h4>
+                    <span class="desc">Creates and returns a hash object, a cryptographic hash with the given algorithm which can be used to generate hash digests.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#hash.update">
+                    <h4>hash.update(data)</h4>
+                    <span class="desc">Updates the hash content with the given <code>data</code>. This can be called many times with new data as it is streamed.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#hash.digest">
+                    <h4>hash.digest(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Calculates the digest of all of the passed data to be hashed. The <code>encoding</code> can be <code>'hex'</code>, <code>'binary'</code> or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createHmac">
+                    <h4>crypto.createHmac(algorithm, key)</h4>
+                    <span class="desc">Creates and returns a hmac object, a cryptographic hmac with the given algorithm and key.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#hmac.update">
+                    <h4>hmac.update(data)</h4>
+                    <span class="desc">Update the hmac content with the given <code>data</code>. This can be called many times with new data as it is streamed.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#hmac.digest">
+                    <h4>hmac.digest(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Calculates the digest of all of the passed data to the hmac. The <code>encoding</code> can be <code>'hex'</code>, <code>'binary'</code> or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createCipher">
+                    <h4>crypto.createCipher(algorithm, password)</h4>
+                    <span class="desc">Creates and returns a cipher object, with the given algorithm and password.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createCipheriv">
+                    <h4>crypto.createCipheriv(algorithm, key, iv)</h4>
+                    <span class="desc">Creates and returns a cipher object, with the given algorithm, key and iv.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#cipher.update">
+                    <h4>cipher.update(data, input_encoding=&#x27;binary&#x27;, output_encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Updates the cipher with <code>data</code>, the encoding of which is given in <code>input_encoding</code> and can be <code>'utf8'</code>, <code>'ascii'</code> or <code>'binary'</code>. The <code>output_encoding</code> specifies
+the output format of the enciphered data, and can be <code>'binary'</code>, <code>'base64'</code> or <code>'hex'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#cipher.final">
+                    <h4>cipher.final(output_encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns any remaining enciphered contents, with <code>output_encoding</code> being one of: <code>'binary'</code>, <code>'base64'</code> or <code>'hex'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createDecipher">
+                    <h4>crypto.createDecipher(algorithm, password)</h4>
+                    <span class="desc">Creates and returns a decipher object, with the given algorithm and key. This is the mirror of the createCipher() above.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createDecipheriv">
+                    <h4>crypto.createDecipheriv(algorithm, key, iv)</h4>
+                    <span class="desc">Creates and returns a decipher object, with the given algorithm, key and iv. This is the mirror of the createCipheriv() above.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#decipher.update">
+                    <h4>decipher.update(data, input_encoding=&#x27;binary&#x27;, output_encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Updates the decipher with <code>data</code>, which is encoded in <code>'binary'</code>, <code>'base64'</code> or <code>'hex'</code>. The <code>output_decoding</code> specifies in what format to return the deciphered plaintext: <code>'binary'</code>, <code>'ascii'</code> or <code>'utf8'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#decipher.final">
+                    <h4>decipher.final(output_encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns any remaining plaintext which is deciphered, with <code>output_encoding</code> being one of: <code>'binary'</code>, <code>'ascii'</code> or <code>'utf8'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createSign">
+                    <h4>crypto.createSign(algorithm)</h4>
+                    <span class="desc">Creates and returns a signing object, with the given algorithm. On recent OpenSSL releases, <code>openssl list-public-key-algorithms</code> will display
+the available signing algorithms. Examples are <code>'RSA-SHA256'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#signer.update">
+                    <h4>signer.update(data)</h4>
+                    <span class="desc">Updates the signer object with data. This can be called many times with new data as it is streamed.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#signer.sign">
+                    <h4>signer.sign(private_key, output_format=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Calculates the signature on all the updated data passed through the signer. <code>private_key</code> is a string containing the PEM encoded private key for signing.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createVerify">
+                    <h4>crypto.createVerify(algorithm)</h4>
+                    <span class="desc">Creates and returns a verification object, with the given algorithm. This is the mirror of the signing object above.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#verifier.update">
+                    <h4>verifier.update(data)</h4>
+                    <span class="desc">Updates the verifier object with data. This can be called many times with new data as it is streamed.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#verifier.verify">
+                    <h4>verifier.verify(object, signature, signature_format=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Verifies the signed data by using the <code>object</code> and <code>signature</code>. <code>object</code> is  a string containing a PEM encoded object, which can be one of RSA public key,
+DSA public key, or X.509 certificate. <code>signature</code> is the previously calculated
+signature for the data, in the <code>signature_format</code> which can be <code>'binary'</code>,
+<code>'hex'</code> or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createDiffieHellman">
+                    <h4>crypto.createDiffieHellman(prime_length)</h4>
+                    <span class="desc">Creates a Diffie-Hellman key exchange object and generates a prime of the given bit length. The generator used is <code>2</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#crypto.createDiffieHellman">
+                    <h4>crypto.createDiffieHellman(prime, encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Creates a Diffie-Hellman key exchange object using the supplied prime. The generator used is <code>2</code>. Encoding can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.generateKeys">
+                    <h4>diffieHellman.generateKeys(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Generates private and public Diffie-Hellman key values, and returns the public key in the specified encoding. This key should be transferred to the
+other party. Encoding can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.computeSecret">
+                    <h4>diffieHellman.computeSecret(other_public_key, input_encoding=&#x27;binary&#x27;, output_encoding=input_encoding)</h4>
+                    <span class="desc">Computes the shared secret using <code>other_public_key</code> as the other party's public key and returns the computed shared secret. Supplied key is
+interpreted using specified <code>input_encoding</code>, and secret is encoded using
+specified <code>output_encoding</code>. Encodings can be <code>'binary'</code>, <code>'hex'</code>, or
+<code>'base64'</code>. If no output encoding is given, the input encoding is used as
+output encoding.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.getPrime">
+                    <h4>diffieHellman.getPrime(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns the Diffie-Hellman prime in the specified encoding, which can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.getGenerator">
+                    <h4>diffieHellman.getGenerator(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns the Diffie-Hellman prime in the specified encoding, which can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.getPublicKey">
+                    <h4>diffieHellman.getPublicKey(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns the Diffie-Hellman public key in the specified encoding, which can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.getPrivateKey">
+                    <h4>diffieHellman.getPrivateKey(encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Returns the Diffie-Hellman private key in the specified encoding, which can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.setPublicKey">
+                    <h4>diffieHellman.setPublicKey(public_key, encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Sets the Diffie-Hellman public key. Key encoding can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#diffieHellman.setPrivateKey">
+                    <h4>diffieHellman.setPrivateKey(public_key, encoding=&#x27;binary&#x27;)</h4>
+                    <span class="desc">Sets the Diffie-Hellman private key. Key encoding can be <code>'binary'</code>, <code>'hex'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#pbkdf2">
+                    <h4>pbkdf2(password, salt, iterations, keylen, callback)</h4>
+                    <span class="desc">Asynchronous PBKDF2 applies pseudorandom function HMAC-SHA1 to derive a key of given length from the given password, salt and iterations.
+The callback gets two arguments <code>(err, derivedKey)</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="crypto.html#randomBytes">
+                    <h4>randomBytes(size, [callback])</h4>
+                    <span class="desc">Generates cryptographically strong pseudo-random data. Usage:</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="debugger.html">debugger</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="debugger.html#Watchers">
+                    <h4>Watchers</h4>
+                    <span class="desc">You can watch expression and variable values while debugging your code. On every breakpoint each expression from the watchers list will be evaluated
+in the current context and displayed just before the breakpoint's source code
+listing.</span>
+                </a>
+                
+                <a class="toc-item" href="debugger.html#Commands reference">
+                    <h4>Commands reference</h4>
+                    <span class="desc"><h4>Stepping</h4></span>
+                </a>
+                
+                <a class="toc-item" href="debugger.html#Advanced Usage">
+                    <h4>Advanced Usage</h4>
+                    <span class="desc">The V8 debugger can be enabled and accessed either by starting Node with the <code>--debug</code> command-line flag or by signaling an existing Node process
+with <code>SIGUSR1</code>.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="dgram.html">dgram</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="dgram.html#Event">
+                    <h4>Event: &#x27;message&#x27;</h4>
+                    <span class="desc"><code>function (msg, rinfo) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#Event">
+                    <h4>Event: &#x27;listening&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#Event">
+                    <h4>Event: &#x27;error&#x27;</h4>
+                    <span class="desc"><code>function (exception) {}</code></span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.createSocket">
+                    <h4>dgram.createSocket(type, [callback])</h4>
+                    <span class="desc">Creates a datagram socket of the specified types.  Valid types are <code>udp4</code> and <code>udp6</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.send">
+                    <h4>dgram.send(buf, offset, length, port, address, [callback])</h4>
+                    <span class="desc">For UDP sockets, the destination port and IP address must be specified.  A string may be supplied for the <code>address</code> parameter, and it will be resolved with DNS.  An
+optional callback may be specified to detect any DNS errors and when <code>buf</code> may be
+re-used.  Note that DNS lookups will delay the time that a send takes place, at
+least until the next tick.  The only way to know for sure that a send has taken place
+is to use the callback.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.bind">
+                    <h4>dgram.bind(port, [address])</h4>
+                    <span class="desc">For UDP sockets, listen for datagrams on a named <code>port</code> and optional <code>address</code>. If <code>address</code> is not specified, the OS will try to listen on all addresses.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.close">
+                    <h4>dgram.close()</h4>
+                    <span class="desc">Close the underlying socket and stop listening for data on it.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.address">
+                    <h4>dgram.address()</h4>
+                    <span class="desc">Returns an object containing the address information for a socket.  For UDP sockets, this object will contain <code>address</code> and <code>port</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.setBroadcast">
+                    <h4>dgram.setBroadcast(flag)</h4>
+                    <span class="desc">Sets or clears the <code>SO_BROADCAST</code> socket option.  When this option is set, UDP packets may be sent to a local interface's broadcast address.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.setTTL">
+                    <h4>dgram.setTTL(ttl)</h4>
+                    <span class="desc">Sets the <code>IP_TTL</code> socket option.  TTL stands for "Time to Live," but in this context it specifies the number of IP hops that a packet is allowed to go through.  Each router or
+gateway that forwards a packet decrements the TTL.  If the TTL is decremented to 0 by a
+router, it will not be forwarded.  Changing TTL values is typically done for network
+probes or when multicasting.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.setMulticastTTL">
+                    <h4>dgram.setMulticastTTL(ttl)</h4>
+                    <span class="desc">Sets the <code>IP_MULTICAST_TTL</code> socket option.  TTL stands for "Time to Live," but in this context it specifies the number of IP hops that a packet is allowed to go through,
+specifically for multicast traffic.  Each router or gateway that forwards a packet
+decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.setMulticastLoopback">
+                    <h4>dgram.setMulticastLoopback(flag)</h4>
+                    <span class="desc">Sets or clears the <code>IP_MULTICAST_LOOP</code> socket option.  When this option is set, multicast packets will also be received on the local interface.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.addMembership">
+                    <h4>dgram.addMembership(multicastAddress, [multicastInterface])</h4>
+                    <span class="desc">Tells the kernel to join a multicast group with <code>IP_ADD_MEMBERSHIP</code> socket option.</span>
+                </a>
+                
+                <a class="toc-item" href="dgram.html#dgram.dropMembership">
+                    <h4>dgram.dropMembership(multicastAddress, [multicastInterface])</h4>
+                    <span class="desc">Opposite of <code>addMembership</code> - tells the kernel to leave a multicast group with <code>IP_DROP_MEMBERSHIP</code> socket option. This is automatically called by the kernel
+when the socket is closed or process terminates, so most apps will never need to call
+this.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="dns.html">dns</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="dns.html#dns.lookup">
+                    <h4>dns.lookup(domain, family=null, callback)</h4>
+                    <span class="desc">Resolves a domain (e.g. <code>'google.com'</code>) into the first found A (IPv4) or AAAA (IPv6) record.</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolve">
+                    <h4>dns.resolve(domain, rrtype=&#x27;A&#x27;, callback)</h4>
+                    <span class="desc">Resolves a domain (e.g. <code>'google.com'</code>) into an array of the record types specified by rrtype. Valid rrtypes are <code>A</code> (IPV4 addresses), <code>AAAA</code> (IPV6
+addresses), <code>MX</code> (mail exchange records), <code>TXT</code> (text records), <code>SRV</code> (SRV
+records), <code>PTR</code> (used for reverse IP lookups), <code>NS</code> (name server records)
+and <code>CNAME</code> (canonical name records).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolve4">
+                    <h4>dns.resolve4(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for IPv4 queries (<code>A</code> records). <code>addresses</code> is an array of IPv4 addresses (e.g.
+<code>['74.125.79.104', '74.125.79.105', '74.125.79.106']</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolve6">
+                    <h4>dns.resolve6(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve4()</code> except for IPv6 queries (an <code>AAAA</code> query).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolveMx">
+                    <h4>dns.resolveMx(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for mail exchange queries (<code>MX</code> records).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolveTxt">
+                    <h4>dns.resolveTxt(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for text queries (<code>TXT</code> records). <code>addresses</code> is an array of the text records available for <code>domain</code> (e.g.,
+<code>['v=spf1 ip4:0.0.0.0 ~all']</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolveSrv">
+                    <h4>dns.resolveSrv(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for service records (<code>SRV</code> records). <code>addresses</code> is an array of the SRV records available for <code>domain</code>. Properties
+of SRV records are priority, weight, port, and name (e.g.,
+<code>[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.reverse">
+                    <h4>dns.reverse(ip, callback)</h4>
+                    <span class="desc">Reverse resolves an ip address to an array of domain names.</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolveNs">
+                    <h4>dns.resolveNs(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for name server records (<code>NS</code> records). <code>addresses</code> is an array of the name server records available for <code>domain</code>
+(e.g., <code>['ns1.example.com', 'ns2.example.com']</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="dns.html#dns.resolveCname">
+                    <h4>dns.resolveCname(domain, callback)</h4>
+                    <span class="desc">The same as <code>dns.resolve()</code>, but only for canonical name records (<code>CNAME</code> records). <code>addresses</code> is an array of the canonical name records available for
+<code>domain</code> (e.g., <code>['bar.example.com']</code>).</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="events.html">events</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="events.html#events.EventEmitter">
+                    <h4>events.EventEmitter</h4>
+                    <span class="desc">To access the EventEmitter class, <code>require('events').EventEmitter</code>.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="fs.html">fs</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="fs.html#fs.rename">
+                    <h4>fs.rename(path1, path2, [callback])</h4>
+                    <span class="desc">Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.renameSync">
+                    <h4>fs.renameSync(path1, path2)</h4>
+                    <span class="desc">Synchronous rename(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.truncate">
+                    <h4>fs.truncate(fd, len, [callback])</h4>
+                    <span class="desc">Asynchronous ftruncate(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.truncateSync">
+                    <h4>fs.truncateSync(fd, len)</h4>
+                    <span class="desc">Synchronous ftruncate(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.chown">
+                    <h4>fs.chown(path, uid, gid, [callback])</h4>
+                    <span class="desc">Asynchronous chown(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.chownSync">
+                    <h4>fs.chownSync(path, uid, gid)</h4>
+                    <span class="desc">Synchronous chown(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fchown">
+                    <h4>fs.fchown(fd, uid, gid, [callback])</h4>
+                    <span class="desc">Asynchronous fchown(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fchownSync">
+                    <h4>fs.fchownSync(fd, uid, gid)</h4>
+                    <span class="desc">Synchronous fchown(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lchown">
+                    <h4>fs.lchown(path, uid, gid, [callback])</h4>
+                    <span class="desc">Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lchownSync">
+                    <h4>fs.lchownSync(path, uid, gid)</h4>
+                    <span class="desc">Synchronous lchown(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.chmod">
+                    <h4>fs.chmod(path, mode, [callback])</h4>
+                    <span class="desc">Asynchronous chmod(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.chmodSync">
+                    <h4>fs.chmodSync(path, mode)</h4>
+                    <span class="desc">Synchronous chmod(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fchmod">
+                    <h4>fs.fchmod(fd, mode, [callback])</h4>
+                    <span class="desc">Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fchmodSync">
+                    <h4>fs.fchmodSync(fd, mode)</h4>
+                    <span class="desc">Synchronous fchmod(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lchmod">
+                    <h4>fs.lchmod(path, mode, [callback])</h4>
+                    <span class="desc">Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lchmodSync">
+                    <h4>fs.lchmodSync(path, mode)</h4>
+                    <span class="desc">Synchronous lchmod(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.stat">
+                    <h4>fs.stat(path, [callback])</h4>
+                    <span class="desc">Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a fs.Stats object.  See the fs.Stats
+section below for more information.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lstat">
+                    <h4>fs.lstat(path, [callback])</h4>
+                    <span class="desc">Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a <code>fs.Stats</code> object. <code>lstat()</code> is identical to <code>stat()</code>, except that if
+<code>path</code> is a symbolic link, then the link itself is stat-ed, not the file that it
+refers to.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fstat">
+                    <h4>fs.fstat(fd, [callback])</h4>
+                    <span class="desc">Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where <code>stats</code> is a <code>fs.Stats</code> object. <code>fstat()</code> is identical to <code>stat()</code>, except that
+the file to be stat-ed is specified by the file descriptor <code>fd</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.statSync">
+                    <h4>fs.statSync(path)</h4>
+                    <span class="desc">Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.lstatSync">
+                    <h4>fs.lstatSync(path)</h4>
+                    <span class="desc">Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fstatSync">
+                    <h4>fs.fstatSync(fd)</h4>
+                    <span class="desc">Synchronous fstat(2). Returns an instance of <code>fs.Stats</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.link">
+                    <h4>fs.link(srcpath, dstpath, [callback])</h4>
+                    <span class="desc">Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.linkSync">
+                    <h4>fs.linkSync(srcpath, dstpath)</h4>
+                    <span class="desc">Synchronous link(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.symlink">
+                    <h4>fs.symlink(linkdata, path, [callback])</h4>
+                    <span class="desc">Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.symlinkSync">
+                    <h4>fs.symlinkSync(linkdata, path)</h4>
+                    <span class="desc">Synchronous symlink(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readlink">
+                    <h4>fs.readlink(path, [callback])</h4>
+                    <span class="desc">Asynchronous readlink(2). The callback gets two arguments <code>(err, linkString)</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readlinkSync">
+                    <h4>fs.readlinkSync(path)</h4>
+                    <span class="desc">Synchronous readlink(2). Returns the symbolic link's string value.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.realpath">
+                    <h4>fs.realpath(path, [callback])</h4>
+                    <span class="desc">Asynchronous realpath(2).  The callback gets two arguments <code>(err, resolvedPath)</code>.  May use <code>process.cwd</code> to resolve relative paths.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.realpathSync">
+                    <h4>fs.realpathSync(path)</h4>
+                    <span class="desc">Synchronous realpath(2). Returns the resolved path.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.unlink">
+                    <h4>fs.unlink(path, [callback])</h4>
+                    <span class="desc">Asynchronous unlink(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.unlinkSync">
+                    <h4>fs.unlinkSync(path)</h4>
+                    <span class="desc">Synchronous unlink(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.rmdir">
+                    <h4>fs.rmdir(path, [callback])</h4>
+                    <span class="desc">Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.rmdirSync">
+                    <h4>fs.rmdirSync(path)</h4>
+                    <span class="desc">Synchronous rmdir(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.mkdir">
+                    <h4>fs.mkdir(path, [mode], [callback])</h4>
+                    <span class="desc">Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. <code>mode</code> defaults to <code>0777</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.mkdirSync">
+                    <h4>fs.mkdirSync(path, [mode])</h4>
+                    <span class="desc">Synchronous mkdir(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readdir">
+                    <h4>fs.readdir(path, [callback])</h4>
+                    <span class="desc">Asynchronous readdir(3).  Reads the contents of a directory. The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
+the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readdirSync">
+                    <h4>fs.readdirSync(path)</h4>
+                    <span class="desc">Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and <code>'..'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.close">
+                    <h4>fs.close(fd, [callback])</h4>
+                    <span class="desc">Asynchronous close(2).  No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.closeSync">
+                    <h4>fs.closeSync(fd)</h4>
+                    <span class="desc">Synchronous close(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.open">
+                    <h4>fs.open(path, flags, [mode], [callback])</h4>
+                    <span class="desc">Asynchronous file open. See open(2). <code>flags</code> can be:</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.openSync">
+                    <h4>fs.openSync(path, flags, [mode])</h4>
+                    <span class="desc">Synchronous open(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.utimes">
+                    <h4>fs.utimes(path, atime, mtime, [callback])</h4>
+                    <span class="desc"><h3>fs.utimesSync(path, atime, mtime)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.utimesSync">
+                    <h4>fs.utimesSync(path, atime, mtime)</h4>
+                    <span class="desc">Change file timestamps of the file referenced by the supplied path.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.futimes">
+                    <h4>fs.futimes(fd, atime, mtime, [callback])</h4>
+                    <span class="desc"><h3>fs.futimesSync(fd, atime, mtime)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.futimesSync">
+                    <h4>fs.futimesSync(fd, atime, mtime)</h4>
+                    <span class="desc">Change the file timestamps of a file referenced by the supplied file descriptor.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fsync">
+                    <h4>fs.fsync(fd, [callback])</h4>
+                    <span class="desc">Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.fsyncSync">
+                    <h4>fs.fsyncSync(fd)</h4>
+                    <span class="desc">Synchronous fsync(2).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.write">
+                    <h4>fs.write(fd, buffer, offset, length, position, [callback])</h4>
+                    <span class="desc">Write <code>buffer</code> to the file specified by <code>fd</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.writeSync">
+                    <h4>fs.writeSync(fd, buffer, offset, length, position)</h4>
+                    <span class="desc">Synchronous version of buffer-based <code>fs.write()</code>. Returns the number of bytes written.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.writeSync">
+                    <h4>fs.writeSync(fd, str, position, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">Synchronous version of string-based <code>fs.write()</code>. Returns the number of <em>bytes</em> written.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.read">
+                    <h4>fs.read(fd, buffer, offset, length, position, [callback])</h4>
+                    <span class="desc">Read data from the file specified by <code>fd</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readSync">
+                    <h4>fs.readSync(fd, buffer, offset, length, position)</h4>
+                    <span class="desc">Synchronous version of buffer-based <code>fs.read</code>. Returns the number of <code>bytesRead</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readSync">
+                    <h4>fs.readSync(fd, length, position, encoding)</h4>
+                    <span class="desc">Synchronous version of string-based <code>fs.read</code>. Returns the number of <code>bytesRead</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readFile">
+                    <h4>fs.readFile(filename, [encoding], [callback])</h4>
+                    <span class="desc">Asynchronously reads the entire contents of a file. Example:</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.readFileSync">
+                    <h4>fs.readFileSync(filename, [encoding])</h4>
+                    <span class="desc">Synchronous version of <code>fs.readFile</code>. Returns the contents of the <code>filename</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.writeFile">
+                    <h4>fs.writeFile(filename, data, encoding=&#x27;utf8&#x27;, [callback])</h4>
+                    <span class="desc">Asynchronously writes data to a file, replacing the file if it already exists. <code>data</code> can be a string or a buffer. The <code>encoding</code> argument is ignored if
+<code>data</code> is a buffer.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.writeFileSync">
+                    <h4>fs.writeFileSync(filename, data, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">The synchronous version of <code>fs.writeFile</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.watchFile">
+                    <h4>fs.watchFile(filename, [options], listener)</h4>
+                    <span class="desc">Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each time the file is accessed.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.unwatchFile">
+                    <h4>fs.unwatchFile(filename)</h4>
+                    <span class="desc">Stop watching for changes on <code>filename</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.watch">
+                    <h4>fs.watch(filename, [options], listener)</h4>
+                    <span class="desc">Watch for changes on <code>filename</code>, where <code>filename</code> is either a file or a directory.  The returned object is fs.FSWatcher.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#Event">
+                    <h4>Event: &#x27;open&#x27;</h4>
+                    <span class="desc"><code>function (fd) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.createReadStream">
+                    <h4>fs.createReadStream(path, [options])</h4>
+                    <span class="desc">Returns a new ReadStream object (See <code>Readable Stream</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#Event">
+                    <h4>Event: &#x27;open&#x27;</h4>
+                    <span class="desc"><code>function (fd) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#file.bytesWritten">
+                    <h4>file.bytesWritten</h4>
+                    <span class="desc">The number of bytes written so far. Does not include data that is still queued for writing.</span>
+                </a>
+                
+                <a class="toc-item" href="fs.html#fs.createWriteStream">
+                    <h4>fs.createWriteStream(path, [options])</h4>
+                    <span class="desc">Returns a new WriteStream object (See <code>Writable Stream</code>).</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="globals.html">globals</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="globals.html#global">
+                    <h4>global</h4>
+                    <span class="desc">The global namespace object.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#process">
+                    <h4>process</h4>
+                    <span class="desc">The process object. See the process object section.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#console">
+                    <h4>console</h4>
+                    <span class="desc">Used to print to stdout and stderr. See the stdio section.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#Buffer">
+                    <h4>Buffer</h4>
+                    <span class="desc">Used to handle binary data. See the buffers section.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#require">
+                    <h4>require()</h4>
+                    <span class="desc">To require modules. See the Modules section. <code>require</code> isn't actually a global but rather local to each module.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#require.resolve">
+                    <h4>require.resolve()</h4>
+                    <span class="desc">Use the internal <code>require()</code> machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#require.cache">
+                    <h4>require.cache</h4>
+                    <span class="desc">Modules are cached in this object when they are required. By deleting a key value from this object, the next <code>require</code> will reload the module.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#__filename">
+                    <h4>__filename</h4>
+                    <span class="desc">The filename of the code being executed.  This is the resolved absolute path of this code file.  For a main program this is not necessarily the same
+filename used in the command line.  The value inside a module is the path
+to that module file.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#__dirname">
+                    <h4>__dirname</h4>
+                    <span class="desc">The name of the directory that the currently executing script resides in.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#module">
+                    <h4>module</h4>
+                    <span class="desc">A reference to the current module. In particular <code>module.exports</code> is the same as the <code>exports</code> object. See <code>src/node.js</code>
+for more information.
+<code>module</code> isn't actually a global but rather local to each module.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#exports">
+                    <h4>exports</h4>
+                    <span class="desc">An object which is shared between all instances of the current module and made accessible through <code>require()</code>.
+<code>exports</code> is the same as the <code>module.exports</code> object. See <code>src/node.js</code>
+for more information.
+<code>exports</code> isn't actually a global but rather local to each module.</span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#setTimeout">
+                    <h4>setTimeout(cb, ms)</h4>
+                    <span class="desc"><h3>clearTimeout(t) ### setInterval(cb, ms)</h3>
+
+<h3>clearInterval(t)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#clearTimeout">
+                    <h4>clearTimeout(t)</h4>
+                    <span class="desc"><h3>setInterval(cb, ms) ### clearInterval(t)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#setInterval">
+                    <h4>setInterval(cb, ms)</h4>
+                    <span class="desc"><h3>clearInterval(t)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="globals.html#clearInterval">
+                    <h4>clearInterval(t)</h4>
+                    <span class="desc">The timer functions are global variables. See the timers section. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="http.html">http</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;request&#x27;</h4>
+                    <span class="desc"><code>function (request, response) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;connection&#x27;</h4>
+                    <span class="desc"><code>function (socket) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;checkContinue&#x27;</h4>
+                    <span class="desc"><code>function (request, response) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;upgrade&#x27;</h4>
+                    <span class="desc"><code>function (request, socket, head) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;clientError&#x27;</h4>
+                    <span class="desc"><code>function (exception) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#http.createServer">
+                    <h4>http.createServer([requestListener])</h4>
+                    <span class="desc">Returns a new web server object.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#server.listen">
+                    <h4>server.listen(port, [hostname], [callback])</h4>
+                    <span class="desc">Begin accepting connections on the specified port and hostname.  If the hostname is omitted, the server will accept connections directed to any
+IPv4 address (<code>INADDR_ANY</code>).</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#server.listen">
+                    <h4>server.listen(path, [callback])</h4>
+                    <span class="desc">Start a UNIX socket server listening for connections on the given <code>path</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#server.close">
+                    <h4>server.close()</h4>
+                    <span class="desc">Stops the server from accepting new connections.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;data&#x27;</h4>
+                    <span class="desc"><code>function (chunk) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;end&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.method">
+                    <h4>request.method</h4>
+                    <span class="desc">The request method as a string. Read only. Example: <code>'GET'</code>, <code>'DELETE'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.url">
+                    <h4>request.url</h4>
+                    <span class="desc">Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.headers">
+                    <h4>request.headers</h4>
+                    <span class="desc">Read only.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.trailers">
+                    <h4>request.trailers</h4>
+                    <span class="desc">Read only; HTTP trailers (if present). Only populated after the 'end' event.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.httpVersion">
+                    <h4>request.httpVersion</h4>
+                    <span class="desc">The HTTP protocol version as a string. Read only. Examples: <code>'1.1'</code>, <code>'1.0'</code>.
+Also <code>request.httpVersionMajor</code> is the first integer and
+<code>request.httpVersionMinor</code> is the second.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.setEncoding">
+                    <h4>request.setEncoding(encoding=null)</h4>
+                    <span class="desc">Set the encoding for the request body. Either <code>'utf8'</code> or <code>'binary'</code>. Defaults to <code>null</code>, which means that the <code>'data'</code> event will emit a <code>Buffer</code> object..</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.pause">
+                    <h4>request.pause()</h4>
+                    <span class="desc">Pauses request from emitting events.  Useful to throttle back an upload.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.resume">
+                    <h4>request.resume()</h4>
+                    <span class="desc">Resumes a paused request.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.connection">
+                    <h4>request.connection</h4>
+                    <span class="desc">The <code>net.Socket</code> object associated with the connection.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.writeContinue">
+                    <h4>response.writeContinue()</h4>
+                    <span class="desc">Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent. See the checkContinue event on
+<code>Server</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.writeHead">
+                    <h4>response.writeHead(statusCode, [reasonPhrase], [headers])</h4>
+                    <span class="desc">Sends a response header to the request. The status code is a 3-digit HTTP status code, like <code>404</code>. The last argument, <code>headers</code>, are the response headers.
+Optionally one can give a human-readable <code>reasonPhrase</code> as the second
+argument.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.statusCode">
+                    <h4>response.statusCode</h4>
+                    <span class="desc">When using implicit headers (not calling <code>response.writeHead()</code> explicitly), this property controls the status code that will be send to the client when the headers get
+flushed.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.setHeader">
+                    <h4>response.setHeader(name, value)</h4>
+                    <span class="desc">Sets a single header value for implicit headers.  If this header already exists in the to-be-sent headers, its value will be replaced.  Use an array of strings
+here if you need to send multiple headers with the same name.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.getHeader">
+                    <h4>response.getHeader(name)</h4>
+                    <span class="desc">Reads out a header that's already been queued but not sent to the client.  Note that the name is case insensitive.  This can only be called before headers get
+implicitly flushed.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.removeHeader">
+                    <h4>response.removeHeader(name)</h4>
+                    <span class="desc">Removes a header that's queued for implicit sending.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.write">
+                    <h4>response.write(chunk, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">If this method is called and <code>response.writeHead()</code> has not been called, it will switch to implicit header mode and flush the implicit headers.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.addTrailers">
+                    <h4>response.addTrailers(headers)</h4>
+                    <span class="desc">This method adds HTTP trailing headers (a header but at the end of the message) to the response.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.end">
+                    <h4>response.end([data], [encoding])</h4>
+                    <span class="desc">This method signals to the server that all of the response headers and body has been sent; that server should consider this message complete.
+The method, <code>response.end()</code>, MUST be called on each
+response.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#agent.maxSockets">
+                    <h4>agent.maxSockets</h4>
+                    <span class="desc">By default set to 5. Determines how many concurrent sockets the agent can have open per host.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#agent.sockets">
+                    <h4>agent.sockets</h4>
+                    <span class="desc">An object which contains arrays of sockets currently in use by the Agent. Do not modify.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#agent.requests">
+                    <h4>agent.requests</h4>
+                    <span class="desc">An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event &#x27;response&#x27;">
+                    <h4>Event &#x27;response&#x27;</h4>
+                    <span class="desc"><code>function (response) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;socket&#x27;</h4>
+                    <span class="desc"><code>function (socket) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;upgrade&#x27;</h4>
+                    <span class="desc"><code>function (response, socket, head) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;continue&#x27;</h4>
+                    <span class="desc"><code>function ()</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.write">
+                    <h4>request.write(chunk, encoding=&#x27;utf8&#x27;)</h4>
+                    <span class="desc">Sends a chunk of the body.  By calling this method many times, the user can stream a request body to a
+server--in that case it is suggested to use the
+<code>['Transfer-Encoding', 'chunked']</code> header line when
+creating the request.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.end">
+                    <h4>request.end([data], [encoding])</h4>
+                    <span class="desc">Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is
+chunked, this will send the terminating <code>'0\r\n\r\n'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.abort">
+                    <h4>request.abort()</h4>
+                    <span class="desc">Aborts a request.  (New since v0.3.8.)</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.setTimeout">
+                    <h4>request.setTimeout(timeout, [callback])</h4>
+                    <span class="desc">Once a socket is assigned to this request and is connected socket.setTimeout(timeout, [callback])
+will be called.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.setNoDelay">
+                    <h4>request.setNoDelay(noDelay=true)</h4>
+                    <span class="desc">Once a socket is assigned to this request and is connected socket.setNoDelay(noDelay)
+will be called.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#request.setSocketKeepAlive">
+                    <h4>request.setSocketKeepAlive(enable=false, [initialDelay])</h4>
+                    <span class="desc">Once a socket is assigned to this request and is connected socket.setKeepAlive(enable, [initialDelay])
+will be called.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;data&#x27;</h4>
+                    <span class="desc"><code>function (chunk) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;end&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function (err) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.statusCode">
+                    <h4>response.statusCode</h4>
+                    <span class="desc">The 3-digit HTTP response status code. E.G. <code>404</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.httpVersion">
+                    <h4>response.httpVersion</h4>
+                    <span class="desc">The HTTP version of the connected-to server. Probably either <code>'1.1'</code> or <code>'1.0'</code>.
+Also <code>response.httpVersionMajor</code> is the first integer and
+<code>response.httpVersionMinor</code> is the second.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.headers">
+                    <h4>response.headers</h4>
+                    <span class="desc">The response headers object.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.trailers">
+                    <h4>response.trailers</h4>
+                    <span class="desc">The response trailers object. Only populated after the 'end' event.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.setEncoding">
+                    <h4>response.setEncoding(encoding=null)</h4>
+                    <span class="desc">Set the encoding for the response body. Either <code>'utf8'</code>, <code>'ascii'</code>, or <code>'base64'</code>. Defaults to <code>null</code>, which means that the <code>'data'</code> event will emit a <code>Buffer</code> object..</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.pause">
+                    <h4>response.pause()</h4>
+                    <span class="desc">Pauses response from emitting events.  Useful to throttle back a download.</span>
+                </a>
+                
+                <a class="toc-item" href="http.html#response.resume">
+                    <h4>response.resume()</h4>
+                    <span class="desc">Resumes a paused response. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="https.html">https</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="index.html">index</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="modules.html">modules</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="modules.html#Cycles">
+                    <h4>Cycles</h4>
+                    <span class="desc">When there are circular <code>require()</code> calls, a module might not be done being executed when it is returned.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Core Modules">
+                    <h4>Core Modules</h4>
+                    <span class="desc">Node has several modules compiled into the binary.  These modules are described in greater detail elsewhere in this documentation.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#File Modules">
+                    <h4>File Modules</h4>
+                    <span class="desc">If the exact filename is not found, then node will attempt to load the required filename with the added extension of <code>.js</code>, <code>.json</code>, and then <code>.node</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Loading from &#x60;node_modules&#x60; Folders">
+                    <h4>Loading from &#x60;node_modules&#x60; Folders</h4>
+                    <span class="desc">If the module identifier passed to <code>require()</code> is not a native module, and does not begin with <code>'/'</code>, <code>'../'</code>, or <code>'./'</code>, then node starts at the
+parent directory of the current module, and adds <code>/node_modules</code>, and
+attempts to load the module from that location.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Folders as Modules">
+                    <h4>Folders as Modules</h4>
+                    <span class="desc">It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library.
+There are three ways in which a folder may be passed to <code>require()</code> as
+an argument.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Caching">
+                    <h4>Caching</h4>
+                    <span class="desc">Modules are cached after the first time they are loaded.  This means (among other things) that every call to <code>require('foo')</code> will get
+exactly the same object returned, if it would resolve to the same file.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#module.exports">
+                    <h4>module.exports</h4>
+                    <span class="desc">The <code>exports</code> object is created by the Module system. Sometimes this is not acceptable, many want their module to be an instance of some class. To do this
+assign the desired export object to <code>module.exports</code>. For example suppose we
+were making a module called <code>a.js</code></span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#module.require">
+                    <h4>module.require</h4>
+                    <span class="desc">The <code>module.require</code> method provides a way to load a module as if <code>require()</code> was called from the original module.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#All Together...">
+                    <h4>All Together...</h4>
+                    <span class="desc">To get the exact filename that will be loaded when <code>require()</code> is called, use the <code>require.resolve()</code> function.</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Loading from the global folders">
+                    <h4>Loading from the global folders</h4>
+                    <span class="desc">If the <code>NODE_PATH</code> environment variable is set to a colon-delimited list of absolute paths, then node will search those paths for modules if they
+are not found elsewhere.  (Note: On Windows, <code>NODE_PATH</code> is delimited by
+semicolons instead of colons.)</span>
+                </a>
+                
+                <a class="toc-item" href="modules.html#Accessing the main module">
+                    <h4>Accessing the main module</h4>
+                    <span class="desc">When a file is run directly from Node, <code>require.main</code> is set to its <code>module</code>. That means that you can determine whether a file has been run
+directly by testing</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="net.html">net</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="net.html#net.createServer">
+                    <h4>net.createServer([options], [connectionListener])</h4>
+                    <span class="desc">Creates a new TCP server. The <code>connectionListener</code> argument is automatically set as a listener for the 'connection'
+event.</span>
+                </a>
+                
+                <a class="toc-item" href="net.html#net.connect">
+                    <h4>net.connect(arguments...)</h4>
+                    <span class="desc"><h3>net.createConnection(arguments...)</h3></span>
+                </a>
+                
+                <a class="toc-item" href="net.html#net.createConnection">
+                    <h4>net.createConnection(arguments...)</h4>
+                    <span class="desc">Construct a new socket object and opens a socket to the given location. When the socket is established the 'connect' event will be
+emitted.</span>
+                </a>
+                
+                <a class="toc-item" href="net.html#net.Server">
+                    <h4>net.Server</h4>
+                    <span class="desc">This class is used to create a TCP or UNIX server. A server is a <code>net.Socket</code> that can listen for new incoming connections.</span>
+                </a>
+                
+                <a class="toc-item" href="net.html#net.Socket">
+                    <h4>net.Socket</h4>
+                    <span class="desc">This object is an abstraction of a TCP or UNIX socket.  <code>net.Socket</code> instances implement a duplex Stream interface.  They can be created by the
+user and used as a client (with <code>connect()</code>) or they can be created by Node
+and passed to the user through the <code>'connection'</code> event of a server.</span>
+                </a>
+                
+                <a class="toc-item" href="net.html#net.isIP">
+                    <h4>net.isIP</h4>
+                    <span class="desc"><h4>net.isIP(input)</h4></span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="os.html">os</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="os.html#os.hostname">
+                    <h4>os.hostname()</h4>
+                    <span class="desc">Returns the hostname of the operating system.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.type">
+                    <h4>os.type()</h4>
+                    <span class="desc">Returns the operating system name.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.platform">
+                    <h4>os.platform()</h4>
+                    <span class="desc">Returns the operating system platform.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.arch">
+                    <h4>os.arch()</h4>
+                    <span class="desc">Returns the operating system CPU architecture.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.release">
+                    <h4>os.release()</h4>
+                    <span class="desc">Returns the operating system release.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.uptime">
+                    <h4>os.uptime()</h4>
+                    <span class="desc">Returns the system uptime in seconds.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.loadavg">
+                    <h4>os.loadavg()</h4>
+                    <span class="desc">Returns an array containing the 1, 5, and 15 minute load averages.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.totalmem">
+                    <h4>os.totalmem()</h4>
+                    <span class="desc">Returns the total amount of system memory in bytes.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.freemem">
+                    <h4>os.freemem()</h4>
+                    <span class="desc">Returns the amount of free system memory in bytes.</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.cpus">
+                    <h4>os.cpus()</h4>
+                    <span class="desc">Returns an array of objects containing information about each CPU/core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).</span>
+                </a>
+                
+                <a class="toc-item" href="os.html#os.networkInterfaces">
+                    <h4>os.networkInterfaces()</h4>
+                    <span class="desc">Get a list of network interfaces:</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="path.html">path</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="path.html#path.normalize">
+                    <h4>path.normalize(p)</h4>
+                    <span class="desc">Normalize a string path, taking care of <code>'..'</code> and <code>'.'</code> parts.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.join">
+                    <h4>path.join([path1], [path2], [...])</h4>
+                    <span class="desc">Join all arguments together and normalize the resulting path. Non-string arguments are ignored.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.resolve">
+                    <h4>path.resolve([from ...], to)</h4>
+                    <span class="desc">Resolves <code>to</code> to an absolute path.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.relative">
+                    <h4>path.relative(from, to)</h4>
+                    <span class="desc">Solve the relative path from <code>from</code> to <code>to</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.dirname">
+                    <h4>path.dirname(p)</h4>
+                    <span class="desc">Return the directory name of a path.  Similar to the Unix <code>dirname</code> command.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.basename">
+                    <h4>path.basename(p, [ext])</h4>
+                    <span class="desc">Return the last portion of a path.  Similar to the Unix <code>basename</code> command.</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.extname">
+                    <h4>path.extname(p)</h4>
+                    <span class="desc">Return the extension of the path, from the last '.' to end of string in the last portion of the path.  If there is no '.' in the last portion
+of the path or the first character of it is '.', then it returns
+an empty string.  Examples:</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.exists">
+                    <h4>path.exists(p, [callback])</h4>
+                    <span class="desc">Test whether or not the given path exists by checking with the file system. Then call the <code>callback</code> argument with either true or false.  Example:</span>
+                </a>
+                
+                <a class="toc-item" href="path.html#path.existsSync">
+                    <h4>path.existsSync(p)</h4>
+                    <span class="desc">Synchronous version of <code>path.exists</code>. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="process.html">process</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="process.html#Event">
+                    <h4>Event: &#x27;exit&#x27;</h4>
+                    <span class="desc"><code>function () {}</code></span>
+                </a>
+                
+                <a class="toc-item" href="process.html#Event">
+                    <h4>Event: &#x27;uncaughtException&#x27;</h4>
+                    <span class="desc"><code>function (err) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="process.html#Signal Events">
+                    <h4>Signal Events</h4>
+                    <span class="desc"><code>function () {}</code></span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.stdout">
+                    <h4>process.stdout</h4>
+                    <span class="desc">A <code>Writable Stream</code> to <code>stdout</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.stderr">
+                    <h4>process.stderr</h4>
+                    <span class="desc">A writable stream to stderr.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.stdin">
+                    <h4>process.stdin</h4>
+                    <span class="desc">A <code>Readable Stream</code> for stdin. The stdin stream is paused by default, so one must call <code>process.stdin.resume()</code> to read from it.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.argv">
+                    <h4>process.argv</h4>
+                    <span class="desc">An array containing the command line arguments.  The first element will be 'node', the second element will be the name of the JavaScript file.  The
+next elements will be any additional command line arguments.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.execPath">
+                    <h4>process.execPath</h4>
+                    <span class="desc">This is the absolute pathname of the executable that started the process.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.chdir">
+                    <h4>process.chdir(directory)</h4>
+                    <span class="desc">Changes the current working directory of the process or throws an exception if that fails.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.cwd">
+                    <h4>process.cwd()</h4>
+                    <span class="desc">Returns the current working directory of the process.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.env">
+                    <h4>process.env</h4>
+                    <span class="desc">An object containing the user environment. See environ(7).</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.exit">
+                    <h4>process.exit(code=0)</h4>
+                    <span class="desc">Ends the process with the specified <code>code</code>.  If omitted, exit uses the 'success' code <code>0</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.getgid">
+                    <h4>process.getgid()</h4>
+                    <span class="desc">Gets the group identity of the process. (See getgid(2).) This is the numerical group id, not the group name.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.setgid">
+                    <h4>process.setgid(id)</h4>
+                    <span class="desc">Sets the group identity of the process. (See setgid(2).)  This accepts either a numerical ID or a groupname string. If a groupname is specified, this method
+blocks while resolving it to a numerical ID.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.getuid">
+                    <h4>process.getuid()</h4>
+                    <span class="desc">Gets the user identity of the process. (See getuid(2).) This is the numerical userid, not the username.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.setuid">
+                    <h4>process.setuid(id)</h4>
+                    <span class="desc">Sets the user identity of the process. (See setuid(2).)  This accepts either a numerical ID or a username string.  If a username is specified, this method
+blocks while resolving it to a numerical ID.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.version">
+                    <h4>process.version</h4>
+                    <span class="desc">A compiled-in property that exposes <code>NODE_VERSION</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.versions">
+                    <h4>process.versions</h4>
+                    <span class="desc">A property exposing version strings of node and its dependencies.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.installPrefix">
+                    <h4>process.installPrefix</h4>
+                    <span class="desc">A compiled-in property that exposes <code>NODE_PREFIX</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.kill">
+                    <h4>process.kill(pid, signal=&#x27;SIGTERM&#x27;)</h4>
+                    <span class="desc">Send a signal to a process. <code>pid</code> is the process id and <code>signal</code> is the string describing the signal to send.  Signal names are strings like
+'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
+See kill(2) for more information.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.pid">
+                    <h4>process.pid</h4>
+                    <span class="desc">The PID of the process.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.title">
+                    <h4>process.title</h4>
+                    <span class="desc">Getter/setter to set what is displayed in 'ps'.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.arch">
+                    <h4>process.arch</h4>
+                    <span class="desc">What processor architecture you're running on: <code>'arm'</code>, <code>'ia32'</code>, or <code>'x64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.platform">
+                    <h4>process.platform</h4>
+                    <span class="desc">What platform you're running on. <code>'linux2'</code>, <code>'darwin'</code>, etc.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.memoryUsage">
+                    <h4>process.memoryUsage()</h4>
+                    <span class="desc">Returns an object describing the memory usage of the Node process measured in bytes.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.nextTick">
+                    <h4>process.nextTick(callback)</h4>
+                    <span class="desc">On the next loop around the event loop call this callback. This is <em>not</em> a simple alias to <code>setTimeout(fn, 0)</code>, it's much more
+efficient.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.umask">
+                    <h4>process.umask([mask])</h4>
+                    <span class="desc">Sets or reads the process's file mode creation mask. Child processes inherit the mask from the parent process. Returns the old mask if <code>mask</code> argument is
+given, otherwise returns the current mask.</span>
+                </a>
+                
+                <a class="toc-item" href="process.html#process.uptime">
+                    <h4>process.uptime()</h4>
+                    <span class="desc">Number of seconds Node has been running. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="querystring.html">querystring</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="querystring.html#querystring.stringify">
+                    <h4>querystring.stringify(obj, sep=&#x27;&amp;&#x27;, eq=&#x27;=&#x27;)</h4>
+                    <span class="desc">Serialize an object to a query string. Optionally override the default separator and assignment characters.</span>
+                </a>
+                
+                <a class="toc-item" href="querystring.html#querystring.parse">
+                    <h4>querystring.parse(str, sep=&#x27;&amp;&#x27;, eq=&#x27;=&#x27;)</h4>
+                    <span class="desc">Deserialize a query string to an object. Optionally override the default separator and assignment characters.</span>
+                </a>
+                
+                <a class="toc-item" href="querystring.html#querystring.escape">
+                    <h4>querystring.escape</h4>
+                    <span class="desc">The escape function used by <code>querystring.stringify</code>, provided so that it could be overridden if necessary.</span>
+                </a>
+                
+                <a class="toc-item" href="querystring.html#querystring.unescape">
+                    <h4>querystring.unescape</h4>
+                    <span class="desc">The unescape function used by <code>querystring.parse</code>, provided so that it could be overridden if necessary.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="readline.html">readline</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="readline.html#rl.createInterface">
+                    <h4>rl.createInterface(input, output, completer)</h4>
+                    <span class="desc">Takes two streams and creates a readline interface. The <code>completer</code> function is used for autocompletion. When given a substring, it returns <code>[[substr1,
+substr2, ...], originalsubstring]</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.setPrompt">
+                    <h4>rl.setPrompt(prompt, length)</h4>
+                    <span class="desc">Sets the prompt, for example when you run <code>node</code> on the command line, you see <code>&gt;</code>, which is node's prompt.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.prompt">
+                    <h4>rl.prompt()</h4>
+                    <span class="desc">Readies readline for input from the user, putting the current <code>setPrompt</code> options on a new line, giving the user a new spot to write.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.question">
+                    <h4>rl.question(query, callback)</h4>
+                    <span class="desc">Prepends the prompt with <code>query</code> and invokes <code>callback</code> with the user's response. Displays the query to the user, and then invokes <code>callback</code> with the
+user's response after it has been typed.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.close">
+                    <h4>rl.close()</h4>
+                    <span class="desc">Closes tty.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.pause">
+                    <h4>rl.pause()</h4>
+                    <span class="desc">Pauses tty.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.resume">
+                    <h4>rl.resume()</h4>
+                    <span class="desc">Resumes tty.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#rl.write">
+                    <h4>rl.write()</h4>
+                    <span class="desc">Writes to tty.</span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#Event">
+                    <h4>Event: &#x27;line&#x27;</h4>
+                    <span class="desc"><code>function (line) {}</code></span>
+                </a>
+                
+                <a class="toc-item" href="readline.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () {}</code></span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="repl.html">repl</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="repl.html#repl.start">
+                    <h4>repl.start(prompt=&#x27;&gt; &#x27;, stream=process.stdin, eval=eval, useGlobal=false, ignoreUndefined=false)</h4>
+                    <span class="desc">Starts a REPL with <code>prompt</code> as the prompt and <code>stream</code> for all I/O.  <code>prompt</code> is optional and defaults to <code>&gt;</code>.  <code>stream</code> is optional and defaults to
+<code>process.stdin</code>. <code>eval</code> is optional too and defaults to async wrapper for <code>eval</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="repl.html#REPL Features">
+                    <h4>REPL Features</h4>
+                    <span class="desc">Inside the REPL, Control+D will exit.  Multi-line expressions can be input. Tab completion is supported for both global and local variables.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="stdio.html">stdio</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="stdio.html#console.log">
+                    <h4>console.log()</h4>
+                    <span class="desc">Prints to stdout with newline. This function can take multiple arguments in a <code>printf()</code>-like way. Example:</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.info">
+                    <h4>console.info()</h4>
+                    <span class="desc">Same as <code>console.log</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.warn">
+                    <h4>console.warn()</h4>
+                    <span class="desc"><h3>console.error()</h3></span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.error">
+                    <h4>console.error()</h4>
+                    <span class="desc">Same as <code>console.log</code> but prints to stderr.</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.dir">
+                    <h4>console.dir(obj)</h4>
+                    <span class="desc">Uses <code>util.inspect</code> on <code>obj</code> and prints resulting string to stderr.</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.time">
+                    <h4>console.time(label)</h4>
+                    <span class="desc">Mark a time.</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.timeEnd">
+                    <h4>console.timeEnd(label)</h4>
+                    <span class="desc">Finish timer, record output. Example</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.trace">
+                    <h4>console.trace()</h4>
+                    <span class="desc">Print a stack trace to stderr of the current position.</span>
+                </a>
+                
+                <a class="toc-item" href="stdio.html#console.assert">
+                    <h4>console.assert()</h4>
+                    <span class="desc">Same as <code>assert.ok()</code>. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="streams.html">streams</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;data&#x27;</h4>
+                    <span class="desc"><code>function (data) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;end&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;error&#x27;</h4>
+                    <span class="desc"><code>function (exception) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.readable">
+                    <h4>stream.readable</h4>
+                    <span class="desc">A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code> occurred, the stream came to an <code>'end'</code>, or <code>destroy()</code> was called.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.setEncoding">
+                    <h4>stream.setEncoding(encoding)</h4>
+                    <span class="desc">Makes the data event emit a string instead of a <code>Buffer</code>. <code>encoding</code> can be <code>'utf8'</code>, <code>'ascii'</code>, or <code>'base64'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.pause">
+                    <h4>stream.pause()</h4>
+                    <span class="desc">Pauses the incoming <code>'data'</code> events.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.resume">
+                    <h4>stream.resume()</h4>
+                    <span class="desc">Resumes the incoming <code>'data'</code> events after a <code>pause()</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.destroy">
+                    <h4>stream.destroy()</h4>
+                    <span class="desc">Closes the underlying file descriptor. Stream will not emit any more events.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.destroySoon">
+                    <h4>stream.destroySoon()</h4>
+                    <span class="desc">After the write queue is drained, close the file descriptor.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.pipe">
+                    <h4>stream.pipe(destination, [options])</h4>
+                    <span class="desc">This is a <code>Stream.prototype</code> method available on all <code>Stream</code>s.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;drain&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;error&#x27;</h4>
+                    <span class="desc"><code>function (exception) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;close&#x27;</h4>
+                    <span class="desc"><code>function () { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#Event">
+                    <h4>Event: &#x27;pipe&#x27;</h4>
+                    <span class="desc"><code>function (src) { }</code></span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.writable">
+                    <h4>stream.writable</h4>
+                    <span class="desc">A boolean that is <code>true</code> by default, but turns <code>false</code> after an <code>'error'</code> occurred or <code>end()</code> / <code>destroy()</code> was called.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.write">
+                    <h4>stream.write(string, encoding=&#x27;utf8&#x27;, [fd])</h4>
+                    <span class="desc">Writes <code>string</code> with the given <code>encoding</code> to the stream.  Returns <code>true</code> if the string has been flushed to the kernel buffer.  Returns <code>false</code> to
+indicate that the kernel buffer is full, and the data will be sent out in
+the future. The <code>'drain'</code> event will indicate when the kernel buffer is
+empty again. The <code>encoding</code> defaults to <code>'utf8'</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.write">
+                    <h4>stream.write(buffer)</h4>
+                    <span class="desc">Same as the above except with a raw buffer.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.end">
+                    <h4>stream.end()</h4>
+                    <span class="desc">Terminates the stream with EOF or FIN. This call will allow queued write data to be sent before closing the stream.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.end">
+                    <h4>stream.end(string, encoding)</h4>
+                    <span class="desc">Sends <code>string</code> with the given <code>encoding</code> and terminates the stream with EOF or FIN. This is useful to reduce the number of packets sent.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.end">
+                    <h4>stream.end(buffer)</h4>
+                    <span class="desc">Same as above but with a <code>buffer</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.destroy">
+                    <h4>stream.destroy()</h4>
+                    <span class="desc">Closes the underlying file descriptor. Stream will not emit any more events. Any queued write data will not be sent.</span>
+                </a>
+                
+                <a class="toc-item" href="streams.html#stream.destroySoon">
+                    <h4>stream.destroySoon()</h4>
+                    <span class="desc">After the write queue is drained, close the file descriptor. <code>destroySoon()</code> can still destroy straight away, as long as there is no data left in the queue
+for writes.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="string_decoder.html">string_decoder</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="synopsis.html">synopsis</a></h3>
+            <div class="toc-list">
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="timers.html">timers</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="timers.html#setTimeout">
+                    <h4>setTimeout(callback, delay, [arg], [...])</h4>
+                    <span class="desc">To schedule execution of a one-time <code>callback</code> after <code>delay</code> milliseconds. Returns a <code>timeoutId</code> for possible use with <code>clearTimeout()</code>. Optionally you can
+also pass arguments to the callback.</span>
+                </a>
+                
+                <a class="toc-item" href="timers.html#clearTimeout">
+                    <h4>clearTimeout(timeoutId)</h4>
+                    <span class="desc">Prevents a timeout from triggering.</span>
+                </a>
+                
+                <a class="toc-item" href="timers.html#setInterval">
+                    <h4>setInterval(callback, delay, [arg], [...])</h4>
+                    <span class="desc">To schedule the repeated execution of <code>callback</code> every <code>delay</code> milliseconds. Returns a <code>intervalId</code> for possible use with <code>clearInterval()</code>. Optionally
+you can also pass arguments to the callback.</span>
+                </a>
+                
+                <a class="toc-item" href="timers.html#clearInterval">
+                    <h4>clearInterval(intervalId)</h4>
+                    <span class="desc">Stops a interval from triggering. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="tls.html">tls</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="tls.html#STARTTLS">
+                    <h4>STARTTLS</h4>
+                    <span class="desc">In the v0.4 branch no function exists for starting a TLS session on an already existing TCP connection.  This is possible it just requires a bit of
+work. The technique is to use <code>tls.createSecurePair()</code> which returns two
+streams: an encrypted stream and a cleartext stream. The encrypted stream is
+then piped to the socket, the cleartext stream is what the user interacts with
+thereafter.</span>
+                </a>
+                
+                <a class="toc-item" href="tls.html#NPN and SNI">
+                    <h4>NPN and SNI</h4>
+                    <span class="desc">NPN (Next Protocol Negotitation) and SNI (Server Name Indication) are TLS handshake extensions allowing you:</span>
+                </a>
+                
+                <a class="toc-item" href="tls.html#pair = tls.createSecurePair">
+                    <h4>pair = tls.createSecurePair([credentials], [isServer], [requestCert], [rejectUnauthorized])</h4>
+                    <span class="desc">Creates a new secure pair object with two streams, one of which reads/writes encrypted data, and one reads/writes cleartext data.
+Generally the encrypted one is piped to/from an incoming encrypted data stream,
+and the cleartext one is used as a replacement for the initial encrypted stream.</span>
+                </a>
+                
+                <a class="toc-item" href="tls.html#tls.Server">
+                    <h4>tls.Server</h4>
+                    <span class="desc">This class is a subclass of <code>net.Server</code> and has the same methods on it. Instead of accepting just raw TCP connections, this accepts encrypted
+connections using TLS or SSL.</span>
+                </a>
+                
+                <a class="toc-item" href="tls.html#tls.CleartextStream">
+                    <h4>tls.CleartextStream</h4>
+                    <span class="desc">This is a stream on top of the <em>Encrypted</em> stream that makes it possible to read/write an encrypted data as a cleartext data.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="tty.html">tty</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="tty.html#tty.isatty">
+                    <h4>tty.isatty(fd)</h4>
+                    <span class="desc">Returns <code>true</code> or <code>false</code> depending on if the <code>fd</code> is associated with a terminal.</span>
+                </a>
+                
+                <a class="toc-item" href="tty.html#tty.setRawMode">
+                    <h4>tty.setRawMode(mode)</h4>
+                    <span class="desc"><code>mode</code> should be <code>true</code> or <code>false</code>. This sets the properties of the current process's stdin fd to act either as a raw device or default.</span>
+                </a>
+                
+                <a class="toc-item" href="tty.html#tty.setWindowSize">
+                    <h4>tty.setWindowSize(fd, row, col)</h4>
+                    <span class="desc">This function was removed in v0.6.0.</span>
+                </a>
+                
+                <a class="toc-item" href="tty.html#tty.getWindowSize">
+                    <h4>tty.getWindowSize(fd)</h4>
+                    <span class="desc">This function was removed in v0.6.0. Use <code>process.stdout.getWindowSize()</code> instead.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="url.html">url</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="url.html#url.parse">
+                    <h4>url.parse(urlStr, parseQueryString=false, slashesDenoteHost=false)</h4>
+                    <span class="desc">Take a URL string, and return an object.</span>
+                </a>
+                
+                <a class="toc-item" href="url.html#url.format">
+                    <h4>url.format(urlObj)</h4>
+                    <span class="desc">Take a parsed URL object, and return a formatted URL string.</span>
+                </a>
+                
+                <a class="toc-item" href="url.html#url.resolve">
+                    <h4>url.resolve(from, to)</h4>
+                    <span class="desc">Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag. </span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="util.html">util</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="util.html#util.format">
+                    <h4>util.format()</h4>
+                    <span class="desc">Returns a formatted string using the first argument as a <code>printf</code>-like format.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.debug">
+                    <h4>util.debug(string)</h4>
+                    <span class="desc">A synchronous output function. Will block the process and output <code>string</code> immediately to <code>stderr</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.log">
+                    <h4>util.log(string)</h4>
+                    <span class="desc">Output with timestamp on <code>stdout</code>.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.inspect">
+                    <h4>util.inspect(object, showHidden=false, depth=2)</h4>
+                    <span class="desc">Return a string representation of <code>object</code>, which is useful for debugging.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.isArray">
+                    <h4>util.isArray(object)</h4>
+                    <span class="desc">Returns <code>true</code> if the given "object" is an <code>Array</code>. <code>false</code> otherwise.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.isRegExp">
+                    <h4>util.isRegExp(object)</h4>
+                    <span class="desc">Returns <code>true</code> if the given "object" is a <code>RegExp</code>. <code>false</code> otherwise.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.isDate">
+                    <h4>util.isDate(object)</h4>
+                    <span class="desc">Returns <code>true</code> if the given "object" is a <code>Date</code>. <code>false</code> otherwise.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.isError">
+                    <h4>util.isError(object)</h4>
+                    <span class="desc">Returns <code>true</code> if the given "object" is an <code>Error</code>. <code>false</code> otherwise.</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.pump">
+                    <h4>util.pump(readableStream, writableStream, [callback])</h4>
+                    <span class="desc">Experimental</span>
+                </a>
+                
+                <a class="toc-item" href="util.html#util.inherits">
+                    <h4>util.inherits(constructor, superConstructor)</h4>
+                    <span class="desc">Inherit the prototype methods from one constructor
+into another.  The prototype of <code>constructor</code> will be set to a new
+object created from <code>superConstructor</code>.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="vm.html">vm</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="vm.html#vm.runInThisContext">
+                    <h4>vm.runInThisContext(code, [filename])</h4>
+                    <span class="desc"><code>vm.runInThisContext()</code> compiles <code>code</code> as if it were loaded from <code>filename</code>, runs it and returns the result. Running code does not have access to local scope. <code>filename</code> is optional.</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#vm.runInNewContext">
+                    <h4>vm.runInNewContext(code, [sandbox], [filename])</h4>
+                    <span class="desc"><code>vm.runInNewContext</code> compiles <code>code</code> to run in <code>sandbox</code> as if it were loaded from <code>filename</code>, then runs it and returns the result. Running code does not have access to local scope and
+the object <code>sandbox</code> will be used as the global object for <code>code</code>.
+<code>sandbox</code> and <code>filename</code> are optional.</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#vm.runInContext">
+                    <h4>vm.runInContext(code, context, [filename])</h4>
+                    <span class="desc"><code>vm.runInContext</code> compiles <code>code</code> to run in context <code>context</code> as if it were loaded from <code>filename</code>, then runs it and returns the result. A (V8) context comprises a global object, together with a
+set of built-in objects and functions. Running code does not have access to local scope and
+the global object held within <code>context</code> will be used as the global object for <code>code</code>.
+<code>filename</code> is optional.</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#vm.createContext">
+                    <h4>vm.createContext([initSandbox])</h4>
+                    <span class="desc"><code>vm.createContext</code> creates a new context which is suitable for use as the 2nd argument of a subsequent call to <code>vm.runInContext</code>. A (V8) context comprises a global object together with a set of
+build-in objects and functions. The optional argument <code>initSandbox</code> will be shallow-copied
+to seed the initial contents of the global object used by the context.</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#vm.createScript">
+                    <h4>vm.createScript(code, [filename])</h4>
+                    <span class="desc"><code>createScript</code> compiles <code>code</code> as if it were loaded from <code>filename</code>, but does not run it. Instead, it returns a <code>vm.Script</code> object representing this compiled code.
+This script can be run later many times using methods below.
+The returned script is not bound to any global object.
+It is bound before each run, just for that run. <code>filename</code> is optional.</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#script.runInThisContext">
+                    <h4>script.runInThisContext()</h4>
+                    <span class="desc">Similar to <code>vm.runInThisContext</code> but a method of a precompiled <code>Script</code> object. <code>script.runInThisContext</code> runs the code of <code>script</code> and returns the result.
+Running code does not have access to local scope, but does have access to the <code>global</code> object
+(v8: in actual context).</span>
+                </a>
+                
+                <a class="toc-item" href="vm.html#script.runInNewContext">
+                    <h4>script.runInNewContext([sandbox])</h4>
+                    <span class="desc">Similar to <code>vm.runInNewContext</code> a method of a precompiled <code>Script</code> object. <code>script.runInNewContext</code> runs the code of <code>script</code> with <code>sandbox</code> as the global object and returns the result.
+Running code does not have access to local scope. <code>sandbox</code> is optional.</span>
+                </a>
+                
+            </div>
+        
+            <h3 class="toc-mod-title"><a href="zlib.html">zlib</a></h3>
+            <div class="toc-list">
+                
+                <a class="toc-item" href="zlib.html#Examples">
+                    <h4>Examples</h4>
+                    <span class="desc">Compressing or decompressing a file can be done by piping an fs.ReadStream into a zlib stream, then into an fs.WriteStream.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#Constants">
+                    <h4>Constants</h4>
+                    <span class="desc">All of the constants defined in zlib.h are also defined on <code>require('zlib')</code>.  They are described in more detail in the zlib
+documentation.  See http://zlib.net/manual.html#Constants
+for more details.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createGzip">
+                    <h4>zlib.createGzip([options])</h4>
+                    <span class="desc">Returns a new Gzip object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createGunzip">
+                    <h4>zlib.createGunzip([options])</h4>
+                    <span class="desc">Returns a new Gunzip object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createDeflate">
+                    <h4>zlib.createDeflate([options])</h4>
+                    <span class="desc">Returns a new Deflate object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createInflate">
+                    <h4>zlib.createInflate([options])</h4>
+                    <span class="desc">Returns a new Inflate object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createDeflateRaw">
+                    <h4>zlib.createDeflateRaw([options])</h4>
+                    <span class="desc">Returns a new DeflateRaw object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createInflateRaw">
+                    <h4>zlib.createInflateRaw([options])</h4>
+                    <span class="desc">Returns a new InflateRaw object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.createUnzip">
+                    <h4>zlib.createUnzip([options])</h4>
+                    <span class="desc">Returns a new Unzip object with an options.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.Gzip">
+                    <h4>zlib.Gzip</h4>
+                    <span class="desc">Compress data using gzip.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.Gunzip">
+                    <h4>zlib.Gunzip</h4>
+                    <span class="desc">Decompress a gzip stream.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.Deflate">
+                    <h4>zlib.Deflate</h4>
+                    <span class="desc">Compress data using deflate.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.Inflate">
+                    <h4>zlib.Inflate</h4>
+                    <span class="desc">Decompress a deflate stream.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.DeflateRaw">
+                    <h4>zlib.DeflateRaw</h4>
+                    <span class="desc">Compress data using deflate, and do not append a zlib header.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.InflateRaw">
+                    <h4>zlib.InflateRaw</h4>
+                    <span class="desc">Decompress a raw deflate stream.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.Unzip">
+                    <h4>zlib.Unzip</h4>
+                    <span class="desc">Decompress either a Gzip- or Deflate-compressed stream by auto-detecting the header.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.deflate">
+                    <h4>zlib.deflate(buf, callback)</h4>
+                    <span class="desc">Compress a string with Deflate.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.deflateRaw">
+                    <h4>zlib.deflateRaw(buf, callback)</h4>
+                    <span class="desc">Compress a string with DeflateRaw.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.gzip">
+                    <h4>zlib.gzip(buf, callback)</h4>
+                    <span class="desc">Compress a string with Gzip.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.gunzip">
+                    <h4>zlib.gunzip(buf, callback)</h4>
+                    <span class="desc">Decompress a raw Buffer with Gunzip.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.inflate">
+                    <h4>zlib.inflate(buf, callback)</h4>
+                    <span class="desc">Decompress a raw Buffer with Inflate.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.inflateRaw">
+                    <h4>zlib.inflateRaw(buf, callback)</h4>
+                    <span class="desc">Decompress a raw Buffer with InflateRaw.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#zlib.unzip">
+                    <h4>zlib.unzip(buf, callback)</h4>
+                    <span class="desc">Decompress a raw Buffer with Unzip.</span>
+                </a>
+                
+                <a class="toc-item" href="zlib.html#Memory Usage Tuning">
+                    <h4>Memory Usage Tuning</h4>
+                    <span class="desc">From <code>zlib/zconf.h</code>, modified to node's usage:</span>
+                </a>
+                
+            </div>
+        
+    </div>
+</div>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>path.normalize(p) : nodejs API</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets_/css/shCore.css">
+        <link rel="stylesheet" href="assets_/css/shThemeDefault.css">
+        <link rel="stylesheet" href="assets_/css/main.css">
+    </head>
+    <body data-root-path="">
+        <div id="wrapper">
+            <div id="content">
+
+<ul id="topnav">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="#toc">TOC</a></li>
+</ul>
+<h2>Path</h2>
+
+<p>This module contains utilities for handling and transforming file
+paths.  Almost all these methods perform only string transformations.
+The file system is not consulted to check whether paths are valid.</p>
+
+<p><code>path.exists</code> and <code>path.existsSync</code> are the exceptions, and should
+logically be found in the fs module as they do access the file system.</p>
+
+<p>Use <code>require('path')</code> to use this module.  The following methods are provided:</p>
+
+<h3>Table of Contents <a href="#toc" name="toc" class="deep-link">#</a></h3>
+
+<ul>
+<li><a href="#path.normalize">path.normalize()</a></li>
+<li><a href="#path.join">path.join()</a></li>
+<li><a href="#path.resolve">path.resolve()</a></li>
+<li><a href="#path.relative">path.relative()</a></li>
+<li><a href="#path.dirname">path.dirname()</a></li>
+<li><a href="#path.basename">path.basename()</a></li>
+<li><a href="#path.extname">path.extname()</a></li>
+<li><a href="#path.exists">path.exists()</a></li>
+<li><a href="#path.existsSync">path.existsSync()</a></li>
+</ul>
+
+<h3>path.normalize(p) <a href="#path.normalize" id="path.normalize" class="deep-link">#</a></h3>
+
+<p>Normalize a string path, taking care of <code>'..'</code> and <code>'.'</code> parts.</p>
+
+<p>When multiple slashes are found, they're replaced by a single one;
+when the path contains a trailing slash, it is preserved.
+On windows backslashes are used.</p>
+
+<p>Example:</p>
+
+<pre><code>path.normalize('/foo/bar//baz/asdf/quux/..')
+// returns
+'/foo/bar/baz/asdf'
+</code></pre>
+
+<h3>path.join([path1], [path2], [...]) <a href="#path.join" id="path.join" class="deep-link">#</a></h3>
+
+<p>Join all arguments together and normalize the resulting path.
+Non-string arguments are ignored.</p>
+
+<p>Example:</p>
+
+<pre><code>path.join('/foo', 'bar', 'baz/asdf', 'quux', '..')
+// returns
+'/foo/bar/baz/asdf'
+
+path.join('foo', {}, 'bar')
+// returns
+'foo/bar'
+</code></pre>
+
+<h3>path.resolve([from ...], to) <a href="#path.resolve" id="path.resolve" class="deep-link">#</a></h3>
+
+<p>Resolves <code>to</code> to an absolute path.</p>
+
+<p>If <code>to</code> isn't already absolute <code>from</code> arguments are prepended in right to left
+order, until an absolute path is found. If after using all <code>from</code> paths still
+no absolute path is found, the current working directory is used as well. The
+resulting path is normalized, and trailing slashes are removed unless the path
+gets resolved to the root directory. Non-string arguments are ignored.</p>
+
+<p>Another way to think of it is as a sequence of <code>cd</code> commands in a shell.</p>
+
+<pre><code>path.resolve('foo/bar', '/tmp/file/', '..', 'a/../subfile')
+</code></pre>
+
+<p>Is similar to:</p>
+
+<pre><code>cd foo/bar
+cd /tmp/file/
+cd ..
+cd a/../subfile
+pwd
+</code></pre>
+
+<p>The difference is that the different paths don't need to exist and may also be
+files.</p>
+
+<p>Examples:</p>
+
+<pre><code>path.resolve('/foo/bar', './baz')
+// returns
+'/foo/bar/baz'
+
+path.resolve('/foo/bar', '/tmp/file/')
+// returns
+'/tmp/file'
+
+path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif')
+// if currently in /home/myself/node, it returns
+'/home/myself/node/wwwroot/static_files/gif/image.gif'
+</code></pre>
+
+<h3>path.relative(from, to) <a href="#path.relative" id="path.relative" class="deep-link">#</a></h3>
+
+<p>Solve the relative path from <code>from</code> to <code>to</code>.</p>
+
+<p>At times we have two absolute paths, and we need to derive the relative
+path from one to the other.  This is actually the reverse transform of
+<code>path.resolve</code>, which means we see that:</p>
+
+<pre><code>path.resolve(from, path.relative(from, to)) == path.resolve(to)
+</code></pre>
+
+<p>Examples:</p>
+
+<pre><code>path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb')
+// returns
+'..\\..\\impl\\bbb'
+
+path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb')
+// returns
+'../../impl/bbb'
+</code></pre>
+
+<h3>path.dirname(p) <a href="#path.dirname" id="path.dirname" class="deep-link">#</a></h3>
+
+<p>Return the directory name of a path.  Similar to the Unix <code>dirname</code> command.</p>
+
+<p>Example:</p>
+
+<pre><code>path.dirname('/foo/bar/baz/asdf/quux')
+// returns
+'/foo/bar/baz/asdf'
+</code></pre>
+
+<h3>path.basename(p, [ext]) <a href="#path.basename" id="path.basename" class="deep-link">#</a></h3>
+
+<p>Return the last portion of a path.  Similar to the Unix <code>basename</code> command.</p>
+
+<p>Example:</p>
+
+<pre><code>path.basename('/foo/bar/baz/asdf/quux.html')
+// returns
+'quux.html'
+
+path.basename('/foo/bar/baz/asdf/quux.html', '.html')
+// returns
+'quux'
+</code></pre>
+
+<h3>path.extname(p) <a href="#path.extname" id="path.extname" class="deep-link">#</a></h3>
+
+<p>Return the extension of the path, from the last '.' to end of string
+in the last portion of the path.  If there is no '.' in the last portion
+of the path or the first character of it is '.', then it returns
+an empty string.  Examples:</p>
+
+<pre><code>path.extname('index.html')
+// returns
+'.html'
+
+path.extname('index.')
+// returns
+'.'
+
+path.extname('index')
+// returns
+''
+</code></pre>
+
+<h3>path.exists(p, [callback]) <a href="#path.exists" id="path.exists" class="deep-link">#</a></h3>
+
+<p>Test whether or not the given path exists by checking with the file system.
+Then call the <code>callback</code> argument with either true or false.  Example:</p>
+
+<pre><code>path.exists('/etc/passwd', function (exists) {
+  util.debug(exists ? "it's there" : "no passwd!");
+});
+</code></pre>
+
+<h3>path.existsSync(p) <a href="#path.existsSync" id="path.existsSync" class="deep-link">#</a></h3>
+
+<p>Synchronous version of <code>path.exists</code>.</p>
+                <hr />
+                <small>Documentation generated by <a href="https://github.com/millermedeiros/mdoc">mdoc</a>.</small>
+            </div>
+        </div>
+        <script src="assets_/js/lib/jquery.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shCore.js"></script>
+        <script src="assets_/js/lib/syntax-highlighter/shAutoloader.js"></script>
+        <script src="assets_/js/main.js"></script>
+    </body>
+</html>
+
