@@ -106,7 +106,7 @@ textarea {
  */
 
 a {
-    color:#0a8;
+    color:#4f8218;
     text-decoration:none;
 }
 
@@ -125,7 +125,7 @@ a:hover code,
 a:active code {
     outline: 0;
     text-decoration:none;
-    background-color:#0a8 !important;
+    background-color:#4f8218 !important;
     color:#fff !important;
 }
 
@@ -557,10 +557,13 @@ hr {
     font-size: 1.3em;
     background-color: #eee;
     outline:1px solid #ddd;
+}
+
+.toc-mod-title.collapsible {
     cursor:pointer;
 }
 
-.toc-mod-title a:before {
+.toc-mod-title.collapsible a:before {
     content: '';
     width: 0;
     height: 0;
@@ -571,7 +574,7 @@ hr {
     margin: 0.3em 0.5em 0 0;
 }
 
-.toc-mod-title.opened a:before {
+.toc-mod-title.collapsible.opened a:before {
     border-top: 0.3em solid #999;
     border-right: 0.3em solid transparent;
     border-left: 0.3em solid transparent;
@@ -592,7 +595,7 @@ hr {
 .toc-item:focus,
 .toc-item:focus .desc,
 .toc-item:focus code {
-    background-color: #0a8 !important;
+    background-color: #4f8218 !important;
     color: #fff !important;
 }
 

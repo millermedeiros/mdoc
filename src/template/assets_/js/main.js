@@ -2,7 +2,7 @@
 // mdoc default template
 // author: Miller Medeiros
 // license: MIT
-// version : 0.1.3 (2011/12/02)
+// version : 0.1.4 (2011/12/02)
 
 (function ($) {
 
@@ -40,12 +40,13 @@
             });
 
             $_tocList.slideUp(0);
-            $_sidebar.on('click', 'h3', toggleNavOnClick);
+            $_sidebar.on('click', '.toc-mod-title.collapsible', toggleNavOnClick);
             $('#show-desc').on('change', toggleDescription);
             toggleDescription();
             $_search.on('keyup blur', filterOnSearch);
 
             $_sidebar.find('.toc-mod-title:has(a[href*="'+ _curFile +'"])').click();
+            $_sidebar.find('.toc-list:has(a)').prev().addClass('collapsible');
         }
 
         function toggleNavOnClick(evt) {
