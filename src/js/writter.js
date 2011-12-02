@@ -63,7 +63,8 @@ exports.processFiles = function(config){
     }), 'utf-8');
 
     console.log('  Copying Assets...');
-    wrench.copyDirSyncRecursive(path.normalize(_baseTemplatePath +'/assets_'), path.join(outputDir, 'assets_/') );
+    var assetsPath = config.assetsPath || path.normalize(_baseTemplatePath +'/assets_');
+    wrench.copyDirSyncRecursive(assetsPath, path.join(outputDir, 'assets_/'));
 
     console.log('  Finished.');
 };
@@ -80,7 +81,7 @@ function processDoc(config){
         }
 
         pathProcessor.processFile(fileInfo, function(content){
-            var parseResult = parser.parseDoc(content),
+            var parseResult = parser.parseDoc(content, config.headingLevel),
                 fileName = fileInfo.output.replace(config.outputDir, '').replace(/^\//, ''),
                 moduleName = config.mapTocName? config.mapTocName(fileName, parseResult.toc) : fileName.replace('.html', '');
 

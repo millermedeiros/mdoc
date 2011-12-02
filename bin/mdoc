@@ -12,15 +12,16 @@ var program = require('commander'),
 
 
 program
-    .version('0.2.0')
+    .version('0.3.0')
     .description('Generate documentation based on MarkDown files.')
     .option('-i, --input <dir>', 'Input directory.')
     .option('-o, --output <dir>', 'Output directory.')
     .option('--title [baseTitle]', 'Base Page title.')
     .option('--index [indexContentPath]', 'Location of index content file.')
     .option('-t, --template [templatePath]', 'Location of the template files.')
-    .option('--include [include]', 'Specify pattern of files that should be parsed.', '*.mdown,*.md,*.markdown')
+    .option('--include [include]', 'Specify pattern of files that should be parsed [*.mdown,*.md,*.markdown].', '*.mdown,*.md,*.markdown')
     .option('--exclude [exclude]', 'Specify pattern of files that should NOT be parsed.')
+    .option('--header [index]', 'Specify heading level that should be used for TOC and deeep links [2]', Number, 2)
     .parse(process.argv);
 
 
@@ -39,5 +40,6 @@ mdoc.run({
     indexContentPath : program.index,
     templatePath     : program.template,
     include          : program.include,
-    exclude          : program.exclude
+    exclude          : program.exclude,
+    headingLevel     : program.header
 });

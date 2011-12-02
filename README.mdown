@@ -78,6 +78,16 @@ Released under the MIT license.
 
 ## Changelog
 
+### v0.3.0 (2011/12/02)
+
+ - allow setting heading level that should be used for TOC and deep links.
+ - improve `toc.name` RegExp.
+ - add option to set `assetsPath` without needing to copy template files.
+ - add setting for default brush to Syntax highlighter at the top of asset JS
+   file since some code blocks may not contain metadata.
+ - add nodejs api to examples.
+
+
 ### v0.2.1 (2011/11/28)
 
  - fix syntax highlighter.

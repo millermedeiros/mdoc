@@ -22,6 +22,9 @@ mdoc.run({
 
     templatePath : 'custom_template',
 
+    //by default it will look at an `assets_` folder inside the `templatePath`
+    assetsPath : 'custom_assets',
+
     //indexContent will take precedence over `indexContentPath`
     indexContent : '<h1>Custom Template</h1><p>Example of a custom template and advanced settings.</p>',
 
@@ -45,6 +48,10 @@ mdoc.run({
     filterFiles : function(fileInfo) {
         // return `false` to remove files and `true` to keep them
         return (/math/).test(fileInfo.input);
-    }
+    },
+
+    // sets which heading should be treated as a section start (and is used for
+    // TOC) defaults to `2`
+    headingLevel : 2
 
 });
