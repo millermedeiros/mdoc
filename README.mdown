@@ -7,7 +7,7 @@ links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
 For a live example check: [AMD-utis documentation](http://millermedeiros.github.com/amd-utils)
-or the [**non-**official NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
+or the [**unofficial** NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
 (uses markdown files from [nodejs repository](https://github.com/joyent/node/tree/master/doc/api) as source)
 
 Reasoning behind it: [inline documentation, why I'm ditching it](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
