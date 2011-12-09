@@ -6,10 +6,6 @@ document, it will also generate a "TOC" (table of contents) for each file and
 links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
-For a live example check: [AMD-utis documentation](http://millermedeiros.github.com/amd-utils)
-or the [**unofficial** NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
-(uses markdown files from [nodejs repository](https://github.com/joyent/node/tree/master/doc/api) as source)
-
 Reasoning behind it: [inline documentation, why I'm ditching it](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
 
 
@@ -50,6 +46,10 @@ You can install it through [NPM](http://npmjs.org):
 
 ## Examples
 
+For a live example check: [AMD-utis documentation](http://millermedeiros.github.com/amd-utils)
+or the [**unofficial** NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
+(uses markdown files from [nodejs repository](https://github.com/joyent/node/tree/master/doc/api) as source)
+
 ### Command line interface
 
     mdoc -i examples/basic/content -o examples/basic/out
@@ -69,6 +69,16 @@ Check files inside the "examples" folder. Run:
 Check output inside "examples/basic/doc".
 
 Check "examples/advanced" for all the available settings.
+
+
+
+## Contributing
+
+There are lots of things to improve, check the [issues page](https://github.com/millermedeiros/mdoc/issues)
+for a list of bugs and feature requests.
+
+I probably won't have free time to work on it till next year, any help is welcome.
+(it also keeps me more motivated)
 
 
 
