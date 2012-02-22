@@ -90,6 +90,14 @@ Released under the MIT license.
 
 ## Changelog
 
+### v0.3.1 (2012/02/22)
+
+ - only uses descriptions if next block after header is a paragraph (#10)
+ - improve the way code blocks are converted (#11)
+ - fix page titles (#12)
+ - rename template files to "*.hbs"
+
+
 ### v0.3.0 (2011/12/02)
 
  - allow setting heading level that should be used for TOC and deep links.
