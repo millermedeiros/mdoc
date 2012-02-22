@@ -74,7 +74,8 @@ function getHeaderRegExp(level){
 }
 
 function getHeaderHashes(level){
-    return (new Array((_headingLevel || level) + 1)).join('#');
+    level = level != null? level : _headingLevel;
+    return (new Array(level + 1)).join('#');
 }
 
 function getDescription(mdown, fromIndex) {
