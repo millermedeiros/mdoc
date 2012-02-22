@@ -5,6 +5,7 @@ var _headingLevel;
 
 
 exports.parseDoc = function(mdown, headingLevel){
+    mdown = normalizeLineBreaks(mdown);
     mdown = convertCodeBlocks(mdown);
     _headingLevel = (headingLevel || 2);
 
@@ -22,29 +23,22 @@ exports.parseMdown = function(mdown){
 };
 
 
+function wrapCode(str, p1, p2){
+    return p1? '<pre class="brush:'+ p1 +'">\n'+ p2 +'</pre>' : '<pre>\n'+ p2 +'</pre>';
+}
+
 function convertCodeBlocks(mdown){
     // showdown have issues with github style code blocks..
-    // it would be great if JS RegExp didn't sucked that much
-    // could solve the same task with the RegExp: /^`{3}(\w*)([\w\W]*)^`{3}/gm
+    var re = /^```\s*(\w+)\s*$([\s\S]*?)^```$/gm;
+    return mdown.replace(re, wrapCode);
+}
 
-    var startIndex = mdown.indexOf('```'),
-        endIndex,
-        codeBlock,
-        wrapCode = function(str, p1, p2){
-            return p1? '<pre class="brush:'+ p1 +'">\n'+ p2 +'</pre>' : '<pre>\n'+ p2 +'</pre>';
-        };
-
-    while(startIndex !== -1){
-        endIndex = mdown.indexOf('```', startIndex + 1);
-        codeBlock = mdown
-                        .substring(startIndex, endIndex)
-                        .replace(/`{3}([\-\w]*)\n([\w\W]+)/g, wrapCode);
-
-        mdown = mdown.substring(0, startIndex) + codeBlock + mdown.substring(endIndex + 3);
-        startIndex = mdown.indexOf('```');
-    }
-
-    return mdown;
+function normalizeLineBreaks(str, lineEnd) {
+    lineEnd = lineEnd || '\n';
+    return str
+        .replace(/\r\n/g, lineEnd) // DOS
+        .replace(/\r/g, lineEnd) // Mac
+        .replace(/\n/g, lineEnd); // Unix
 }
 
 
