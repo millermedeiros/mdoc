@@ -22,7 +22,7 @@ var _baseTemplatePath,
     _indexTemplate;
 
 function compileTemplate(name){
-    var tmp = path.normalize(_baseTemplatePath +'/'+ name +'.template');
+    var tmp = path.normalize(_baseTemplatePath +'/'+ name +'.hbs');
     return handlebars.compile(fs.readFileSync(tmp, 'utf-8'));
 }
 
