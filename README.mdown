@@ -90,6 +90,11 @@ Released under the MIT license.
 
 ## Changelog
 
+### v0.3.2 (2012/07/13)
+
+ - fix some incopatibilities with windows paths.
+
+
 ### v0.3.1 (2012/02/22)
 
  - only uses descriptions if next block after header is a paragraph (#10)

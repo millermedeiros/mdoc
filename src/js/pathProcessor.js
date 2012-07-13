@@ -1,6 +1,7 @@
 
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    wrench = require('wrench');
 
 
 function patternToRegex(pattern) {
@@ -32,6 +33,8 @@ exports.getFilesPaths = function(o){
         inputFiles = exports.readDirRecursive(o.inputDir, o.include, o.exclude);
 
     inputFiles.forEach(function(fname){
+        fname = normalizePath(fname);
+
         var ext = path.extname(fname),
             fileDir = path.dirname(fname).replace(o.inputDir, '');
 
@@ -43,6 +46,11 @@ exports.getFilesPaths = function(o){
 
     return paths;
 };
+
+function normalizePath(path){
+    // windows to unix
+    return path.replace(/\\/g, '/');
+}
 
 
 exports.readDirRecursive = function(baseDir, include, exclude){
@@ -88,18 +96,5 @@ exports.processFile = function(fileInfo, fn){
 
 
 exports.mkdirs = function(dir, mode){
-    mode = mode || '0777';
-
-    var paths = dir.split('/'),
-        prev = '',
-        cur;
-
-    for (var i = 0, n = paths.length; i < n; i += 1) {
-        cur = path.join(prev, paths[i]);
-        if(! path.existsSync(cur) ){
-            fs.mkdirSync(cur, mode);
-        }
-        prev = cur;
-    }
-
+    wrench.mkdirSyncRecursive(dir, mode || '0777');
 };
