@@ -93,6 +93,7 @@ Released under the MIT license.
 ### v0.3.3 (2013/02/26)
 
  - change bin file encoding to unix (#18)
+ - print proper version number on cli.
 
 
 ### v0.3.2 (2012/07/13)
