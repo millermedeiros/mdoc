@@ -90,6 +90,11 @@ Released under the MIT license.
 
 ## Changelog
 
+### v0.3.3 (2013/02/26)
+
+ - change bin file encoding to unix (#18)
+
+
 ### v0.3.2 (2012/07/13)
 
  - fix some incopatibilities with windows paths.

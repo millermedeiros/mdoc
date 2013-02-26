@@ -8,11 +8,12 @@
 
 
 var program = require('commander'),
-    mdoc = require('../src/js/main');
+    mdoc = require('../src/js/main'),
+    pkg = require('../package.json');
 
 
 program
-    .version('0.3.0')
+    .version(pkg.version)
     .description('Generate documentation based on MarkDown files.')
     .option('-i, --input <dir>', 'Input directory.')
     .option('-o, --output <dir>', 'Output directory.')
