@@ -46,7 +46,7 @@ You can install it through [NPM](http://npmjs.org):
 
 ## Examples
 
-For a live example check: [AMD-utis documentation](http://millermedeiros.github.com/amd-utils)
+For a live example check: [MOUT documentation](http://moutjs.com/docs/latest/)
 or the [**unofficial** NodeJS api](http://millermedeiros.github.com/mdoc/examples/node_api/doc/)
 (uses markdown files from [nodejs repository](https://github.com/joyent/node/tree/master/doc/api) as source)
 
@@ -89,6 +89,11 @@ Released under the MIT license.
 
 
 ## Changelog
+
+### v0.3.4 (2013/05/22)
+
+ - fix documentation names on windows and assets path. (#19)
+
 
 ### v0.3.3 (2013/02/26)
 
