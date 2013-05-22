@@ -91,7 +91,7 @@ function processDoc(config){
                 'toc' : parseResult.toc
             });
 
-            var relativeRoot = path.relative( fileInfo.output.replace(/\/[^\/]+$/, '/'), config.outputDir );
+            var relativeRoot = path.relative( fileInfo.output.replace(/[\/\\][^\/\\]+$/, '/'), config.outputDir );
 
             return _docTemplate({
                 root_path : relativeRoot? relativeRoot +'/' : '',
