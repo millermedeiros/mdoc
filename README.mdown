@@ -6,7 +6,8 @@ document, it will also generate a "TOC" (table of contents) for each file and
 links to all the pages on the index page, it also provides a basic search
 feature and quick browsing between classes/methods/properties.
 
-Reasoning behind it: [inline documentation, why I'm ditching it](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
+Reasoning behind it: [inline documentation, why I'm ditching it
+](http://blog.millermedeiros.com/2011/03/inline-documentation-why-im-ditching-it/).
 
 
 
@@ -44,6 +45,117 @@ You can install it through [NPM](http://npmjs.org):
 
 
 
+## Basic Usage
+
+In a nodeJS file, create the basic outline with the desired configuration options listed below
+
+```javascript
+require('mdoc').run({
+    // configuration options (specified below)
+    inputDir: 'docs',
+    outputDir: 'dist'
+});
+```
+
+Run the file `node build.js`. The outputDir will contain the finished HTML site.
+
+
+
+## Configuration
+
+#### Source/Destination Directories (Required)
+
+The following two options containt the source directory to read the documentation from and
+the destination directory to write the finished product to.
+
+```
+inputDir: 'docs'
+outputDir: 'dist'
+```
+
+### Basic settings (Optional)
+
+#### Index File
+
+These two options both specify what should go in to the index file. The `indexContent`
+setting will take precedence and overwrite anything specified in `indexContentPath`.
+
+```
+indexContentPath: 'path/to/index.md'
+indexContent: '<h1>Custom markup to be inserted</h1>'
+```
+
+#### Site Title Tag
+
+This controls what goes in the `<title></title>` tag in the outputted HTML. The format
+is `Filename : WhatIsInbaseTitle`.
+
+`baseTitle: 'mdocs title tag'`
+
+### Advanced settings (Optional)
+
+#### Custom Templates
+
+Specify the path to the custom templates to use. These should be Handlebar template files
+
+`templatePath: 'path/to/template'`
+
+#### Static Assets
+
+Specify the path to the static asset files (JS/CSS/images, etc)
+
+`assetsPath: 'path/to/assets'`
+
+#### Outputted File Names
+
+Change the name of the outputted HTML files using a custom replacement string
+
+```javascript
+mapOutName: function (outputName) {
+ return outputName.replace('.html', '_doc.html');
+}
+```
+
+#### Display Name
+
+Change the name displayed on the sidebar and on the index TOC
+
+```javascript
+mapTocName: function (fileName, tocObject) {
+ return fileName.replace('_doc.html', '');
+}
+```
+
+#### Include Files
+
+Pattern that matches files that should be parsed
+
+`include: '*.mdown,*.md,*.markdown'`
+
+#### Exclude Files
+
+Pattern that matches files that shouldn't be parsed
+
+`exclude: '.*'`
+
+#### Filter Files
+
+Filters file. Return `false` to remove files and `true` to keep them
+
+```javascript
+filterFiles: function (fileInfo) {
+  return (/math/).test(fileInfo.input);
+}
+```
+
+#### Heading Level
+
+Sets which heading should be treated as a section start (and is used for TOC) defaults to `2`
+
+`headingLevel: 3`
+
+
+
 ## Examples
 
 For a live example check: [MOUT documentation](http://moutjs.com/docs/latest/)
@@ -72,72 +184,6 @@ Check "examples/advanced" for all the available settings.
 
 
 
-## Contributing
-
-There are lots of things to improve, check the [issues page](https://github.com/millermedeiros/mdoc/issues)
-for a list of bugs and feature requests.
-
-I probably won't have free time to work on it till next year, any help is welcome.
-(it also keeps me more motivated)
-
-
-
 ## License
 
 Released under the MIT license.
-
-
-
-## Changelog
-
-### v0.3.4 (2013/05/22)
-
- - fix documentation names on windows and assets path. (#19)
-
-
-### v0.3.3 (2013/02/26)
-
- - change bin file encoding to unix (#18)
- - print proper version number on cli.
-
-
-### v0.3.2 (2012/07/13)
-
- - fix some incopatibilities with windows paths.
-
-
-### v0.3.1 (2012/02/22)
-
- - only uses descriptions if next block after header is a paragraph (#10)
- - improve the way code blocks are converted (#11)
- - fix page titles (#12)
- - rename template files to "*.hbs"
-
-
-### v0.3.0 (2011/12/02)
-
- - allow setting heading level that should be used for TOC and deep links.
- - improve `toc.name` RegExp.
- - add option to set `assetsPath` without needing to copy template files.
- - add setting for default brush to Syntax highlighter at the top of asset JS
-   file since some code blocks may not contain metadata.
- - add nodejs api to examples.
-
-
-### v0.2.1 (2011/11/28)
-
- - fix syntax highlighter.
-
-
-### v0.2.0 (2011/11/27)
-
- - Command line interface.
- - Add support for custom templates.
- - Generate TOC and deep-links automatically.
- - Switched most settings to optional.
- - Fix links and paths to assets on nested folders.
-
-
-### v0.1.0 (2011/11/27)
-
- - initial release.
