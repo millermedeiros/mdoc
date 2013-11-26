@@ -30,6 +30,13 @@ function compileTemplate(name){
 function compileAllTemplates(config){
     _baseTemplatePath = config.templatePath || __dirname +'/../template';
 
+    var key, helpers = config.hbHelpers;
+    for (key in helpers){
+      if (helpers.hasOwnProperty(key)){
+        handlebars.registerHelper(key, helpers[key]);
+      }
+    }
+
     handlebars.registerPartial('header', compileTemplate('header'));
     handlebars.registerPartial('footer', compileTemplate('footer'));
 
