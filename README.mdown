@@ -155,6 +155,23 @@ Sets which heading should be treated as a section start (and is used for TOC) de
 `headingLevel: 3`
 
 
+#### Handlebars Helpers
+
+You can also pass custom [Handlebars helpers](http://handlebarsjs.com/#helpers)
+to be used during the compilation.
+
+```js
+hbHelpers : {
+  currency: function(val){
+    var format = require('mout/number/currencyFormat');
+    return format(val);
+  },
+  first: function(context, block) {
+    return block.fn(context[0]);
+  }
+}
+```
+
 
 ## Examples
 
