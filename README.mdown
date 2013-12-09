@@ -65,7 +65,7 @@ Run the file `node build.js`. The outputDir will contain the finished HTML site.
 
 #### Source/Destination Directories (Required)
 
-The following two options containt the source directory to read the documentation from and
+The following two options contain the source directory to read the documentation from and
 the destination directory to write the finished product to.
 
 ```
