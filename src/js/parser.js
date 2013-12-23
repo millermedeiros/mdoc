@@ -24,7 +24,7 @@ exports.parseMdown = function(mdown){
 
 
 function wrapCode(str, p1, p2){
-    return p1? '<pre class="brush:'+ p1 +'">\n'+ p2 +'</pre>' : '<pre>\n'+ p2 +'</pre>';
+    return p1? '<pre class="brush:'+p1+'">'+p2+'</pre>' : '<pre>'+p2+'</pre>';
 }
 
 function convertCodeBlocks(mdown){
