@@ -1,5 +1,12 @@
 ## Changelog
 
+### v0.4.0 (2014/12/03)
+
+ - improve `<pre><code>` behavior (removes extra line breaks)
+ - removes backslashes from sidebar title
+ - add option to register handlebars helpers
+
+
 ### v0.3.4 (2013/05/22)
 
  - fix documentation names on windows and assets path. (#19)
