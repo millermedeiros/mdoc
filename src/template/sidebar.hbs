@@ -5,7 +5,10 @@
 <div class="bd">
     <div class="toc">
         {{#modules}}
-            <h3 class="toc-mod-title"><a href="{{file}}">{{module}}</a></h3>
+            <h3 class="toc-mod-title">
+                <span class="toc-mod-toggle"></span>
+                <a href="{{file}}">{{module}}</a>
+            </h3>
             <div class="toc-list">
                 {{#toc}}
                 <a class="toc-item" href="{{../file}}#{{href}}">
