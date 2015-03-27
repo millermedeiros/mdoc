@@ -59,14 +59,16 @@ exports.processFiles = function(config){
 
     console.log('  Generating Sidebar...');
     fs.writeFileSync(path.join(outputDir, 'sidebar_.html'), _sidebarTemplate({
-        modules : toc
+        modules : toc,
+        ctx: config.ctx || {}
     }), 'utf-8');
 
     console.log('  Generating Index...');
     fs.writeFileSync(path.join(outputDir, 'index.html'), _indexTemplate({
         modules : toc,
         page_title : config.baseTitle || DEFAULT_PAGE_TITLE,
-        content : getIndexContent(config)
+        content : getIndexContent(config),
+        ctx: config.ctx || {}
     }), 'utf-8');
 
     console.log('  Copying Assets...');
@@ -103,7 +105,8 @@ function processDoc(config){
             return _docTemplate({
                 root_path : relativeRoot? relativeRoot +'/' : '',
                 content : parseResult.html,
-                page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE)
+                page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE),
+                ctx: config.ctx || {}
             });
         });
         console.log('  processed: '+ fileInfo.input +' > '+ fileInfo.output);
