@@ -172,6 +172,36 @@ hbHelpers : {
 }
 ```
 
+#### Handlebars context
+
+You can also extend the context that gets provided to the Handlebars templates.
+
+```js
+ctx : {
+  menu: [
+    { name: 'Home', link: '/'},
+    { name: 'Documentation', link: '/docs'},
+    { name: 'API', link: '/docs/api'}
+  ],
+  site: {
+    page: {
+      title: 'API Documentation'
+    }
+  }
+}
+```
+
+Those could be used inside your custom template as follow
+
+```html
+<ul>
+{{#each ctx.menu}}
+  <li><a href="{{link}}">{{name}}</a></li>
+{{/each}}
+</ul>
+
+<h2>{{ ctx.site.page.title }}</h2>
+```
 
 ## Examples
 
