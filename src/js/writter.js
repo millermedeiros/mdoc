@@ -92,7 +92,7 @@ function processDoc(config){
         pathProcessor.processFile(fileInfo, function(content){
             var parseResult = parser.parseDoc(content, config.headingLevel),
                 fileName = fileInfo.output.replace(config.outputDir, '').replace(/^[\/\\]/, ''),
-                moduleName = config.mapTocName? config.mapTocName(fileName, parseResult.toc) : fileName.replace('.html', '');
+                moduleName = config.mapTocName? config.mapTocName(fileName, parseResult.toc, parseResult.title) : fileName.replace('.html', '');
 
             toc.push({
                 'file' : fileName,

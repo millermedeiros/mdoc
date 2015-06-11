@@ -121,7 +121,7 @@ mapOutName: function (outputName) {
 Change the name displayed on the sidebar and on the index TOC
 
 ```javascript
-mapTocName: function (fileName, tocObject) {
+mapTocName: function (fileName, tocObject, title) {
  return fileName.replace('_doc.html', '');
 }
 ```
