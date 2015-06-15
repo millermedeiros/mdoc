@@ -104,7 +104,7 @@ function processDoc(config){
 
             return _docTemplate({
                 root_path : relativeRoot? relativeRoot +'/' : '',
-                content : parseResult.html,
+                content : handlebars.compile(parseResult.html)({ctx: config.ctx}),
                 page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE),
                 ctx: config.ctx || {}
             });
@@ -144,7 +144,7 @@ function generateFile(toc, template, outputFile, title){
 
 function getIndexContent(config){
     if (config.indexContentPath && !config.indexContent) {
-        config.indexContent = parser.parseMdown( fs.readFileSync(config.indexContentPath, 'utf-8') );
+        config.indexContent = handlebars.compile(parser.parseMdown( fs.readFileSync(config.indexContentPath, 'utf-8') ))({ctx: config.ctx});
     }
     return config.indexContent || '';
 }
