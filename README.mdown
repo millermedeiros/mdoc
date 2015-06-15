@@ -178,6 +178,7 @@ You can also extend the context that gets provided to the Handlebars templates.
 
 ```js
 ctx : {
+  version: '1.0.0'
   menu: [
     { name: 'Home', link: '/'},
     { name: 'Documentation', link: '/docs'},
@@ -201,6 +202,14 @@ Those could be used inside your custom template as follow
 </ul>
 
 <h2>{{ ctx.site.page.title }}</h2>
+```
+
+Also you can use Handlebars template in your markdown files:
+
+```
+## {{ ctx.site.page.title }}
+
+Current version: {{ ctx.version }}
 ```
 
 ## Examples
