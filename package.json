@@ -28,9 +28,10 @@
     }
   ],
   "dependencies": {
-    "wrench": ">= 1.3.2",
+    "commander": ">= 0.4.0",
     "handlebars": ">= 1.0.1",
-    "commander": ">= 0.4.0"
+    "showdown": "^1.1.0",
+    "wrench": ">= 1.3.2"
   },
   "bin": {
     "mdoc": "./bin/mdoc"
