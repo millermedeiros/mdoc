@@ -212,6 +212,16 @@ Also you can use Handlebars template in your markdown files:
 Current version: {{ ctx.version }}
 ```
 
+#### Parser override
+
+If you want to use another markdown parser you can override the parsing function:
+
+```javascript
+parsingFunction: function(markdownText): {
+	return myParser.markdownToHtml(markdownText);
+}
+```
+
 ## Examples
 
 For a live example check: [MOUT documentation](http://moutjs.com/docs/latest/)
