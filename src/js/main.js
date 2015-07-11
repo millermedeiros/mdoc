@@ -3,8 +3,9 @@
  * @author Miller Medeiros
  */
 
-var writter = require('./writter');
+var Writter = require('./writter');
 
 exports.run = function (opts) {
-    writter.processFiles(opts);
+	var writter = new Writter(opts);
+    writter.processFiles();
 };

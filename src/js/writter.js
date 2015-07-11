@@ -3,7 +3,7 @@ var handlebars = require('handlebars'),
     fs = require('fs'),
     path = require('path'),
     wrench = require('wrench'),
-    parser = require('./parser'),
+    Parser = require('./parser'),
     pathProcessor = require('./pathProcessor');
 
 
@@ -14,85 +14,77 @@ var DEFAULT_INCLUDE = '*.mdown,*.md,*.markdown',
     DEFAULT_PAGE_TITLE = 'Documentation';
 
 
-// ---
+var Writter = function(config) {
+    this.config = config;
+    this.parser = new Parser(this.config);
+}
 
-var _baseTemplatePath,
-    _docTemplate,
-    _sidebarTemplate,
-    _indexTemplate;
-
-function compileTemplate(name){
-    var tmp = path.normalize(_baseTemplatePath +'/'+ name +'.hbs');
+Writter.prototype.compileTemplate = function(name){
+    var tmp = path.normalize(this.baseTemplatePath +'/'+ name +'.hbs');
     return handlebars.compile(fs.readFileSync(tmp, 'utf-8'));
 }
 
+Writter.prototype.compileAllTemplates = function(){
+    this.baseTemplatePath = this.config.templatePath || __dirname +'/../template';
 
-function compileAllTemplates(config){
-    _baseTemplatePath = config.templatePath || __dirname +'/../template';
-
-    var key, helpers = config.hbHelpers;
+    var key, helpers = this.config.hbHelpers;
     for (key in helpers){
       if (helpers.hasOwnProperty(key)){
         handlebars.registerHelper(key, helpers[key]);
       }
     }
 
-    handlebars.registerPartial('header', compileTemplate('header'));
-    handlebars.registerPartial('footer', compileTemplate('footer'));
+    handlebars.registerPartial('header', this.compileTemplate('header'));
+    handlebars.registerPartial('footer', this.compileTemplate('footer'));
 
-    _docTemplate = compileTemplate('doc');
-    _sidebarTemplate = compileTemplate('sidebar');
-    _indexTemplate = compileTemplate('index');
+    this.docTemplate = this.compileTemplate('doc');
+    this.sidebarTemplate = this.compileTemplate('sidebar');
+    this.indexTemplate = this.compileTemplate('index');
 }
 
-
-// ---
-
-
-exports.processFiles = function(config){
+Writter.prototype.processFiles = function(){
     console.log('  Converting files...');
 
-    compileAllTemplates(config);
+    this.compileAllTemplates(this.config);
 
-    var toc = processDoc(config),
-        outputDir = config.outputDir;
+    var toc = this.processDoc(this.config),
+        outputDir = this.config.outputDir;
 
     console.log('  Generating Sidebar...');
-    fs.writeFileSync(path.join(outputDir, 'sidebar_.html'), _sidebarTemplate({
+    fs.writeFileSync(path.join(outputDir, 'sidebar_.html'), this.sidebarTemplate({
         modules : toc,
-        ctx: config.ctx || {}
+        ctx: this.config.ctx || {}
     }), 'utf-8');
 
     console.log('  Generating Index...');
-    fs.writeFileSync(path.join(outputDir, 'index.html'), _indexTemplate({
+    fs.writeFileSync(path.join(outputDir, 'index.html'), this.indexTemplate({
         modules : toc,
-        page_title : config.baseTitle || DEFAULT_PAGE_TITLE,
-        content : getIndexContent(config),
-        ctx: config.ctx || {}
+        page_title : this.config.baseTitle || DEFAULT_PAGE_TITLE,
+        content : this.getIndexContent(this.config),
+        ctx: this.config.ctx || {}
     }), 'utf-8');
 
     console.log('  Copying Assets...');
-    var assetsPath = config.assetsPath || path.normalize(_baseTemplatePath +'/assets_');
+    var assetsPath = this.config.assetsPath || path.normalize(this.baseTemplatePath +'/assets_');
     wrench.copyDirSyncRecursive(assetsPath, path.join(outputDir, 'assets_/'));
 
     console.log('  Finished.');
 };
 
-
-function processDoc(config){
-
+Writter.prototype.processDoc = function(){
     var toc = [];
+    var self = this;
 
-    getFilesInfos(config).forEach(function(fileInfo){
+    this.getFilesInfos(this.config).forEach(function(fileInfo){
 
-        if (config.mapOutName) {
-            fileInfo.output = config.mapOutName(fileInfo.output);
+        if (self.config.mapOutName) {
+            fileInfo.output = self.config.mapOutName(fileInfo.output);
         }
 
         pathProcessor.processFile(fileInfo, function(content){
-            var parseResult = parser.parseDoc(content, config.headingLevel),
-                fileName = fileInfo.output.replace(config.outputDir, '').replace(/^[\/\\]/, ''),
-                moduleName = config.mapTocName? config.mapTocName(fileName, parseResult.toc, parseResult.title) : fileName.replace('.html', '');
+            var parseResult = self.parser.parseDoc(content, self.config.headingLevel),
+                fileName = fileInfo.output.replace(self.config.outputDir, '').replace(/^[\/\\]/, ''),
+                moduleName = self.config.mapTocName? self.config.mapTocName(fileName, parseResult.toc, parseResult.title) : fileName.replace('.html', '');
 
             toc.push({
                 'file' : fileName,
@@ -100,13 +92,13 @@ function processDoc(config){
                 'toc' : parseResult.toc
             });
 
-            var relativeRoot = path.relative( fileInfo.output.replace(/[\/\\][^\/\\]+$/, '/'), config.outputDir );
+            var relativeRoot = path.relative( fileInfo.output.replace(/[\/\\][^\/\\]+$/, '/'), self.config.outputDir );
 
-            return _docTemplate({
+            return self.docTemplate({
                 root_path : relativeRoot? relativeRoot +'/' : '',
-                content : handlebars.compile(parseResult.html)({ctx: config.ctx}),
-                page_title : parseResult.title +' : '+ (config.baseTitle || DEFAULT_PAGE_TITLE),
-                ctx: config.ctx || {}
+                content : handlebars.compile(parseResult.html)({ctx: self.config.ctx}),
+                page_title : parseResult.title +' : '+ (self.config.baseTitle || DEFAULT_PAGE_TITLE),
+                ctx: self.config.ctx || {}
             });
         });
         console.log('  processed: '+ fileInfo.input +' > '+ fileInfo.output);
@@ -115,26 +107,23 @@ function processDoc(config){
     return toc;
 }
 
-
-
-function getFilesInfos(config){
+Writter.prototype.getFilesInfos = function(){
     var files = pathProcessor.getFilesPaths({
-            inputDir : config.inputDir,
-            outputDir : config.outputDir,
+            inputDir : this.config.inputDir,
+            outputDir : this.config.outputDir,
             outputExt : '.html',
-            include : config.include || DEFAULT_INCLUDE,
-            exclude : config.exclude
+            include : this.config.include || DEFAULT_INCLUDE,
+            exclude : this.config.exclude
         });
 
-    if (config.filterFiles) {
-        files = files.filter(config.filterFiles);
+    if (this.config.filterFiles) {
+        files = files.filter(this.config.filterFiles);
     }
 
     return files;
 }
 
-
-function generateFile(toc, template, outputFile, title){
+Writter.prototype.generateFile = function(toc, template, outputFile, title){
     var content = template({
         modules : toc,
         page_title : title || ''
@@ -142,9 +131,11 @@ function generateFile(toc, template, outputFile, title){
     fs.writeFileSync(outputFile, content, 'utf-8');
 }
 
-function getIndexContent(config){
-    if (config.indexContentPath && !config.indexContent) {
-        config.indexContent = handlebars.compile(parser.parseMdown( fs.readFileSync(config.indexContentPath, 'utf-8') ))({ctx: config.ctx});
+Writter.prototype.getIndexContent = function(){
+    if (this.config.indexContentPath && !this.config.indexContent) {
+        this.config.indexContent = handlebars.compile(this.parser.parseMdown( fs.readFileSync(this.config.indexContentPath, 'utf-8') ))({ctx: this.config.ctx});
     }
-    return config.indexContent || '';
+    return this.config.indexContent || '';
 }
+
+module.exports = Writter;

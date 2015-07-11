@@ -1,40 +1,37 @@
 
-var showdown = require('showdown'),
-    converter = new showdown.Converter();
+var showdown = require('showdown');
 
-var _headingLevel;
+var Parser = function(config) {
+    this.config = config;
+    this.headingLevel = config.headingLevel || 2;
+    var converter = new showdown.Converter();
+    this.parseMdown = converter.makeHtml;
+}
 
+Parser.prototype.parseDoc = function(mdown){
+    mdown = this.normalizeLineBreaks(mdown);
+    mdown = this.convertCodeBlocks(mdown);
 
-exports.parseDoc = function(mdown, headingLevel){
-    mdown = normalizeLineBreaks(mdown);
-    mdown = convertCodeBlocks(mdown);
-    _headingLevel = (headingLevel || 2);
-
-    var toc = getTocData(mdown);
+    var toc = this.getTocData(mdown);
 
     return {
         toc : toc,
-        html :  parseContent(mdown, toc),
-        title : getTitle(mdown)
+        html :  this.parseContent(mdown, toc),
+        title : this.getTitle(mdown)
     };
 };
 
-exports.parseMdown = function(mdown){
-    return converter.makeHtml(mdown);
-};
-
-
-function wrapCode(str, p1, p2){
+Parser.prototype.wrapCode = function(str, p1, p2){
     return p1? '<pre class="brush:'+p1+'">'+p2+'</pre>' : '<pre>'+p2+'</pre>';
 }
 
-function convertCodeBlocks(mdown){
+Parser.prototype.convertCodeBlocks = function(mdown){
     // showdown have issues with github style code blocks..
     var re = /^```\s*(\w+)\s*$([\s\S]*?)^```$/gm;
-    return mdown.replace(re, wrapCode);
+    return mdown.replace(re, this.wrapCode);
 }
 
-function normalizeLineBreaks(str, lineEnd) {
+Parser.prototype.normalizeLineBreaks = function(str, lineEnd) {
     lineEnd = lineEnd || '\n';
     return str
         .replace(/\r\n/g, lineEnd) // DOS
@@ -43,11 +40,11 @@ function normalizeLineBreaks(str, lineEnd) {
 }
 
 
-function getTocData(mdown){
+Parser.prototype.getTocData = function(mdown){
 
     var matchTitle,
         matchName,
-        rH = getHeaderRegExp(),
+        rH = this.getHeaderRegExp(),
         rName = /([^\(#:%\?!,]+)(\(?)[^\)]*(\)?):?.*/,
         toc = [];
 
@@ -57,23 +54,23 @@ function getTocData(mdown){
            href : matchName[1],
            title : matchTitle[1].replace(/\\/g, ''),
            name : (matchName.slice(1,4).join('')),
-           description : getDescription(mdown, rH.lastIndex)
+           description : this.getDescription(mdown, rH.lastIndex)
         });
     }
 
     return toc;
 }
 
-function getHeaderRegExp(level){
-    return new RegExp('^'+ getHeaderHashes(level) +'\\s*([^#\\n\\r]+)[# \t]*$', 'gm');
+Parser.prototype.getHeaderRegExp = function(level){
+    return new RegExp('^'+ this.getHeaderHashes(level) +'\\s*([^#\\n\\r]+)[# \t]*$', 'gm');
 }
 
-function getHeaderHashes(level){
-    level = level != null? level : _headingLevel;
+Parser.prototype.getHeaderHashes = function(level){
+    level = level != null? level : this.headingLevel;
     return (new Array(level + 1)).join('#');
 }
 
-function getDescription(mdown, fromIndex) {
+Parser.prototype.getDescription = function(mdown, fromIndex) {
     var desc = mdown.substr(fromIndex);
     desc = desc.replace(/^\n+/g, '').split(/\n\n/)[0]; //first paragraph
 
@@ -82,39 +79,41 @@ function getDescription(mdown, fromIndex) {
         return null;
     }
 
-    desc = exports.parseMdown(desc.replace(/\n+/, ' '))
+    desc = this.parseMdown(desc.replace(/\n+/, ' '))
                     .replace(/<\/?p>/g, '') //remove paragraphs
                     .replace(/<\/?a[^>]*>/g, ''); //remove links since it breaks layout
     return desc;
 }
 
-function parseContent(mdown, toc){
+Parser.prototype.parseContent = function(mdown, toc){
 
     // add deep-links
 
     var i = 0, cur;
 
-    mdown = mdown.replace(getHeaderRegExp(), function(str){
+    mdown = mdown.replace(this.getHeaderRegExp(), function(str){
         cur = toc[i++];
         return str +' <a href="#'+ cur.href +'" id="'+ cur.href +'" class="deep-link">#</a>';
     });
 
     // generate TOC
 
-    var tocIndex = mdown.search( new RegExp('^'+ getHeaderHashes() +'[^#]+', 'm') ), //first header
+    var tocIndex = mdown.search( new RegExp('^'+ this.getHeaderHashes() +'[^#]+', 'm') ), //first header
         pre = mdown.substring(0, tocIndex),
         post = mdown.substring(tocIndex),
-        tocContent = getHeaderHashes() +' Table of Contents <a href="#toc" name="toc" class="deep-link">#</a>\n\n';
+        tocContent = this.getHeaderHashes() +' Table of Contents <a href="#toc" name="toc" class="deep-link">#</a>\n\n';
 
     toc.forEach(function(val, i){
         tocContent += ' - ['+ val.name +'](#'+ val.href +')\n';
     });
 
-    return exports.parseMdown( pre + tocContent + post );
+    return this.parseMdown( pre + tocContent + post );
 }
 
 
-function getTitle(mdown){
-    var match = getHeaderRegExp(_headingLevel - 1).exec(mdown); //H1
+Parser.prototype.getTitle = function(mdown){
+    var match = this.getHeaderRegExp(this.headingLevel - 1).exec(mdown); //H1
     return match? match[1].trim() : '';
 }
+
+module.exports = Parser;
