@@ -4,8 +4,12 @@ var showdown = require('showdown');
 var Parser = function(config) {
     this.config = config;
     this.headingLevel = config.headingLevel || 2;
-    var converter = new showdown.Converter();
-    this.parseMdown = converter.makeHtml;
+    if (config.parsingFunction) {
+        this.parseMdown = config.parsingFunction;
+    } else {
+        var converter = new showdown.Converter();
+        this.parseMdown = converter.makeHtml;
+    }
 }
 
 Parser.prototype.parseDoc = function(mdown){
