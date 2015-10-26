@@ -8,7 +8,7 @@ var Parser = function(config) {
         this.parseMdown = config.parsingFunction;
     } else {
         var converter = new showdown.Converter();
-        this.parseMdown = converter.makeHtml;
+        this.parseMdown = converter.makeHtml.bind(converter);
     }
 }
 
