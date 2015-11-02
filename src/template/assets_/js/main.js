@@ -42,11 +42,10 @@
             $_tocList.slideUp(0);
             $_sidebar.on('click', '.toc-mod-title.collapsible', toggleNavOnClick);
             $('#show-desc').on('change', toggleDescription);
-            toggleDescription();
             $_search.on('keyup blur', filterOnSearch);
 
-            $_sidebar.find('.toc-mod-title:has(a[href*="'+ _curFile +'"])').click();
             $_sidebar.find('.toc-list:has(a)').prev().addClass('collapsible');
+            $_sidebar.find('.toc-mod-title:has(a[href*="'+ _curFile +'"])').click();
         }
 
         function toggleNavOnClick(evt) {
