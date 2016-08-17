@@ -8,7 +8,7 @@
     "generator"
   ],
   "homepage": "https://github.com/millermedeiros/mdoc.git",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": {
     "name": "Miller Medeiros",
     "url": "http://blog.millermedeiros.com/"
@@ -35,5 +35,8 @@
   },
   "bin": {
     "mdoc": "./bin/mdoc"
+  },
+  "scripts": {
+    "test": "node ./bin/mdoc -i examples/basic/content -o examples/basic/out"
   }
 }
