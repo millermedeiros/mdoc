@@ -83,7 +83,7 @@ Writter.prototype.processDoc = function(){
 
         pathProcessor.processFile(fileInfo, function(content){
             var parseResult = self.parser.parseDoc(content, self.config.headingLevel),
-                fileName = fileInfo.output.replace(self.config.outputDir, '').replace(/^[\/\\]/, ''),
+                fileName = path.relative(self.config.outputDir, fileInfo.output).replace(/^[\/\\]/, ''),
                 moduleName = self.config.mapTocName? self.config.mapTocName(fileName, parseResult.toc, parseResult.title) : fileName.replace('.html', '');
 
             toc.push({
