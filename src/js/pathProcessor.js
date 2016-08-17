@@ -36,7 +36,7 @@ exports.getFilesPaths = function(o){
         fname = normalizePath(fname);
 
         var ext = path.extname(fname),
-            fileDir = path.dirname(fname).replace(o.inputDir, '');
+            fileDir = path.relative(o.inputDir, path.dirname(fname));
 
         paths.push({
             input : fname,
